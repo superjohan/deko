@@ -29,4 +29,8 @@ With Deko you can:
 
 Make your screen beautiful with Deko.
 
-![Screenshot 1](http://a2.mzstatic.com/us/r30/Purple/v4/df/f5/f5/dff5f514-0d10-13f3-ef35-492f1aaaa5c0/screen568x568.jpeg) ![Screenshot 2](http://a2.mzstatic.com/us/r30/Purple/v4/f7/b6/b2/f7b6b2d9-c2ed-9032-41ad-3380c805bf9a/screen568x568.jpeg) ![Screenshot 3](http://a1.mzstatic.com/us/r30/Purple/v4/f7/41/fd/f741fd97-7551-1ff1-7781-936ee50ffed5/screen568x568.jpeg) ![Screenshot 4](http://a1.mzstatic.com/us/r30/Purple2/v4/06/b6/4f/06b64f89-0659-78e0-a59d-63402ddb075b/screen568x568.jpeg) ![Screenshot 5](http://a4.mzstatic.com/us/r30/Purple/v4/f8/3a/6c/f83a6c3b-5f67-75fa-ce1b-4413409bd30f/screen568x568.jpeg)
+![Screenshot 1](http://a2.mzstatic.com/us/r30/Purple/v4/df/f5/f5/dff5f514-0d10-13f3-ef35-492f1aaaa5c0/screen568x568.jpeg)
+![Screenshot 2](http://a2.mzstatic.com/us/r30/Purple/v4/f7/b6/b2/f7b6b2d9-c2ed-9032-41ad-3380c805bf9a/screen568x568.jpeg)
+![Screenshot 3](http://a1.mzstatic.com/us/r30/Purple/v4/f7/41/fd/f741fd97-7551-1ff1-7781-936ee50ffed5/screen568x568.jpeg)
+![Screenshot 4](http://a1.mzstatic.com/us/r30/Purple2/v4/06/b6/4f/06b64f89-0659-78e0-a59d-63402ddb075b/screen568x568.jpeg
+![Screenshot 5](http://a4.mzstatic.com/us/r30/Purple/v4/f8/3a/6c/f83a6c3b-5f67-75fa-ce1b-4413409bd30f/screen568x568.jpeg)
