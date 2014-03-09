@@ -1,0 +1,110 @@
+/* Scene refresh tutorial text, full refresh, no swipe */
+"A completely new pattern will be made from scratch." = "아무런 준비가 없어도 완전히 새로운 패턴이 생성됩니다";
+
+/* Copy button title */
+"Copy" = "복사";
+
+/* Copy button title, busy state */
+"Copying" = "복사 중";
+
+/* Facebook share default text */
+"Created with Deko. dekoapp.com" = "Deko로 제작됨. dekoapp.com";
+
+/* Photo album title, do not localize */
+"Deko" = "Deko";
+
+/* Alert, dismiss button */
+"Dismiss" = "취소";
+
+/* Share by email button title */
+"Email" = "이메일";
+
+/* Email not configured error description */
+"Email has not been configured on this device." = "이 기기에는 이메일이 설정되어 있지 않습니다.";
+
+/* Share to Facebook button title */
+"Facebook" = "Facebook";
+
+/* Purchase button, waiting for price */
+"Fetching price..." = "가격 정보 가져오는 중…";
+
+/* Tutorial, gallery button */
+"Gallery" = "갤러리";
+
+/* IAP view, title */
+"High quality export" = "고품질 내보내기";
+
+/* Unlock high quality export button title */
+"High\nquality export" = "고품질\n내보내기";
+
+/* Email share default text */
+"Made with Deko.\ndekoapp.com" = "Deko로 제작됨.\ndekoapp.com";
+
+/* Scene refresh tutorial text, no changes to settings */
+"Make another version of this pattern." = "이 패턴의 다른\n버전 생성";
+
+/* Scene refresh, full refresh */
+"New" = "새로고침";
+
+/* Gallery view, no saved patterns */
+"No saved patterns." = "저장된 패턴이 없음";
+
+/* Generic share button title, busy state */
+"Preparing" = "준비 중";
+
+/* Undo tutorial text */
+"Previous" = "이전";
+
+/* Scene refresh tutorial text, full refresh, swipe */
+"Pull halfway and release to adjust the current pattern." = "현재 패턴을 조정하려면 중간쯤 끌어당긴 후 푸세요";
+
+/* Purchase failed alert, title */
+"Purchase failed" = "구매 실패";
+
+/* Tutorial, remove from gallery */
+"Remove from Gallery" = "갤러리에서 삭제";
+
+/* IAP view, restore button */
+"Restore" = "복원";
+
+/* Tutorial, save to gallery */
+"Save to Gallery" = "갤러리에\n저장";
+
+/* Save to photos button title */
+"Save to photos" = "사진에\n저장";
+
+/* Save to photos button title, busy state */
+"Saving" = "저장 중";
+
+/* Error message, no access to photo library */
+"Saving failed. Access to the library is probably denied." = "저장 실패. 보관함에 접근이 거부된 것 같습니다.";
+
+/* Tutorial, share and export */
+"Share and Export" = "공유 및\n내보내기";
+
+/* IAP purchased alert, message */
+"Thank you." = "감사합니다.";
+
+/* Scene refresh tutorial text, some changes to settings */
+"The further you pull, the more the pattern will change." = "더 많이 끌어당길 수록 패턴이 더 많이 변경됩니다";
+
+/* Share to Twitter button title */
+"Twitter" = "Twitter";
+
+/* IAP view copy, iPad */
+"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference." = "완벽한 품질로 작품을 만드시려면 고품질 내보내기의 잠금을 해제하세요. 완벽한 픽셀의 패턴을 배경 화면으로 사용하거나 다른 앱에서 더욱 바꿔보세요.\n\n이미지의 막대를 밀면 차이를 보실 수 있습니다.";
+
+/* IAP view copy, iPhone */
+"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference." = "완벽한 품질로 작품을 만드시려면 고품질 내보내기의 잠금을 해제하세요.\n완벽한 픽셀의 패턴을 배경 화면으로 사용하거나 다른 앱에서 더욱 바꿔보세요. 이미지의 막대를 밀면 차이를 보실 수 있습니다.";
+
+/* Scene refresh, no changes to settings */
+"•" = "•";
+
+/* iOS 7 update view, title */
+"iOS 7 Parallax Wallpapers" = "iOS 7 시차 효과 바탕 화면";
+
+/* iOS 7 update view, copy */
+"Deko now makes pixel-perfect parallax wallpapers for iOS 7. Just use 'Save to photos' and your wallpapers will automatically be the right size." = "Deko는 이제 iOS 7용으로 완벽한 픽셀의 시차 효과 바탕 화면을 지원합니다. '사진에 저장'을 이용하기만하면 바탕 화면은 자동으로 올바른 크기가 됩니다.";
+
+/* iOS 7 update view, dismiss button */
+"OK" = "확인";

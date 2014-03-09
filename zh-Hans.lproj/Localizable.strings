@@ -1,0 +1,110 @@
+/* Scene refresh tutorial text, full refresh, no swipe */
+"A completely new pattern will be made from scratch." = "制作一个全新的图案。";
+
+/* Copy button title */
+"Copy" = "复制";
+
+/* Copy button title, busy state */
+"Copying" = "正在复制";
+
+/* Facebook share default text */
+"Created with Deko. dekoapp.com" = "使用 Deko 制作。dekoapp.com";
+
+/* Photo album title, do not localize */
+"Deko" = "Deko";
+
+/* Alert, dismiss button */
+"Dismiss" = "取消";
+
+/* Share by email button title */
+"Email" = "电子邮件";
+
+/* Email not configured error description */
+"Email has not been configured on this device." = "此设备尚未设置电子邮件账户。";
+
+/* Share to Facebook button title */
+"Facebook" = "Facebook";
+
+/* Purchase button, waiting for price */
+"Fetching price..." = "正在获取价格…";
+
+/* Tutorial, gallery button */
+"Gallery" = "图片集";
+
+/* IAP view, title */
+"High quality export" = "高质量导出";
+
+/* Unlock high quality export button title */
+"High\nquality export" = "高质量\n导出";
+
+/* Email share default text */
+"Made with Deko.\ndekoapp.com" = "使用 Deko 制作。\ndekoapp.com";
+
+/* Scene refresh tutorial text, no changes to settings */
+"Make another version of this pattern." = "制作和当前显示画面类似的图案。";
+
+/* Scene refresh, full refresh */
+"New" = "新作";
+
+/* Gallery view, no saved patterns */
+"No saved patterns." = "没有储存的图案。";
+
+/* Generic share button title, busy state */
+"Preparing" = "正在准备";
+
+/* Undo tutorial text */
+"Previous" = "前一个";
+
+/* Scene refresh tutorial text, full refresh, swipe */
+"Pull halfway and release to adjust the current pattern." = "向左滑动以调整当前图案。越向左，图案的变化越大哟。";
+
+/* Purchase failed alert, title */
+"Purchase failed" = "购买失败";
+
+/* Tutorial, remove from gallery */
+"Remove from Gallery" = "从图片集\n删除";
+
+/* IAP view, restore button */
+"Restore" = "恢复购买";
+
+/* Tutorial, save to gallery */
+"Save to Gallery" = "保存至\n图片集";
+
+/* Save to photos button title */
+"Save to photos" = "保存至\n相片";
+
+/* Save to photos button title, busy state */
+"Saving" = "正在保存";
+
+/* Error message, no access to photo library */
+"Saving failed. Access to the library is probably denied." = "保存失败。疑似访问照片图库的权限受阻。";
+
+/* Tutorial, share and export */
+"Share and Export" = "共享和导出";
+
+/* IAP purchased alert, message */
+"Thank you." = "谢谢购买！";
+
+/* Scene refresh tutorial text, some changes to settings */
+"The further you pull, the more the pattern will change." = "滑动幅度越大，图案变化越明显。";
+
+/* Share to Twitter button title */
+"Twitter" = "Twitter";
+
+/* IAP view copy, iPad */
+"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference." = "开启高质量导出功能，即可将你的作品以全保真形式储存，使用“精美到像素”的图案作为壁纸或在其它应用中使用。\n\n滑动图片上的分割线看看导出图片质量的区别吧！";
+
+/* IAP view copy, iPhone */
+"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference." = "开启高质量导出功能，即可将你的作品以全保真形式储存，使用“精美到像素”的图案作为壁纸或在其它应用中使用。\n滑动图片上的分割线看看导出图片质量的区别吧！";
+
+/* Scene refresh, no changes to settings */
+"•" = "•";
+
+/* iOS 7 update view, title */
+"iOS 7 Parallax Wallpapers" = "iOS 7 动态效果壁纸";
+
+/* iOS 7 update view, copy */
+"Deko now makes pixel-perfect parallax wallpapers for iOS 7. Just use 'Save to photos' and your wallpapers will automatically be the right size." = "Deko 现在支持精确到像素的 iOS 7 动态效果壁纸。只需选择“保存至相片”，你的壁纸会自动保存成合适的格式。";
+
+/* iOS 7 update view, dismiss button */
+"OK" = "好";

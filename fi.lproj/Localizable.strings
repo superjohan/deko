@@ -1,0 +1,114 @@
+/* Scene refresh tutorial text, full refresh, no swipe */
+"A completely new pattern will be made from scratch." = "Luo kokonaan uusi kuvio tyhjästä.";
+
+/* Copy button title */
+"Copy" = "Kopioi";
+
+/* Copy button title, busy state */
+"Copying" = "Kopioidaan";
+
+/* Facebook share default text */
+"Created with Deko. dekoapp.com" = "Luotu Dekolla. dekoapp.com";
+
+/* Photo album title, do not localize */
+"Deko" = "Deko";
+
+/* Alert, dismiss button */
+"Dismiss" = "Ohita";
+
+/* Share by email button title */
+"Email" = "Sähkö-\nposti";
+
+/* Email not configured error description */
+"Email has not been configured on this device." = "Laitteeseen ei ole syötetty sähköpostiasetuksia";
+
+/* Share to Facebook button title */
+"Facebook" = "Facebook";
+
+/* Purchase button, waiting for price */
+"Fetching price..." = "Haetaan hintaa...";
+
+/* Tutorial, gallery button */
+"Gallery" = "Galleria";
+
+/* IAP view, title */
+"High quality export" = "Korkealaatuinen tallennus";
+
+/* Unlock high quality export button title */
+"High\nquality export" = "Korkea-\nlaatuinen\ntallennus";
+
+/* Email share default text */
+"Made with Deko.\ndekoapp.com" = "Luotu Dekolla.\ndekoapp.com";
+
+/* Scene refresh tutorial text, no changes to settings */
+"Make another version of this pattern." = "Tee toinen versio tästä kuviosta.";
+
+/* Scene refresh, full refresh */
+"New" = "Uusi";
+
+/* Gallery view, no saved patterns */
+"No saved patterns." = "Ei tallennettuja kuvioita.";
+
+/* Generic share button title, busy state */
+"Preparing" = "Valmistellaan";
+
+/* Undo tutorial text */
+"Previous" = "Edellinen";
+
+/* Scene refresh tutorial text, full refresh, swipe */
+"Pull halfway and release to adjust the current pattern." = "Vedä puoliväliin ja vapauta muokataksesi nykyistä kuviota.";
+
+/* Purchase failed alert, title */
+"Purchase failed" = "Osto epäonnistui";
+
+/* Tutorial, remove from gallery */
+"Remove from Gallery" = "Poista galleriasta";
+
+/* IAP view, restore button */
+"Restore" = "Palauta";
+
+/* Tutorial, save to gallery */
+"Save to Gallery" = "Lisää galleriaan";
+
+/* Save to photos button title */
+"Save to photos" = "Tallenna kuviin";
+
+/* Save to photos button title, busy state */
+"Saving" = "Tallennetaan";
+
+/* Error message, no access to photo library */
+"Saving failed. Access to the library is probably denied." = 
+"Tallennus epäonnistui. Albumeihin tallentaminen on luultavasti estetty.";
+
+/* Tutorial, share and export */
+"Share and Export" = "Jaa tai tallenna";
+
+/* IAP purchased alert, message */
+"Thank you." = "Kiitos.";
+
+/* Scene refresh tutorial text, some changes to settings */
+"The further you pull, the more the pattern will change." = 
+"Mitä pidemmälle vedät, sitä enemmän kuvio muuttuu.";
+
+/* Share to Twitter button title */
+"Twitter" = "Twitter";
+
+/* IAP view copy, iPad */
+"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference." = 
+"Osta korkealaatuinen tallennustoiminto saadaksesi luomuksesi tallennettua täydessä loistossaan. Käytä pikselintarkkoja kuvioita taustakuvina tai muokkaa niitä edelleen muissa sovelluksissa.\n\nSiirrä valkoista palkkia kuvan päällä nähdäksesi eron.";
+
+/* IAP view copy, iPhone */
+"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference." =
+"Osta korkealaatuinen tallennustoiminto saadaksesi luomuksesi tallennettua täydessä loistossaan. Siirrä valkoista palkkia kuvan päällä nähdäksesi eron.";
+
+/* Scene refresh, no changes to settings */
+"•" = "•";
+
+/* iOS 7 update view, title */
+"iOS 7 Parallax Wallpapers" = "iOS 7 parallaksitaustakuvat";
+
+/* iOS 7 update view, copy */
+"Deko now makes pixel-perfect parallax wallpapers for iOS 7. Just use 'Save to photos' and your wallpapers will automatically be the right size." = "Dekolla voit nyt tehdä pikselintarkkoja parallaksitaustakuvia iOS 7 varten. Kun käytät 'Tallenna kuviin' toimintoa kuvat tallentuvat automaattisesti oikean kokoisina.";
+
+/* iOS 7 update view, dismiss button */
+"OK" = "OK";
