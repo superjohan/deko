@@ -602,7 +602,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 	}
 	else
 	{
-		NSLog(@"Unknown position type: %d", positionType);
+		NSLog(@"Unknown position type: %ld", (long)positionType);
 	}
 }
 

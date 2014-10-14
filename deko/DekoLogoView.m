@@ -77,7 +77,7 @@ typedef void(^CompletionBlock)(void);
 	
 	for (NSInteger i = 1; i < 12; i++)
 	{
-		NSString *filename = [NSString stringWithFormat:@"logo%d-%@", i, device];
+		NSString *filename = [NSString stringWithFormat:@"logo%ld-%@", (long)i, device];
 		UIImage *logoPiece = [UIImage imageNamed:filename];
 		containerSize = logoPiece.size;
 		UIImageView *logoPieceView = [[UIImageView alloc] initWithImage:logoPiece];

@@ -121,28 +121,28 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	
 	self.debugInfoLabel.text = [NSString stringWithFormat:
 								@"\n\
-								Mixing type: %d\n \
-								Position type: %d\n \
-								Transform type: %d\n \
-								Size type: %d\n \
-								Rotation type: %d\n \
-								Shape type: %d\n \
-								Color type: %d\n \
-								Brightness type: %d\n \
-								Saturation type %d\n \
+								Mixing type: %ld\n \
+								Position type: %ld\n \
+								Transform type: %ld\n \
+								Size type: %ld\n \
+								Rotation type: %ld\n \
+								Shape type: %ld\n \
+								Color type: %ld\n \
+								Brightness type: %ld\n \
+								Saturation type %ld\n \
 								Hue: %f\n \
 								Base size: %f\n \
 								Base distance: %f\n \
 								Angle: %f\n",
-								self.currentSettings.mixingType,
-								self.currentSettings.positionType,
-								self.currentSettings.transformType,
-								self.currentSettings.sizeType,
-								self.currentSettings.rotationType,
-								self.currentSettings.shapeType,
-								self.currentSettings.colorType,
-								self.currentSettings.brightnessType,
-								self.currentSettings.saturationType,
+								(long)self.currentSettings.mixingType,
+								(long)self.currentSettings.positionType,
+								(long)self.currentSettings.transformType,
+								(long)self.currentSettings.sizeType,
+								(long)self.currentSettings.rotationType,
+								(long)self.currentSettings.shapeType,
+								(long)self.currentSettings.colorType,
+								(long)self.currentSettings.brightnessType,
+								(long)self.currentSettings.saturationType,
 								self.currentSettings.hue,
 								self.currentSettings.baseSize,
 								self.currentSettings.baseDistance,
@@ -390,7 +390,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	}
 	else if (refreshStep < (NSInteger)pieces - 1)
 	{
-		self.whiteCanvasLabel.text = [NSString stringWithFormat:@"%d", refreshStep];
+		self.whiteCanvasLabel.text = [NSString stringWithFormat:@"%ld", (long)refreshStep];
 		self.whiteCanvasTutorialLabel.text = NSLocalizedString(@"The further you pull, the more the pattern will change.", @"Scene refresh tutorial text, some changes to settings");
 	}
 	else

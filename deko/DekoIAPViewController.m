@@ -69,7 +69,7 @@
 
 - (void)_configurePurchaseButtonSizeAnimated:(BOOL)animated
 {
-	CGSize size = [self.purchaseButton.titleLabel.text sizeWithFont:self.purchaseButton.titleLabel.font];
+	CGSize size = [self.purchaseButton.titleLabel.text sizeWithAttributes:@{ NSFontAttributeName: self.purchaseButton.titleLabel.font }];
 	CGFloat minimumSize = 60.0;
 	CGFloat padding = 20.0;
 	

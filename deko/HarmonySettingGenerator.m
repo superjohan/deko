@@ -223,7 +223,7 @@
 	AEAssertV(settings != nil, nil);
 	AEAssertV(step >= 0 && step <= kMaximumSettingSteps, nil);
 	
-	AELOG_DEBUG(@"step: %d", step);
+	AELOG_DEBUG(@"step: %ld", (long)step);
 	
 	BOOL mixingType = NO;
 	BOOL positionType = NO;
