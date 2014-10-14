@@ -956,7 +956,27 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		
 		self.appLaunched = YES;
 	}
+}
+
+- (BOOL)shouldAutorotate
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	{
+		return YES;
+	}
 	
+	if (![self respondsToSelector:@selector(traitCollection)])
+	{
+		return NO;
+	}
+	
+	UITraitCollection *traitCollection = self.traitCollection;
+	if (traitCollection.displayScale > 2.9) // WELP SEE YOU NEXT YEAR o/
+	{
+		return YES;
+	}
+	
+	return NO;
 }
 
 - (void)dealloc
