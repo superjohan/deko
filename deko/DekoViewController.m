@@ -109,7 +109,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 - (void)_toggleDebugInfo:(UITapGestureRecognizer *)gestureRecognizer
 {
 	self.debugInfoLabel.hidden = !self.debugInfoLabel.hidden;
-	if ( ! self.debugInfoLabel.hidden)
+	if (!self.debugInfoLabel.hidden)
 	{
 		[self _updateDebugLabel];
 	}
@@ -279,7 +279,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 			[self _updateWhiteCanvasLabelsWithStep:refreshStep pieces:kMaximumSettingSteps swipe:YES];
 		}
 	}
-	else if (translation.x > undoMinimum && ! undoDisabled && velocity.x > -minimumVelocity && undoInProgress)
+	else if (translation.x > undoMinimum && !undoDisabled && velocity.x > -minimumVelocity && undoInProgress)
 	{
 		animationDestination.x = self.view.bounds.size.width;
 		previous = YES;
@@ -334,7 +334,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		{
 			self.previousSettings = self.currentSettings;
 			
-			if (self.tutorialHelper.shouldShowTutorial && ! self.firstGeneration && refreshStep == kMaximumSettingSteps)
+			if (self.tutorialHelper.shouldShowTutorial && !self.firstGeneration && refreshStep == kMaximumSettingSteps)
 			{
 				settings = [self.tutorialHelper defaultSettings2];
 				self.firstGeneration = YES;
@@ -560,7 +560,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		UIView *animatedView = self.harmonyView;
 		CGFloat alpha = 1;
 		
-		if ( ! self.whiteCanvas.hidden)
+		if (!self.whiteCanvas.hidden)
 		{
 			animatedView = self.whiteCanvas;
 			self.harmonyView.alpha = 1;
@@ -638,7 +638,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 - (UIImage *)_imageOfCurrentCanvas:(BOOL)thumbnail
 {
-	if (self.cachedImage != nil && ! thumbnail)
+	if (self.cachedImage != nil && !thumbnail)
 	{
 		return self.cachedImage;
 	}
@@ -693,7 +693,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	}
 
 	CGFloat scale = [[UIScreen mainScreen] scale];
-	if ( ! self.purchaseManager.proPurchased && ! thumbnail)
+	if (!self.purchaseManager.proPurchased && !thumbnail)
 	{
 		scale = scale / 2.0;
 	}
@@ -721,7 +721,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	
-	if ( ! thumbnail)
+	if (!thumbnail)
 	{
 		self.cachedImage = image;
 	}
@@ -926,7 +926,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 {
 	[super viewDidAppear:animated];
 
-	if ( ! self.appLaunched)
+	if (!self.appLaunched)
 	{
 		[UIView animateWithDuration:kLogoAnimationDuration animations:^
 		{

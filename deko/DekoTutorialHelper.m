@@ -148,7 +148,7 @@ const CGFloat kArrowLength = 200.0;
 {
 	AEAssert(view != nil);
 	
-	if ( ! self.shouldShowTutorial || self.tutorialLeftArrow != nil)
+	if (!self.shouldShowTutorial || self.tutorialLeftArrow != nil)
 	{
 		return;
 	}
@@ -187,7 +187,7 @@ const CGFloat kArrowLength = 200.0;
 {
 	AEAssert(view != nil);
 	
-	if ( ! self.shouldShowTutorial || self.tutorialRightArrow != nil)
+	if (!self.shouldShowTutorial || self.tutorialRightArrow != nil)
 	{
 		return;
 	}
@@ -226,7 +226,7 @@ const CGFloat kArrowLength = 200.0;
 {
 	AEAssert(view != nil);
 	
-	if ( ! self.shouldShowTutorial || self.tutorialCircleView != nil)
+	if (!self.shouldShowTutorial || self.tutorialCircleView != nil)
 	{
 		return;
 	}
@@ -328,7 +328,7 @@ const CGFloat kArrowLength = 200.0;
 {
 	BOOL tutorialShownInFull = [[NSUserDefaults standardUserDefaults] boolForKey:kDekoTutorialShownKey];
 	
-	return ! tutorialShownInFull;
+	return !tutorialShownInFull;
 }
 
 @end

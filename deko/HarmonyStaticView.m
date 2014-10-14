@@ -110,7 +110,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 				if (modulo == 1)
 					p3.y = p2.y + [self _valueForTransformType:transformType];
 				
-				if ( ! [leftShape.bezierPath containsPoint:p3])
+				if (![leftShape.bezierPath containsPoint:p3])
 					break;
 			}
 		}
@@ -154,7 +154,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 					p3.x = p1.x + [self _valueForTransformType:transformType];
 					p3.y = p2.y + [self _valueForTransformType:transformType];
 					
-					if ( ! ([leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
+					if (!([leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
 						break;
 				}
 			}
@@ -290,7 +290,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 				p3.x = p4.x + [self _valueForTransformType:transformType];
 				p3.y = p2.y + [self _valueForTransformType:transformType];
 				
-				if ( ! ([path containsPoint:p3] || [leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
+				if (!([path containsPoint:p3] || [leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
 					break;
 			}
 		}

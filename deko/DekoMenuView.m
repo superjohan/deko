@@ -198,7 +198,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	self.tutorialGalleryLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
 	self.tutorialGalleryLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.8];
 	self.tutorialGalleryLabel.shadowOffset = CGSizeMake(1.0, 1.0);
-	self.tutorialGalleryLabel.hidden = ! tutorial;
+	self.tutorialGalleryLabel.hidden = !tutorial;
 	[self.baseContainer addSubview:self.tutorialGalleryLabel];
 	
 	DekoMenuButton *plusButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
@@ -360,7 +360,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	[self.shareContainer addSubview:copyButton];
 	self.imageCopyButton = copyButton;
 	
-	if ( ! proPurchased)
+	if (!proPurchased)
 	{
 		DekoMenuButton *unlockHighQualityButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
 		[unlockHighQualityButton setTitle:NSLocalizedString(@"High\nquality export", @"Unlock high quality export button title") forState:UIControlStateNormal];

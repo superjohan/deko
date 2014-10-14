@@ -56,7 +56,7 @@ const NSInteger kCirclesPerRow = 3;
 				column = 1;
 			}
 			
-			if ( ! selected)
+			if (!selected)
 			{
 				if (current != self.selected)
 				{

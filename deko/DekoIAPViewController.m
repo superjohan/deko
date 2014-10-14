@@ -83,7 +83,7 @@
 	}
 
 	NSTimeInterval duration = UINavigationControllerHideShowBarDuration;
-	if ( ! animated)
+	if (!animated)
 		duration = 0;
 	
 	[UIView animateWithDuration:duration animations:^
