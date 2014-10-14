@@ -507,14 +507,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	self.harmonyView.backgroundColor = [UIColor blackColor];
 	self.harmonyView.colorGenerator = self.colorGenerator;
 	self.harmonyView.alpha = 0;
-	
-	NSString *overlayName = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"overlay-ipad" : @"overlay-iphone";
-	UIImageView *overlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:overlayName]];
-	overlay.frame = self.harmonyView.bounds;
-	overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	overlay.alpha = 0.8;
-	[self.harmonyView addSubview:overlay];
-	
+		
 	[self.swipeableContainer bringSubviewToFront:self.watermark];
 
 	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
