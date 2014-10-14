@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90002E7619ED136F00F559DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90002E7519ED136F00F559DD /* Images.xcassets */; };
 		900F710216661B6A00220E02 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F710116661B6A00220E02 /* Social.framework */; };
 		900F710516662EF900220E02 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F710416662EF900220E02 /* MessageUI.framework */; };
 		900F71071666345400220E02 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F71061666345400220E02 /* AssetsLibrary.framework */; };
@@ -173,6 +174,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		90002E7519ED136F00F559DD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		900F710116661B6A00220E02 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		900F710416662EF900220E02 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		900F71061666345400220E02 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -527,6 +529,7 @@
 		905F09A01663567E0001AD10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				90002E7519ED136F00F559DD /* Images.xcassets */,
 				90BDCA1E16C4FA4C00B7B964 /* Images */,
 				90BDCA1F16C4FA5C00B7B964 /* XIBs */,
 				90BDCA1C16C4F9F700B7B964 /* Fonts */,
@@ -932,6 +935,7 @@
 				90D82E97166B88DB009DC320 /* button-save-iphone@2x.png in Resources */,
 				90D82E98166B88DB009DC320 /* button-sharel-ipad.png in Resources */,
 				90D82E99166B88DB009DC320 /* button-sharel-ipad@2x.png in Resources */,
+				90002E7619ED136F00F559DD /* Images.xcassets in Resources */,
 				90D82E9A166B88DB009DC320 /* button-sharel-iphone.png in Resources */,
 				90D82E9B166B88DB009DC320 /* button-sharel-iphone@2x.png in Resources */,
 				90D82E9C166B88DB009DC320 /* button-sharer-ipad.png in Resources */,
@@ -1126,6 +1130,8 @@
 		905F09BD1663567E0001AD10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1147,6 +1153,8 @@
 		905F09BE1663567E0001AD10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
