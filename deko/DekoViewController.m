@@ -38,6 +38,15 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 	DekoTutorialStepMax,
 };
 
+typedef NS_ENUM(NSInteger, DekoDeviceType)
+{
+	DekoDeviceTypeiPad,
+	DekoDeviceTypeiPhone6Plus,
+	DekoDeviceTypeiPhone6,
+	DekoDeviceTypeiPhone5,
+	DekoDeviceTypeiPhone,
+};
+
 @interface DekoViewController () <DekoMenuViewDelegate, DekoShareHelperDelegate, MFMailComposeViewControllerDelegate, DekoGalleryViewControllerDelegate, DekoIAPViewControllerDelegate>
 @property (nonatomic) DekoLogoView *logoView;
 @property (nonatomic) DekoMenuView *menuView;
@@ -70,7 +79,12 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 @implementation DekoViewController
 
 const NSTimeInterval kLogoAnimationDuration = 2.0;
+
+// FIXME: this naming scheme is terrible
 const CGFloat kIOS7iPadOffset = 238.0;
+const CGFloat kIOS8iPhone6PlusOffset = ((2662.0 - 2208.0) / 3.0); // whee
+const CGFloat kIOS8iPhone6WidthOffset = 51.0;
+const CGFloat kIOS8iPhone6HeightOffset = 137.0;
 const CGFloat kIOS7iPhoneWidthOffset = 52.0;
 const CGFloat kIOS7iPhoneHeightOffset = 128.0;
 const CGFloat kIOS7iPhone4WidthOffset = 50.0;
@@ -78,23 +92,68 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 #pragma mark - Private
 
+- (DekoDeviceType)_currentDeviceType
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	{
+		return DekoDeviceTypeiPad;
+	}
+	
+	CGFloat width = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
+	CGFloat height = MAX(self.view.bounds.size.width, self.view.bounds.size.height);
+	
+	if (width > 319.0 && width < 371.0)
+	{
+		if (height < 567.0)
+		{
+			return DekoDeviceTypeiPhone;
+		}
+		else
+		{
+			return DekoDeviceTypeiPhone5;
+		}
+	}
+	else if (width > 371.0 && width < 413.0)
+	{
+		return DekoDeviceTypeiPhone6;
+	}
+	else
+	{
+		return DekoDeviceTypeiPhone6Plus;
+	}
+}
+
+- (CGFloat)_squareOffset
+{
+	switch ([self _currentDeviceType])
+	{
+		case DekoDeviceTypeiPad:
+			return kIOS7iPadOffset;
+		case DekoDeviceTypeiPhone6Plus:
+			return kIOS8iPhone6PlusOffset;
+		case DekoDeviceTypeiPhone6:
+			return kIOS8iPhone6PlusOffset;
+		case DekoDeviceTypeiPhone5:
+			return kIOS7iPhoneHeightOffset;
+		case DekoDeviceTypeiPhone:
+			return kIOS7iPhone4HeightOffset;
+		default:
+			AELOG_ERROR(@"Unknown device type: %ld", (long)[self _currentDeviceType]);
+			return 0;
+			break;
+	}
+}
+
 - (CGRect)_rectForHarmonyContainer
 {
-	CGFloat width = self.view.frame.size.width;
-	CGFloat height = self.view.frame.size.height;
+	CGFloat width = self.view.bounds.size.width;
+	CGFloat height = self.view.bounds.size.height;
 	CGFloat offset = 10.0;
 
 	// iOS 7 requires a slightly larger canvas.
 	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
 	{
-		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-		{
-			offset += (kIOS7iPhoneHeightOffset * 2.0);
-		}
-		else
-		{
-			offset += (kIOS7iPadOffset * 2.0);
-		}
+		offset += [self _squareOffset] * 2.0;
 	}
 	
 	CGFloat length = offset + MIN(width, height) * 2.0;
@@ -642,15 +701,18 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGFloat height = self.view.bounds.size.height;
 	BOOL parallax = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
 	
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	DekoDeviceType deviceType = [self _currentDeviceType];
+	
+	if (deviceType == DekoDeviceTypeiPad || deviceType == DekoDeviceTypeiPhone6Plus)
 	{
 		CGFloat parallaxOffset = 0;
 		
 		if (parallax)
 		{
-			width += kIOS7iPadOffset;
-			height += kIOS7iPadOffset;
-			parallaxOffset = kIOS7iPadOffset / 2.0;
+			CGFloat squareOffset = [self _squareOffset];
+			width += squareOffset;
+			height += squareOffset;
+			parallaxOffset = squareOffset / 2.0;
 		}
 		
 		CGFloat length = MAX(width, height);
@@ -660,29 +722,30 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		offset.x = MIN(width, height) - MAX(width, height) - parallaxOffset;
 		offset.y = offset.x;
 	}
-	else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	else
 	{
 		if (parallax)
 		{
-			if (self.view.bounds.size.height > 480.0)
+			if (deviceType == DekoDeviceTypeiPhone5)
 			{
 				width += kIOS7iPhoneWidthOffset;
 				height += kIOS7iPhoneHeightOffset;
 			}
-			else
+			else if (deviceType == DekoDeviceTypeiPhone)
 			{
 				width += kIOS7iPhone4WidthOffset;
 				height += kIOS7iPhone4HeightOffset;
+			}
+			else
+			{
+				width += kIOS8iPhone6WidthOffset;
+				height += kIOS8iPhone6HeightOffset;
 			}
 		}
 		
 		imageFrame = CGRectMake(0, 0, width, height);
 		offset.x = (width - self.harmonyContainer.bounds.size.width) / 2.0;
 		offset.y = (height - self.harmonyContainer.bounds.size.height) / 2.0;
-	}
-	else
-	{
-		AELOG_ERROR(@"Unknown device type.");
 	}
 
 	CGFloat scale = [[UIScreen mainScreen] scale];
