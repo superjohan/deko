@@ -148,7 +148,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 {
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	CGFloat baseLength = MAX(width, height) + [self _squareOffset];
+	CGFloat baseLength = MAX(width, height) + ([self _squareOffset] * 2.0);
 	CGFloat containerLength = sqrt(pow(baseLength, 2.0) + pow(baseLength, 2.0));
 	CGRect frame = CGRectMake(ceil((self.view.bounds.size.width / 2.0) - (containerLength / 2.0)),
 							  ceil((self.view.bounds.size.height / 2.0) - (containerLength / 2.0)),
@@ -697,14 +697,8 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		CGFloat squareOffset = [self _squareOffset];
 		width += squareOffset;
 		height += squareOffset;
-		CGFloat parallaxOffset = squareOffset / 2.0;
-		
 		CGFloat length = MAX(width, height);
-		CGPoint origin = CGPointMake(CGRectGetMidX(self.harmonyContainer.bounds) - (length / 2.0),
-									 CGRectGetMidY(self.harmonyContainer.bounds) - (length / 2.0));
-		imageFrame = CGRectMake(origin.x, origin.y, length, length);
-		offset.x = MIN(width, height) - MAX(width, height) - parallaxOffset;
-		offset.y = offset.x;
+		imageFrame = CGRectMake(0, 0, length, length);
 	}
 	else
 	{
@@ -725,9 +719,10 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		}
 		
 		imageFrame = CGRectMake(0, 0, width, height);
-		offset.x = (width - self.harmonyContainer.bounds.size.width) / 2.0;
-		offset.y = (height - self.harmonyContainer.bounds.size.height) / 2.0;
 	}
+
+	offset.x = (width - self.harmonyContainer.bounds.size.width) / 2.0;
+	offset.y = (height - self.harmonyContainer.bounds.size.height) / 2.0;
 
 	CGFloat scale = [[UIScreen mainScreen] scale];
 	if (!self.purchaseManager.proPurchased && !thumbnail)
