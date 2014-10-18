@@ -113,6 +113,11 @@
 	[super viewWillAppear:animated];
 	
 	self.view.layer.cornerRadius = 0;
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
 	
 	[self _configureViewFrames];
 }
