@@ -148,12 +148,12 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 {
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	CGFloat offset = 10.0 + ([self _squareOffset] * 2.0);
-	CGFloat length = offset + MIN(width, height) * 2.0;
-	CGRect frame = CGRectMake((self.view.bounds.size.width / 2.0) - (length / 2.0),
-							  (self.view.bounds.size.height / 2.0) - (length / 2.0),
-							  length,
-							  length);
+	CGFloat baseLength = MAX(width, height) + [self _squareOffset];
+	CGFloat containerLength = sqrt(pow(baseLength, 2.0) + pow(baseLength, 2.0));
+	CGRect frame = CGRectMake(ceil((self.view.bounds.size.width / 2.0) - (containerLength / 2.0)),
+							  ceil((self.view.bounds.size.height / 2.0) - (containerLength / 2.0)),
+							  ceil(containerLength),
+							  ceil(containerLength));
 
 	return frame;
 }
