@@ -132,7 +132,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		case DekoDeviceTypeiPhone6Plus:
 			return kIOS8iPhone6PlusOffset;
 		case DekoDeviceTypeiPhone6:
-			return kIOS8iPhone6PlusOffset;
+			return kIOS8iPhone6HeightOffset;
 		case DekoDeviceTypeiPhone5:
 			return kIOS7iPhoneHeightOffset;
 		case DekoDeviceTypeiPhone:
