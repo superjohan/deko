@@ -148,14 +148,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 {
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	CGFloat offset = 10.0;
-
-	// iOS 7 requires a slightly larger canvas.
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		offset += [self _squareOffset] * 2.0;
-	}
-	
+	CGFloat offset = 10.0 + ([self _squareOffset] * 2.0);
 	CGFloat length = offset + MIN(width, height) * 2.0;
 	CGRect frame = CGRectMake((self.view.bounds.size.width / 2.0) - (length / 2.0),
 							  (self.view.bounds.size.height / 2.0) - (length / 2.0),
@@ -569,17 +562,14 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		
 	[self.swipeableContainer bringSubviewToFront:self.watermark];
 
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @20.0;
-		horizontalEffect.maximumRelativeValue = @-20.0;
-		[self.harmonyView addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @30.0;
-		verticalEffect.maximumRelativeValue = @-30.0;
-		[self.harmonyView addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	horizontalEffect.minimumRelativeValue = @20.0;
+	horizontalEffect.maximumRelativeValue = @-20.0;
+	[self.harmonyView addMotionEffect:horizontalEffect];
+	UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	verticalEffect.minimumRelativeValue = @30.0;
+	verticalEffect.maximumRelativeValue = @-30.0;
+	[self.harmonyView addMotionEffect:verticalEffect];
 }
 
 - (void)_generateNewCanvasWithFadeInDuration:(NSTimeInterval)fadeInDuration fadeOutDuration:(NSTimeInterval)fadeOutDuration settings:(HarmonyCanvasSettings *)settings fadeOutLogo:(BOOL)fadeOutLogo
@@ -699,21 +689,15 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGPoint offset = CGPointZero;
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	BOOL parallax = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
 	
 	DekoDeviceType deviceType = [self _currentDeviceType];
 	
 	if (deviceType == DekoDeviceTypeiPad || deviceType == DekoDeviceTypeiPhone6Plus)
 	{
-		CGFloat parallaxOffset = 0;
-		
-		if (parallax)
-		{
-			CGFloat squareOffset = [self _squareOffset];
-			width += squareOffset;
-			height += squareOffset;
-			parallaxOffset = squareOffset / 2.0;
-		}
+		CGFloat squareOffset = [self _squareOffset];
+		width += squareOffset;
+		height += squareOffset;
+		CGFloat parallaxOffset = squareOffset / 2.0;
 		
 		CGFloat length = MAX(width, height);
 		CGPoint origin = CGPointMake(CGRectGetMidX(self.harmonyContainer.bounds) - (length / 2.0),
@@ -724,23 +708,20 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	}
 	else
 	{
-		if (parallax)
+		if (deviceType == DekoDeviceTypeiPhone5)
 		{
-			if (deviceType == DekoDeviceTypeiPhone5)
-			{
-				width += kIOS7iPhoneWidthOffset;
-				height += kIOS7iPhoneHeightOffset;
-			}
-			else if (deviceType == DekoDeviceTypeiPhone)
-			{
-				width += kIOS7iPhone4WidthOffset;
-				height += kIOS7iPhone4HeightOffset;
-			}
-			else
-			{
-				width += kIOS8iPhone6WidthOffset;
-				height += kIOS8iPhone6HeightOffset;
-			}
+			width += kIOS7iPhoneWidthOffset;
+			height += kIOS7iPhoneHeightOffset;
+		}
+		else if (deviceType == DekoDeviceTypeiPhone)
+		{
+			width += kIOS7iPhone4WidthOffset;
+			height += kIOS7iPhone4HeightOffset;
+		}
+		else
+		{
+			width += kIOS8iPhone6WidthOffset;
+			height += kIOS8iPhone6HeightOffset;
 		}
 		
 		imageFrame = CGRectMake(0, 0, width, height);
@@ -829,17 +810,14 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	[self.menuView setupWithDelegate:self purchased:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 	[self.view addSubview:self.menuView];
 	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @-10.0;
-		horizontalEffect.maximumRelativeValue = @10.0;
-		[self.menuView addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @-10.0;
-		verticalEffect.maximumRelativeValue = @10.0;
-		[self.menuView addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *menuHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	menuHorizontalEffect.minimumRelativeValue = @-10.0;
+	menuHorizontalEffect.maximumRelativeValue = @10.0;
+	[self.menuView addMotionEffect:menuHorizontalEffect];
+	UIInterpolatingMotionEffect *menuVerticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	menuVerticalEffect.minimumRelativeValue = @-10.0;
+	menuVerticalEffect.maximumRelativeValue = @10.0;
+	[self.menuView addMotionEffect:menuVerticalEffect];
 
 	self.logoView = [[DekoLogoView alloc] initWithFrame:self.view.bounds];
 	self.logoView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -862,17 +840,14 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	[self.watermark addTarget:self action:@selector(_dekoButtonTouched) forControlEvents:UIControlEventTouchUpInside];
 	[self.swipeableContainer addSubview:self.watermark];
 	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @-3.0;
-		horizontalEffect.maximumRelativeValue = @3.0;
-		[self.watermark addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @-3.0;
-		verticalEffect.maximumRelativeValue = @3.0;
-		[self.watermark addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *watermarkHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	watermarkHorizontalEffect.minimumRelativeValue = @-3.0;
+	watermarkHorizontalEffect.maximumRelativeValue = @3.0;
+	[self.watermark addMotionEffect:watermarkHorizontalEffect];
+	UIInterpolatingMotionEffect *watermarkVerticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	watermarkVerticalEffect.minimumRelativeValue = @-3.0;
+	watermarkVerticalEffect.maximumRelativeValue = @3.0;
+	[self.watermark addMotionEffect:watermarkVerticalEffect];
 
 	self.whiteCanvas = [[UIView alloc] initWithFrame:self.view.bounds];
 	self.whiteCanvas.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -994,7 +969,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 			[self _revealCanvas];
 
 			BOOL runOnIOS7 = [[NSUserDefaults standardUserDefaults] boolForKey:kDekoIOS7UpdateViewShown];
-			if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1 && !runOnIOS7)
+			if (!runOnIOS7)
 			{
 				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDekoIOS7UpdateViewShown];
 				[[NSUserDefaults standardUserDefaults] synchronize];
