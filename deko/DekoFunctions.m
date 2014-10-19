@@ -30,7 +30,7 @@ DekoDeviceType DekoGetCurrentDeviceType()
 			return DekoDeviceTypeiPhone5;
 		}
 	}
-	else if (width > 743.0 && width < 1241.0)
+	else if (width > 743.0 && width < 1079.0)
 	{
 		return DekoDeviceTypeiPhone6;
 	}
