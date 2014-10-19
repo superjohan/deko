@@ -81,17 +81,6 @@ static const CGFloat DekoCollectionViewSpacing = 1.0;
 	[super viewDidLoad];
 
 	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
-
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-	{
-		UIImageView *watermark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mark-black-iphone"]];
-		watermark.frame = CGRectMake(CGRectGetWidth(self.view.bounds) - watermark.image.size.width,
-									 CGRectGetHeight(self.view.bounds) - watermark.image.size.height,
-									 watermark.image.size.width,
-									 watermark.image.size.height);
-		watermark.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-		[self.view addSubview:watermark];
-	}
 	
 	self.layout = [[DekoFlowLayout alloc] init];
 	self.layout.itemSize = CGSizeMake(DekoThumbnailSize, DekoThumbnailSize);
