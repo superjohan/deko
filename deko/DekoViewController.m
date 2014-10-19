@@ -99,12 +99,13 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		return DekoDeviceTypeiPad;
 	}
 	
-	CGFloat width = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
-	CGFloat height = MAX(self.view.bounds.size.width, self.view.bounds.size.height);
+	CGRect screenBounds = [[UIScreen mainScreen] nativeBounds];
+	CGFloat width = MIN(screenBounds.size.width, screenBounds.size.height);
+	CGFloat height = MAX(screenBounds.size.width, screenBounds.size.height);
 	
-	if (width > 319.0 && width < 371.0)
+	if (width > 639.0 && width < 743.0)
 	{
-		if (height < 567.0)
+		if (height < 1135.0)
 		{
 			return DekoDeviceTypeiPhone;
 		}
@@ -113,7 +114,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 			return DekoDeviceTypeiPhone5;
 		}
 	}
-	else if (width > 371.0 && width < 413.0)
+	else if (width > 743.0 && width < 1241.0)
 	{
 		return DekoDeviceTypeiPhone6;
 	}
