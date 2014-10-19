@@ -198,7 +198,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	{
 		self.menuView.alpha = 1.0;
 		
-		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+		if (DekoGetCurrentDeviceType() != DekoDeviceTypeiPad)
 		{
 			self.watermark.alpha = 0;
 		}
@@ -782,7 +782,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	[self.view addSubview:self.logoView];
 	
 	NSString *markName = @"mark-white-iphone";
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
 		markName = @"mark-white-ipad";
 	}

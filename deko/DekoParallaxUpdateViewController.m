@@ -34,7 +34,7 @@
 
 - (void)_configureViewFrames
 {
-	CGFloat y = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) ? 0 : 20.0;
+	CGFloat y = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 20.0 : 0;
 	self.devicesImage.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - (self.devicesImage.bounds.size.width / 2.0),
 										 y,
 										 self.devicesImage.image.size.width,

@@ -11,6 +11,7 @@
 #import "DekoMenuButton.h"
 #import "DekoCircleMenuView.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 NSString * const DekoButtonGalleryNotSaved = @"button-galle-";
 NSString * const DekoButtonGallerySaved = @"button-gallf-";
@@ -131,7 +132,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	CGFloat circleAlpha = 0.8;
 	CGFloat tutorialLabelHeight = 0;
 	
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
 		circleSize = 120.0;
 		overlap = 8.0;
@@ -139,7 +140,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 		tutorialLabelHeight = fontSize * 3.0;
 		self.deviceType = @"ipad";
 	}
-	else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	else
 	{
 		circleSize = 90.0;
 		overlap = 6.0;

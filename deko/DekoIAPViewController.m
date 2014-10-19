@@ -89,7 +89,7 @@
 	
 	[UIView animateWithDuration:duration animations:^
 	{
-		CGFloat offset = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? 0 : 10.0;
+		CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 		self.purchaseButton.frame = CGRectMake(self.titleLabel.frame.origin.x - 5.0,
 											   self.iapCopyLabel.frame.origin.y + self.iapCopyLabel.bounds.size.height + 15.0 + offset,
 											   size.width,
@@ -109,7 +109,7 @@
 	CGFloat topOffset = (CGRectGetHeight(self.view.bounds) < 500.0) ? 20.0 : 0;
 	self.topContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetMidY(self.view.bounds) - topOffset);
 	
-	CGFloat offset = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? 0 : 10.0;
+	CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 	CGFloat textWidth = floor(self.view.bounds.size.width * 0.7);
 	CGRect titleRect = CGRectMake(floor(CGRectGetMidX(self.view.bounds) - (textWidth / 2.0)),
 								  floor(CGRectGetHeight(self.topContainer.bounds) + 20.0 + offset),
@@ -184,13 +184,13 @@
 	UILabel *iapCopyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	iapCopyLabel.backgroundColor = [UIColor clearColor];
 	NSString *iapCopyString = nil;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
-		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference.", @"IAP view copy, iPhone");
+		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference.", @"IAP view copy, iPad");
 	}
 	else
 	{
-		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference.", @"IAP view copy, iPad");
+		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference.", @"IAP view copy, iPhone");
 	}
 	
 	iapCopyLabel.text = iapCopyString;

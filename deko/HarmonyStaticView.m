@@ -11,6 +11,7 @@
 #import "HarmonyShape.h"
 #import "HarmonyColorGenerator.h"
 #import "HarmonyCanvasSettings.h"
+#import "DekoFunctions.h"
 
 @interface HarmonyStaticView ()
 @property (nonatomic) HarmonyCanvasSettings *settings;
@@ -467,7 +468,7 @@ const NSTimeInterval DekoMaximumPadTime = 10.0;
 {
 	NSMutableArray *shapes = [NSMutableArray array];
 	NSTimeInterval startTime = [NSDate timeIntervalSinceReferenceDate];
-	NSTimeInterval maximumTime = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? DekoMaximumPadTime : DekoMaximumPhoneTime;
+	NSTimeInterval maximumTime = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? DekoMaximumPadTime : DekoMaximumPhoneTime;
 	
 	for (NSInteger i = 0; i < amount; i++)
 	{
