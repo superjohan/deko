@@ -10,6 +10,7 @@
 #import "DekoConstants.h"
 #import "DekoLocalizationManager.h"
 #import "AECGHelpers.h"
+#import "DekoFunctions.h"
 
 @interface DekoParallaxUpdateViewController ()
 @property (nonatomic) UIImageView *parallaxImage;
@@ -127,6 +128,11 @@
 	[super viewDidAppear:animated];
 	
 	[self _startAnimating];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 @end

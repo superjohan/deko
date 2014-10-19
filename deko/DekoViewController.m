@@ -29,6 +29,7 @@
 #import "HarmonyCanvasSettings.h"
 #import "DekoLocalizationManager.h"
 #import "DekoParallaxUpdateViewController.h"
+#import "DekoFunctions.h"
 
 typedef NS_ENUM(NSInteger, DekoTutorialStep)
 {
@@ -36,15 +37,6 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 	DekoTutorialStepPrevious,
 	DekoTutorialStepTap,
 	DekoTutorialStepMax,
-};
-
-typedef NS_ENUM(NSInteger, DekoDeviceType)
-{
-	DekoDeviceTypeiPad,
-	DekoDeviceTypeiPhone6Plus,
-	DekoDeviceTypeiPhone6,
-	DekoDeviceTypeiPhone5,
-	DekoDeviceTypeiPhone,
 };
 
 @interface DekoViewController () <DekoMenuViewDelegate, DekoShareHelperDelegate, MFMailComposeViewControllerDelegate, DekoGalleryViewControllerDelegate, DekoIAPViewControllerDelegate>
@@ -92,41 +84,11 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 #pragma mark - Private
 
-- (DekoDeviceType)_currentDeviceType
-{
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-	{
-		return DekoDeviceTypeiPad;
-	}
-	
-	CGRect screenBounds = [[UIScreen mainScreen] nativeBounds];
-	CGFloat width = MIN(screenBounds.size.width, screenBounds.size.height);
-	CGFloat height = MAX(screenBounds.size.width, screenBounds.size.height);
-	
-	if (width > 639.0 && width < 743.0)
-	{
-		if (height < 1135.0)
-		{
-			return DekoDeviceTypeiPhone;
-		}
-		else
-		{
-			return DekoDeviceTypeiPhone5;
-		}
-	}
-	else if (width > 743.0 && width < 1241.0)
-	{
-		return DekoDeviceTypeiPhone6;
-	}
-	else
-	{
-		return DekoDeviceTypeiPhone6Plus;
-	}
-}
-
 - (CGFloat)_squareOffset
 {
-	switch ([self _currentDeviceType])
+	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
+	
+	switch (deviceType)
 	{
 		case DekoDeviceTypeiPad:
 			return kIOS7iPadOffset;
@@ -139,7 +101,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		case DekoDeviceTypeiPhone:
 			return kIOS7iPhone4HeightOffset;
 		default:
-			AELOG_ERROR(@"Unknown device type: %ld", (long)[self _currentDeviceType]);
+			AELOG_ERROR(@"Unknown device type: %ld", (long)deviceType);
 			return 0;
 			break;
 	}
@@ -691,7 +653,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
 	
-	DekoDeviceType deviceType = [self _currentDeviceType];
+	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
 	
 	if (deviceType == DekoDeviceTypeiPad || deviceType == DekoDeviceTypeiPhone6Plus)
 	{
@@ -987,12 +949,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 - (BOOL)shouldAutorotate
 {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-	{
-		return YES;
-	}
-	
-	return ([self _currentDeviceType] == DekoDeviceTypeiPhone6Plus);
+	return DekoShouldAutorotate();
 }
 
 - (void)dealloc

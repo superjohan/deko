@@ -12,6 +12,7 @@
 #import "DekoConstants.h"
 #import "AECGHelpers.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoCreditsViewController ()
 @property (nonatomic) UIImageView *layer1;
@@ -133,6 +134,11 @@
 	[super viewDidAppear:animated];
 	
 	[self _animateLayers];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 @end

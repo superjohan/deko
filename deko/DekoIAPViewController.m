@@ -13,6 +13,7 @@
 #import "DekoIAPManager.h"
 #import "DekoIAPPreviewView.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoIAPViewController ()
 @property (nonatomic) UIButton *backButton;
@@ -262,6 +263,11 @@
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:DekoIAPManagerProPriceUpdatedNotification object:self.purchaseManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:DekoIAPManagerProVersionPurchasedNotification object:self.purchaseManager];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "DekoConstants.h"
 #import "DekoFlowLayout.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic) DekoFlowLayout *layout;
@@ -137,6 +138,11 @@
 	[self.collectionView reloadData];
 	
 	self.view.layer.cornerRadius = 0;
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 #pragma mark - UICollectionViewDataSource

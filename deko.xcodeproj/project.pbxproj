@@ -22,6 +22,7 @@
 		903D77981668AF1F005F3EF8 /* HarmonyCanvasSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D77971668AF1F005F3EF8 /* HarmonyCanvasSettings.m */; };
 		904677C017DFA0D400E6EAD0 /* DekoParallaxUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904677BF17DFA0D400E6EAD0 /* DekoParallaxUpdateViewController.m */; };
 		9053F9F716AEA86A00B3192B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9053F9F916AEA86A00B3192B /* Localizable.strings */; };
+		905758BF19F3CD2100E220FD /* DekoFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 905758BE19F3CD2100E220FD /* DekoFunctions.m */; };
 		9057C32916886583006BDE1E /* DekoMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9057C32816886583006BDE1E /* DekoMenuButton.m */; };
 		9057C32D16886750006BDE1E /* DekoCircleMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9057C32C16886750006BDE1E /* DekoCircleMenuView.m */; };
 		905F099A1663567E0001AD10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905F09991663567E0001AD10 /* UIKit.framework */; };
@@ -85,6 +86,8 @@
 		904677BE17DFA0D400E6EAD0 /* DekoParallaxUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoParallaxUpdateViewController.h; sourceTree = "<group>"; };
 		904677BF17DFA0D400E6EAD0 /* DekoParallaxUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoParallaxUpdateViewController.m; sourceTree = "<group>"; };
 		9053F9F816AEA86A00B3192B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		905758BD19F3CD2100E220FD /* DekoFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoFunctions.h; sourceTree = "<group>"; };
+		905758BE19F3CD2100E220FD /* DekoFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoFunctions.m; sourceTree = "<group>"; };
 		9057C32716886583006BDE1E /* DekoMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoMenuButton.h; sourceTree = "<group>"; };
 		9057C32816886583006BDE1E /* DekoMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoMenuButton.m; sourceTree = "<group>"; };
 		9057C32B16886750006BDE1E /* DekoCircleMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoCircleMenuView.h; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				905F09A91663567E0001AD10 /* DekoAppDelegate.m */,
 				903B820F1672105D0053A9E0 /* DekoConstants.h */,
 				903B82101672105D0053A9E0 /* DekoConstants.m */,
+				905758BD19F3CD2100E220FD /* DekoFunctions.h */,
+				905758BE19F3CD2100E220FD /* DekoFunctions.m */,
 				905F09A51663567E0001AD10 /* main.m */,
 				905F09A71663567E0001AD10 /* deko-Prefix.pch */,
 				900F71141666665200220E02 /* AECGHelpers.h */,
@@ -446,6 +451,7 @@
 				9070355E166E252E001FE82B /* DekoSceneManager.m in Sources */,
 				90703561166E26D0001FE82B /* DekoScene.m in Sources */,
 				904677C017DFA0D400E6EAD0 /* DekoParallaxUpdateViewController.m in Sources */,
+				905758BF19F3CD2100E220FD /* DekoFunctions.m in Sources */,
 				90617FDD166F5F7B003F6684 /* DekoGalleryViewController.m in Sources */,
 				90617FE5166F6941003F6684 /* DekoGalleryItemView.m in Sources */,
 				903B82001671EA410053A9E0 /* DekoCreditsViewController.m in Sources */,
