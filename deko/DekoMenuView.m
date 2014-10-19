@@ -12,16 +12,16 @@
 #import "DekoCircleMenuView.h"
 #import "DekoLocalizationManager.h"
 
-NSString * const kButtonGalleryNotSaved = @"button-galle-";
-NSString * const kButtonGallerySaved = @"button-gallf-";
-NSString * const kButtonSave = @"button-save-";
-NSString * const kButtonShareFront = @"button-sharer-";
-NSString * const kButtonShareBack = @"button-sharel-";
+NSString * const DekoButtonGalleryNotSaved = @"button-galle-";
+NSString * const DekoButtonGallerySaved = @"button-gallf-";
+NSString * const DekoButtonSave = @"button-save-";
+NSString * const DekoButtonShareFront = @"button-sharer-";
+NSString * const DekoButtonShareBack = @"button-sharel-";
 
-NSString * const kSaveButtonSaveLabel = @"Save to Gallery";
-NSString * const kSaveButtonRemoveLabel = @"Remove from Gallery";
+NSString * const DekoSaveButtonSaveLabel = @"Save to Gallery";
+NSString * const DekoSaveButtonRemoveLabel = @"Remove from Gallery";
 
-const NSTimeInterval kAnimationDuration = 0.2;
+const NSTimeInterval DekoAnimationDuration = 0.2;
 
 @interface DekoMenuView () <DekoMenuButtonDelegate>
 @property (nonatomic) UIView *baseContainer;
@@ -171,7 +171,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	UIFont *font = [self.localizationManager localizedFontWithSize:fontSize];
 	
 	DekoMenuButton *galleryButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
-	UIImage *galleryButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonGalleryNotSaved, self.deviceType]];
+	UIImage *galleryButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonGalleryNotSaved, self.deviceType]];
 	[galleryButton setImage:galleryButtonImage forState:UIControlStateNormal];
 	galleryButton.frame = CGRectMake((self.baseContainer.bounds.size.width / 2.0) - ((galleryButtonImage.size.width / 2.0) - (overlap / 2.0)),
 									 (self.baseContainer.bounds.size.height / 2.0) - (galleryButtonImage.size.height / 2.0),
@@ -195,14 +195,14 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	self.tutorialGalleryLabel.backgroundColor = [UIColor clearColor];
 	self.tutorialGalleryLabel.textAlignment = NSTextAlignmentCenter;
 	self.tutorialGalleryLabel.text = NSLocalizedString(@"Gallery", @"Tutorial, gallery button");
-	self.tutorialGalleryLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.tutorialGalleryLabel.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	self.tutorialGalleryLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.8];
 	self.tutorialGalleryLabel.shadowOffset = CGSizeMake(1.0, 1.0);
 	self.tutorialGalleryLabel.hidden = !tutorial;
 	[self.baseContainer addSubview:self.tutorialGalleryLabel];
 	
 	DekoMenuButton *plusButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
-	UIImage *plusButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonSave, self.deviceType]];
+	UIImage *plusButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonSave, self.deviceType]];
 	[plusButton setImage:plusButtonImage forState:UIControlStateNormal];
 	plusButton.frame = CGRectMake(galleryButton.frame.origin.x - plusButtonImage.size.width + overlap,
 								  galleryButton.frame.origin.y,
@@ -234,7 +234,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	[self _updateTutorialSaveLabelWithSaveStatus:NO];
 	
 	DekoMenuButton *shareButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
-	UIImage *shareButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonShareFront, self.deviceType]];
+	UIImage *shareButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonShareFront, self.deviceType]];
 	[shareButton setImage:shareButtonImage forState:UIControlStateNormal];
 	shareButton.frame = CGRectMake(galleryButton.frame.origin.x + galleryButton.frame.size.width,
 								   galleryButton.frame.origin.y,
@@ -266,7 +266,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	[self.baseContainer addSubview:self.tutorialShareLabel];
 	
 	DekoMenuButton *backButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
-	UIImage *backButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonShareBack, self.deviceType]];
+	UIImage *backButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonShareBack, self.deviceType]];
 	[backButton setImage:backButtonImage forState:UIControlStateNormal];
 	backButton.frame = plusButton.frame;
 	backButton.autoresizingMask = plusButton.autoresizingMask;
@@ -444,11 +444,11 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	{
 		if (saved)
 		{
-			[self.galleryButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonGallerySaved, self.deviceType]] forState:UIControlStateNormal];
+			[self.galleryButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonGallerySaved, self.deviceType]] forState:UIControlStateNormal];
 		}
 		else
 		{
-			[self.galleryButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@", kButtonGalleryNotSaved, self.deviceType]] forState:UIControlStateNormal];
+			[self.galleryButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonGalleryNotSaved, self.deviceType]] forState:UIControlStateNormal];
 		}
 		
 		[self _updateTutorialSaveLabelWithSaveStatus:saved];
@@ -456,7 +456,7 @@ const NSTimeInterval kAnimationDuration = 0.2;
 	
 	if (animated)
 	{
-		[UIView animateWithDuration:kAnimationDuration animations:animationBlock completion:animationCompletionBlock];
+		[UIView animateWithDuration:DekoAnimationDuration animations:animationBlock completion:animationCompletionBlock];
 	}
 	else
 	{

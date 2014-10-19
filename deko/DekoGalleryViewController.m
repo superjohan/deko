@@ -67,7 +67,7 @@
 {
 	[super viewDidLoad];
 
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 	{
@@ -81,7 +81,7 @@
 	}
 	
 	self.layout = [[DekoFlowLayout alloc] init];
-	self.layout.itemSize = CGSizeMake(kDekoThumbnailSize, kDekoThumbnailSize);
+	self.layout.itemSize = CGSizeMake(DekoThumbnailSize, DekoThumbnailSize);
 	CGFloat padding = 9.0;
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 	{

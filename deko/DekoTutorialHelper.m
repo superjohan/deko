@@ -19,9 +19,9 @@
 @property (nonatomic) UIImageView *tutorialCircle3;
 @end
 
-NSString * const kDekoTutorialShownKey = @"kDekoTutorialShownKey";
+NSString * const DekoTutorialShownKey = @"kDekoTutorialShownKey";
 
-const CGFloat kArrowLength = 200.0;
+const CGFloat DekoArrowLength = 200.0;
 
 @implementation DekoTutorialHelper
 
@@ -43,9 +43,9 @@ const CGFloat kArrowLength = 200.0;
 	{
 		[UIView animateWithDuration:1.0 animations:^
 		{
-			self.tutorialLeftArrow.frame = CGRectMake(arrowRect.origin.x - kArrowLength,
+			self.tutorialLeftArrow.frame = CGRectMake(arrowRect.origin.x - DekoArrowLength,
 													  self.tutorialLeftArrow.frame.origin.y,
-													  self.tutorialLeftArrow.image.size.width + kArrowLength,
+													  self.tutorialLeftArrow.image.size.width + DekoArrowLength,
 													  self.tutorialLeftArrow.bounds.size.height);
 		}
 		completion:^(BOOL finished1)
@@ -80,7 +80,7 @@ const CGFloat kArrowLength = 200.0;
 		{
 			self.tutorialRightArrow.frame = CGRectMake(self.tutorialRightArrow.frame.origin.x,
 													   self.tutorialRightArrow.frame.origin.y,
-													   self.tutorialRightArrow.image.size.width + kArrowLength,
+													   self.tutorialRightArrow.image.size.width + DekoArrowLength,
 													   self.tutorialRightArrow.bounds.size.height);
 		}
 		completion:^(BOOL finished1)
@@ -276,7 +276,7 @@ const CGFloat kArrowLength = 200.0;
 		self.view = nil;
 	}];
 	
-	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDekoTutorialShownKey];
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DekoTutorialShownKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -326,7 +326,7 @@ const CGFloat kArrowLength = 200.0;
 
 - (BOOL)shouldShowTutorial
 {
-	BOOL tutorialShownInFull = [[NSUserDefaults standardUserDefaults] boolForKey:kDekoTutorialShownKey];
+	BOOL tutorialShownInFull = [[NSUserDefaults standardUserDefaults] boolForKey:DekoTutorialShownKey];
 	
 	return !tutorialShownInFull;
 }

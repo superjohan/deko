@@ -68,7 +68,7 @@
 {
     [super viewDidLoad];
 	
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 
 	UIImage *backButtonImage = [UIImage imageNamed:@"credits-backarrow"];
 	UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

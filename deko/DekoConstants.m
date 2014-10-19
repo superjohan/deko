@@ -8,4 +8,4 @@
 
 #import "DekoConstants.h"
 
-NSString * const kDekoIOS7UpdateViewShown = @"kDekoIOS7UpdateViewShown";
+NSString * const DekoiOS7UpdateViewShown = @"kDekoIOS7UpdateViewShown";

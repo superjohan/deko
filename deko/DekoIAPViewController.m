@@ -166,7 +166,7 @@
 {
     [super viewDidLoad];
 	
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	
 	DekoIAPPreviewView *topContainer = [[DekoIAPPreviewView alloc] initWithUserInterfaceIdiom:[[UIDevice currentDevice] userInterfaceIdiom]];
 	topContainer.backgroundColor = [UIColor greenColor];
@@ -202,8 +202,8 @@
 	UIButton *purchaseButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	purchaseButton.backgroundColor = [UIColor redColor];
 	purchaseButton.titleLabel.font = [self.localizationManager localizedFontWithSize:15.0];
-	purchaseButton.titleLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
-	[purchaseButton setTitleColor:[UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0] forState:UIControlStateNormal];
+	purchaseButton.titleLabel.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
+	[purchaseButton setTitleColor:[UIColor colorWithWhite:DekoBackgroundColor alpha:1.0] forState:UIControlStateNormal];
 	[purchaseButton addTarget:self action:@selector(_purchaseProVersion) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:purchaseButton];
 	self.purchaseButton = purchaseButton;

@@ -10,30 +10,30 @@
 #import "DekoScene.h"
 #import "HarmonyCanvasSettings.h"
 
-NSString * const kDekoSettingMixingTypeKey = @"mixingType";
-NSString * const kDekoSettingPositionTypeKey = @"positionType";
-NSString * const kDekoSettingTransformTypeKey = @"transformType";
-NSString * const kDekoSettingSizeTypeKey = @"sizeType";
-NSString * const kDekoSettingRotationTypeKey = @"rotationType";
-NSString * const kDekoSettingShapeTypeKey = @"shapeType";
-NSString * const kDekoSettingColorTypeKey = @"colorType";
-NSString * const kDekoSettingColorBrightnessTypeKey = @"brightnessType";
-NSString * const kDekoSettingColorSaturationTypeKey = @"saturationType";
-NSString * const kDekoSettingHueKey = @"hue";
-NSString * const kDekoSettingBaseSizeKey = @"baseSize";
-NSString * const kDekoSettingBaseDistanceKey = @"baseDistance";
-NSString * const kDekoSettingAngleKey = @"angle";
-NSString * const kDekoSettingBackground1HueKey = @"background1Hue";
-NSString * const kDekoSettingBackground1SaturationKey = @"background1Saturation";
-NSString * const kDekoSettingBackground1BrightnessKey = @"background1Brightness";
-NSString * const kDekoSettingBackground2HueKey = @"background2Hue";
-NSString * const kDekoSettingBackground2SaturationKey = @"background2Saturation";
-NSString * const kDekoSettingBackground2BrightnessKey = @"background2Brightness";
+NSString * const DekoSettingMixingTypeKey = @"mixingType";
+NSString * const DekoSettingPositionTypeKey = @"positionType";
+NSString * const DekoSettingTransformTypeKey = @"transformType";
+NSString * const DekoSettingSizeTypeKey = @"sizeType";
+NSString * const DekoSettingRotationTypeKey = @"rotationType";
+NSString * const DekoSettingShapeTypeKey = @"shapeType";
+NSString * const DekoSettingColorTypeKey = @"colorType";
+NSString * const DekoSettingColorBrightnessTypeKey = @"brightnessType";
+NSString * const DekoSettingColorSaturationTypeKey = @"saturationType";
+NSString * const DekoSettingHueKey = @"hue";
+NSString * const DekoSettingBaseSizeKey = @"baseSize";
+NSString * const DekoSettingBaseDistanceKey = @"baseDistance";
+NSString * const DekoSettingAngleKey = @"angle";
+NSString * const DekoSettingBackground1HueKey = @"background1Hue";
+NSString * const DekoSettingBackground1SaturationKey = @"background1Saturation";
+NSString * const DekoSettingBackground1BrightnessKey = @"background1Brightness";
+NSString * const DekoSettingBackground2HueKey = @"background2Hue";
+NSString * const DekoSettingBackground2SaturationKey = @"background2Saturation";
+NSString * const DekoSettingBackground2BrightnessKey = @"background2Brightness";
 
-NSString * const kDekoSceneSettingKey = @"kDekoSceneSettingKey";
-NSString * const kDekoSceneIDKey = @"kDekoSceneIDKey";
+NSString * const DekoSceneSettingKey = @"kDekoSceneSettingKey";
+NSString * const DekoSceneIDKey = @"kDekoSceneIDKey";
 
-NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
+NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 
 @interface DekoSceneManager ()
 @property (nonatomic) NSString *documentPath;
@@ -102,30 +102,30 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 	NSData *thumbnailData = UIImagePNGRepresentation(image);
 	NSString *sceneID = [[NSProcessInfo processInfo] globallyUniqueString];
 	NSDictionary *settingDictionary = @{
-	kDekoSettingMixingTypeKey : [NSNumber numberWithInteger:settings.mixingType],
-	kDekoSettingPositionTypeKey : [NSNumber numberWithInteger:settings.positionType],
-	kDekoSettingTransformTypeKey : [NSNumber numberWithInteger:settings.transformType],
-	kDekoSettingSizeTypeKey : [NSNumber numberWithInteger:settings.sizeType],
-	kDekoSettingRotationTypeKey : [NSNumber numberWithInteger:settings.rotationType],
-	kDekoSettingShapeTypeKey : [NSNumber numberWithInteger:settings.shapeType],
-	kDekoSettingColorTypeKey : [NSNumber numberWithInteger:settings.colorType],
-	kDekoSettingColorBrightnessTypeKey : [NSNumber numberWithInteger:settings.brightnessType],
-	kDekoSettingColorSaturationTypeKey : [NSNumber numberWithInteger:settings.saturationType],
-	kDekoSettingHueKey : [NSNumber numberWithDouble:settings.hue],
-	kDekoSettingBaseSizeKey : [NSNumber numberWithDouble:settings.baseSize],
-	kDekoSettingBaseDistanceKey : [NSNumber numberWithDouble:settings.baseDistance],
-	kDekoSettingAngleKey : [NSNumber numberWithDouble:settings.angle],
-	kDekoSettingBackground1HueKey : [NSNumber numberWithDouble:settings.background1Hue],
-	kDekoSettingBackground1SaturationKey : [NSNumber numberWithDouble:settings.background1Saturation],
-	kDekoSettingBackground1BrightnessKey : [NSNumber numberWithDouble:settings.background1Brightness],
-	kDekoSettingBackground2HueKey : [NSNumber numberWithDouble:settings.background2Hue],
-	kDekoSettingBackground2SaturationKey : [NSNumber numberWithDouble:settings.background2Saturation],
-	kDekoSettingBackground2BrightnessKey : [NSNumber numberWithDouble:settings.background2Brightness],
+	DekoSettingMixingTypeKey : [NSNumber numberWithInteger:settings.mixingType],
+	DekoSettingPositionTypeKey : [NSNumber numberWithInteger:settings.positionType],
+	DekoSettingTransformTypeKey : [NSNumber numberWithInteger:settings.transformType],
+	DekoSettingSizeTypeKey : [NSNumber numberWithInteger:settings.sizeType],
+	DekoSettingRotationTypeKey : [NSNumber numberWithInteger:settings.rotationType],
+	DekoSettingShapeTypeKey : [NSNumber numberWithInteger:settings.shapeType],
+	DekoSettingColorTypeKey : [NSNumber numberWithInteger:settings.colorType],
+	DekoSettingColorBrightnessTypeKey : [NSNumber numberWithInteger:settings.brightnessType],
+	DekoSettingColorSaturationTypeKey : [NSNumber numberWithInteger:settings.saturationType],
+	DekoSettingHueKey : [NSNumber numberWithDouble:settings.hue],
+	DekoSettingBaseSizeKey : [NSNumber numberWithDouble:settings.baseSize],
+	DekoSettingBaseDistanceKey : [NSNumber numberWithDouble:settings.baseDistance],
+	DekoSettingAngleKey : [NSNumber numberWithDouble:settings.angle],
+	DekoSettingBackground1HueKey : [NSNumber numberWithDouble:settings.background1Hue],
+	DekoSettingBackground1SaturationKey : [NSNumber numberWithDouble:settings.background1Saturation],
+	DekoSettingBackground1BrightnessKey : [NSNumber numberWithDouble:settings.background1Brightness],
+	DekoSettingBackground2HueKey : [NSNumber numberWithDouble:settings.background2Hue],
+	DekoSettingBackground2SaturationKey : [NSNumber numberWithDouble:settings.background2Saturation],
+	DekoSettingBackground2BrightnessKey : [NSNumber numberWithDouble:settings.background2Brightness],
 	};
 	
 	NSDictionary *sceneDictionary = @{
-	kDekoSceneIDKey : sceneID,
-	kDekoSceneSettingKey : settingDictionary
+	DekoSceneIDKey : sceneID,
+	DekoSceneSettingKey : settingDictionary
 	};
 		
 	NSString *path = [self _pathForSceneID:sceneID];
@@ -140,7 +140,7 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		{
 			AELOG_DEBUG(@"Thumbnail saved successfully to '%@'.", thumbnailPath);
 
-			NSMutableArray *sceneList = [[[NSUserDefaults standardUserDefaults] arrayForKey:kDekoSceneManagerIndexKey] mutableCopy];
+			NSMutableArray *sceneList = [[[NSUserDefaults standardUserDefaults] arrayForKey:DekoSceneManagerIndexKey] mutableCopy];
 			if (sceneList == nil)
 			{
 				AELOG_DEBUG(@"No saved scenes, creating index.");
@@ -149,7 +149,7 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 			}
 			
 			[sceneList addObject:sceneID];
-			[[NSUserDefaults standardUserDefaults] setObject:sceneList forKey:kDekoSceneManagerIndexKey];
+			[[NSUserDefaults standardUserDefaults] setObject:sceneList forKey:DekoSceneManagerIndexKey];
 			[[NSUserDefaults standardUserDefaults] synchronize];
 		}
 		else
@@ -192,9 +192,9 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		AELOG_ERROR(@"Removing thumbnail at path '%@' failed with error: %@", thumbnailPath, [error localizedDescription]);
 	}
 	
-	NSMutableArray *sceneList = [[[NSUserDefaults standardUserDefaults] arrayForKey:kDekoSceneManagerIndexKey] mutableCopy];
+	NSMutableArray *sceneList = [[[NSUserDefaults standardUserDefaults] arrayForKey:DekoSceneManagerIndexKey] mutableCopy];
 	[sceneList removeObject:sceneID];
-	[[NSUserDefaults standardUserDefaults] setObject:sceneList forKey:kDekoSceneManagerIndexKey];
+	[[NSUserDefaults standardUserDefaults] setObject:sceneList forKey:DekoSceneManagerIndexKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -209,30 +209,30 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 	if (sceneDictionary != nil)
 	{
 		scene = [[DekoScene alloc] init];
-		scene.id = sceneDictionary[kDekoSceneIDKey];
+		scene.id = sceneDictionary[DekoSceneIDKey];
 		
-		NSDictionary *settingDictionary = sceneDictionary[kDekoSceneSettingKey];
+		NSDictionary *settingDictionary = sceneDictionary[DekoSceneSettingKey];
 		
 		HarmonyCanvasSettings *settings = [[HarmonyCanvasSettings alloc] init];
-		settings.mixingType = [settingDictionary[kDekoSettingMixingTypeKey] integerValue];
-		settings.positionType = [settingDictionary[kDekoSettingPositionTypeKey] integerValue];
-		settings.transformType = [settingDictionary[kDekoSettingTransformTypeKey] integerValue];
-		settings.sizeType = [settingDictionary[kDekoSettingSizeTypeKey] integerValue];
-		settings.rotationType = [settingDictionary[kDekoSettingRotationTypeKey] integerValue];
-		settings.shapeType = [settingDictionary[kDekoSettingShapeTypeKey] integerValue];
-		settings.colorType = [settingDictionary[kDekoSettingColorTypeKey] integerValue];
-		settings.brightnessType = [settingDictionary[kDekoSettingColorBrightnessTypeKey] integerValue];
-		settings.saturationType = [settingDictionary[kDekoSettingColorSaturationTypeKey] integerValue];
-		settings.hue = [settingDictionary[kDekoSettingHueKey] doubleValue];
-		settings.baseSize = [settingDictionary[kDekoSettingBaseSizeKey] doubleValue];
-		settings.baseDistance = [settingDictionary[kDekoSettingBaseDistanceKey] doubleValue];
-		settings.angle = [settingDictionary[kDekoSettingAngleKey] doubleValue];
-		settings.background1Hue = [settingDictionary[kDekoSettingBackground1HueKey] doubleValue];
-		settings.background1Saturation = [settingDictionary[kDekoSettingBackground1SaturationKey] doubleValue];
-		settings.background1Brightness = [settingDictionary[kDekoSettingBackground1BrightnessKey] doubleValue];
-		settings.background2Hue = [settingDictionary[kDekoSettingBackground2HueKey] doubleValue];
-		settings.background2Saturation = [settingDictionary[kDekoSettingBackground2SaturationKey] doubleValue];
-		settings.background2Brightness = [settingDictionary[kDekoSettingBackground2BrightnessKey] doubleValue];
+		settings.mixingType = [settingDictionary[DekoSettingMixingTypeKey] integerValue];
+		settings.positionType = [settingDictionary[DekoSettingPositionTypeKey] integerValue];
+		settings.transformType = [settingDictionary[DekoSettingTransformTypeKey] integerValue];
+		settings.sizeType = [settingDictionary[DekoSettingSizeTypeKey] integerValue];
+		settings.rotationType = [settingDictionary[DekoSettingRotationTypeKey] integerValue];
+		settings.shapeType = [settingDictionary[DekoSettingShapeTypeKey] integerValue];
+		settings.colorType = [settingDictionary[DekoSettingColorTypeKey] integerValue];
+		settings.brightnessType = [settingDictionary[DekoSettingColorBrightnessTypeKey] integerValue];
+		settings.saturationType = [settingDictionary[DekoSettingColorSaturationTypeKey] integerValue];
+		settings.hue = [settingDictionary[DekoSettingHueKey] doubleValue];
+		settings.baseSize = [settingDictionary[DekoSettingBaseSizeKey] doubleValue];
+		settings.baseDistance = [settingDictionary[DekoSettingBaseDistanceKey] doubleValue];
+		settings.angle = [settingDictionary[DekoSettingAngleKey] doubleValue];
+		settings.background1Hue = [settingDictionary[DekoSettingBackground1HueKey] doubleValue];
+		settings.background1Saturation = [settingDictionary[DekoSettingBackground1SaturationKey] doubleValue];
+		settings.background1Brightness = [settingDictionary[DekoSettingBackground1BrightnessKey] doubleValue];
+		settings.background2Hue = [settingDictionary[DekoSettingBackground2HueKey] doubleValue];
+		settings.background2Saturation = [settingDictionary[DekoSettingBackground2SaturationKey] doubleValue];
+		settings.background2Brightness = [settingDictionary[DekoSettingBackground2BrightnessKey] doubleValue];
 		
 		scene.settings = settings;
 	}
@@ -246,7 +246,7 @@ NSString * const kDekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 
 - (NSArray *)allScenes
 {
-	NSArray *sceneIDs = [[NSUserDefaults standardUserDefaults] objectForKey:kDekoSceneManagerIndexKey];
+	NSArray *sceneIDs = [[NSUserDefaults standardUserDefaults] objectForKey:DekoSceneManagerIndexKey];
 	NSMutableArray *scenes = [NSMutableArray array];
 	
 	for (NSString *sceneID in sceneIDs)

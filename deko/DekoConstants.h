@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-static const CGFloat kDekoBackgroundColor = 0.93;
-static const CGFloat kDekoThumbnailSize = 100.0;
-static const CGFloat kDekoLaunchBackgroundColor = 0.1568627451;
+static const CGFloat DekoBackgroundColor = 0.93;
+static const CGFloat DekoThumbnailSize = 100.0;
+static const CGFloat DekoLaunchBackgroundColor = 0.1568627451;
 
-extern NSString * const kDekoIOS7UpdateViewShown;
+extern NSString * const DekoiOS7UpdateViewShown;
 
 typedef NS_ENUM(NSInteger, DekoDeviceType)
 {

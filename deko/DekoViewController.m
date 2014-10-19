@@ -70,17 +70,16 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 
 @implementation DekoViewController
 
-const NSTimeInterval kLogoAnimationDuration = 2.0;
+const NSTimeInterval DekoLogoAnimationDuration = 2.0;
 
-// FIXME: this naming scheme is terrible
-const CGFloat kIOS7iPadOffset = 238.0;
-const CGFloat kIOS8iPhone6PlusOffset = ((2662.0 - 2208.0) / 3.0); // whee
-const CGFloat kIOS8iPhone6WidthOffset = 51.0;
-const CGFloat kIOS8iPhone6HeightOffset = 137.0;
-const CGFloat kIOS7iPhoneWidthOffset = 52.0;
-const CGFloat kIOS7iPhoneHeightOffset = 128.0;
-const CGFloat kIOS7iPhone4WidthOffset = 50.0;
-const CGFloat kIOS7iPhone4HeightOffset = 118.0;
+const CGFloat DekoiPadOffset = 238.0;
+const CGFloat DekoiPhone6PlusOffset = ((2662.0 - 2208.0) / 3.0); // whee
+const CGFloat DekoiPhone6WidthOffset = 51.0;
+const CGFloat DekoiPhone6HeightOffset = 137.0;
+const CGFloat DekoiPhoneWidthOffset = 52.0;
+const CGFloat DekoiPhoneHeightOffset = 128.0;
+const CGFloat DekoiPhone4WidthOffset = 50.0;
+const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 #pragma mark - Private
 
@@ -91,15 +90,15 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	switch (deviceType)
 	{
 		case DekoDeviceTypeiPad:
-			return kIOS7iPadOffset;
+			return DekoiPadOffset;
 		case DekoDeviceTypeiPhone6Plus:
-			return kIOS8iPhone6PlusOffset;
+			return DekoiPhone6PlusOffset;
 		case DekoDeviceTypeiPhone6:
-			return kIOS8iPhone6HeightOffset;
+			return DekoiPhone6HeightOffset;
 		case DekoDeviceTypeiPhone5:
-			return kIOS7iPhoneHeightOffset;
+			return DekoiPhoneHeightOffset;
 		case DekoDeviceTypeiPhone:
-			return kIOS7iPhone4HeightOffset;
+			return DekoiPhone4HeightOffset;
 		default:
 			AELOG_ERROR(@"Unknown device type: %ld", (long)deviceType);
 			return 0;
@@ -176,7 +175,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		settings = [self.settingGenerator generateNewSettings];
 	}
 	
-	[self _generateNewCanvasWithFadeInDuration:kLogoAnimationDuration / 2.0 fadeOutDuration:0 settings:settings fadeOutLogo:YES];
+	[self _generateNewCanvasWithFadeInDuration:DekoLogoAnimationDuration / 2.0 fadeOutDuration:0 settings:settings fadeOutLogo:YES];
 	
 	UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapRecognized:)];
 	[self.view addGestureRecognizer:tapRecognizer];
@@ -289,9 +288,9 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
         
 		if (velocity.x < -minimumVelocity)
 		{
-			refreshStep = kMaximumSettingSteps;
+			refreshStep = DekoMaximumSettingSteps;
 			
-			[self _updateWhiteCanvasLabelsWithStep:refreshStep pieces:kMaximumSettingSteps swipe:YES];
+			[self _updateWhiteCanvasLabelsWithStep:refreshStep pieces:DekoMaximumSettingSteps swipe:YES];
 		}
 	}
 	else if (translation.x > undoMinimum && !undoDisabled && velocity.x > -minimumVelocity && undoInProgress)
@@ -349,7 +348,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		{
 			self.previousSettings = self.currentSettings;
 			
-			if (self.tutorialHelper.shouldShowTutorial && !self.firstGeneration && refreshStep == kMaximumSettingSteps)
+			if (self.tutorialHelper.shouldShowTutorial && !self.firstGeneration && refreshStep == DekoMaximumSettingSteps)
 			{
 				settings = [self.tutorialHelper defaultSettings2];
 				self.firstGeneration = YES;
@@ -428,7 +427,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGPoint translation = [panRecognizer translationInView:self.swipeableContainer];
 	CGPoint finalTranslation = CGPointMake(translation.x, 0);
 	BOOL undoDisabled = (self.previousSettings == nil);
-	NSInteger refreshStep = kMaximumSettingSteps;
+	NSInteger refreshStep = DekoMaximumSettingSteps;
 	
 	if (panRecognizer.state == UIGestureRecognizerStateBegan)
 	{
@@ -458,7 +457,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		self.shadow.frame = [self _shadowRect];
 		self.shadow.alpha = 1.0 - (self.whiteCanvas.frame.origin.x / self.view.bounds.size.width);
 		
-		CGFloat pieces = (CGFloat)(kMaximumSettingSteps + 1);
+		CGFloat pieces = (CGFloat)(DekoMaximumSettingSteps + 1);
 		CGFloat pieceWidth = (self.view.bounds.size.width - (self.view.bounds.size.width / 2.5)) / pieces;
 				
 		for (NSInteger i = 0; i < ((NSInteger)pieces); i++)
@@ -585,7 +584,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		{
 			if (self.logoView != nil && fadeOutLogo)
 			{
-				[UIView animateWithDuration:kLogoAnimationDuration / 5.0 delay:kLogoAnimationDuration / 2.0 options:0 animations:^
+				[UIView animateWithDuration:DekoLogoAnimationDuration / 5.0 delay:DekoLogoAnimationDuration / 2.0 options:0 animations:^
 				{
 					self.logoView.alpha = 0;
 					self.watermark.alpha = 1.0;
@@ -626,7 +625,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	label.numberOfLines = 0;
 	label.textAlignment = NSTextAlignmentCenter;
 	label.lineBreakMode = NSLineBreakByWordWrapping;
-	label.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	label.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	label.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
 	label.shadowOffset = CGSizeMake(0, 1);
 	label.font = [self.localizationManager localizedFontWithSize:17.0];
@@ -667,18 +666,18 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	{
 		if (deviceType == DekoDeviceTypeiPhone5)
 		{
-			width += kIOS7iPhoneWidthOffset;
-			height += kIOS7iPhoneHeightOffset;
+			width += DekoiPhoneWidthOffset;
+			height += DekoiPhoneHeightOffset;
 		}
 		else if (deviceType == DekoDeviceTypeiPhone)
 		{
-			width += kIOS7iPhone4WidthOffset;
-			height += kIOS7iPhone4HeightOffset;
+			width += DekoiPhone4WidthOffset;
+			height += DekoiPhone4HeightOffset;
 		}
 		else
 		{
-			width += kIOS8iPhone6WidthOffset;
-			height += kIOS8iPhone6HeightOffset;
+			width += DekoiPhone6WidthOffset;
+			height += DekoiPhone6HeightOffset;
 		}
 		
 		imageFrame = CGRectMake(0, 0, width, height);
@@ -697,7 +696,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	{
 		CGFloat length = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
 		imageFrame.size = CGSizeMake(length, length);
-		scale = (kDekoThumbnailSize / length) * scale;
+		scale = (DekoThumbnailSize / length) * scale;
 	}
 	
 	UIGraphicsBeginImageContextWithOptions(imageFrame.size, YES, scale);
@@ -811,7 +810,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	self.whiteCanvas.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.whiteCanvas.frame = AECGRectPlaceX(self.whiteCanvas.frame, self.view.bounds.size.width);
 	self.whiteCanvas.hidden = YES;
-	self.whiteCanvas.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.whiteCanvas.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	[self.view addSubview:self.whiteCanvas];
 	
 	CGFloat size = 60;
@@ -855,7 +854,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	
 	self.previousTutorialLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	self.previousTutorialLabel.backgroundColor = [UIColor clearColor];
-	self.previousTutorialLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.previousTutorialLabel.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	self.previousTutorialLabel.font = self.whiteCanvasLabel.font;
 	self.previousTutorialLabel.autoresizingMask = self.whiteCanvasLabel.autoresizingMask;
 	self.previousTutorialLabel.text = NSLocalizedString(@"Previous", @"Undo tutorial text");
@@ -917,19 +916,19 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 	if (!self.appLaunched)
 	{
-		[UIView animateWithDuration:kLogoAnimationDuration animations:^
+		[UIView animateWithDuration:DekoLogoAnimationDuration animations:^
 		{
-			self.view.backgroundColor = [UIColor colorWithWhite:kDekoLaunchBackgroundColor alpha:1.0];
+			self.view.backgroundColor = [UIColor colorWithWhite:DekoLaunchBackgroundColor alpha:1.0];
 		}];
 		
-		[self.logoView animateLogoWithDuration:kLogoAnimationDuration completion:^
+		[self.logoView animateLogoWithDuration:DekoLogoAnimationDuration completion:^
 		{
 			[self _revealCanvas];
 
-			BOOL runOnIOS7 = [[NSUserDefaults standardUserDefaults] boolForKey:kDekoIOS7UpdateViewShown];
+			BOOL runOnIOS7 = [[NSUserDefaults standardUserDefaults] boolForKey:DekoiOS7UpdateViewShown];
 			if (!runOnIOS7)
 			{
-				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDekoIOS7UpdateViewShown];
+				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DekoiOS7UpdateViewShown];
 				[[NSUserDefaults standardUserDefaults] synchronize];
 				
 				DekoParallaxUpdateViewController *updateViewController = [[DekoParallaxUpdateViewController alloc] init];

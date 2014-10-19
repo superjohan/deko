@@ -158,7 +158,7 @@
 		CGSize screenSize = [[UIScreen mainScreen] bounds].size;
 		CGFloat maximumShapeSizeOffset = MIN(screenSize.width, screenSize.height);
 		
-		settings.baseSize = (CGFloat)(kMinimumShapeSize + (arc4random() % (NSInteger)maximumShapeSizeOffset));
+		settings.baseSize = (CGFloat)(DekoMinimumShapeSize + (arc4random() % (NSInteger)maximumShapeSizeOffset));
 		
 		if (settings.positionType == HarmonyPositionTypeCluster && settings.baseSize < maximumShapeSizeOffset * .5)
 		{
@@ -168,11 +168,11 @@
 	
 	if (baseDistance)
 	{
-		settings.baseDistance = (CGFloat)(arc4random() % kMaximumDistance);
+		settings.baseDistance = (CGFloat)(arc4random() % DekoMaximumDistance);
 
 		if (settings.shapeType == HarmonyShapeTypeCircle)
 		{
-			settings.baseDistance -= (kMaximumDistance / 2);
+			settings.baseDistance -= (DekoMaximumDistance / 2);
 		}
 	}
 	
@@ -221,7 +221,7 @@
 - (HarmonyCanvasSettings *)generateNewSettingsBasedOnSettings:(HarmonyCanvasSettings *)settings step:(NSInteger)step
 {
 	AEAssertV(settings != nil, nil);
-	AEAssertV(step >= 0 && step <= kMaximumSettingSteps, nil);
+	AEAssertV(step >= 0 && step <= DekoMaximumSettingSteps, nil);
 	
 	AELOG_DEBUG(@"step: %ld", (long)step);
 	
