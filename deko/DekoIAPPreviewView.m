@@ -41,9 +41,9 @@
 
 #pragma mark - Public
 
-- (instancetype)initWithUserInterfaceIdiom:(UIUserInterfaceIdiom)userInterfaceIdiom
+- (instancetype)initWithFrame:(CGRect)frame
 {
-	if ((self = [super initWithFrame:CGRectZero]))
+	if ((self = [super initWithFrame:frame]))
 	{
 		_low = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iappreview-low"]];
 		_low.contentMode = UIViewContentModeTopLeft;

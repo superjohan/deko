@@ -168,7 +168,7 @@
 	
 	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	
-	DekoIAPPreviewView *topContainer = [[DekoIAPPreviewView alloc] initWithUserInterfaceIdiom:[[UIDevice currentDevice] userInterfaceIdiom]];
+	DekoIAPPreviewView *topContainer = [[DekoIAPPreviewView alloc] initWithFrame:CGRectZero];
 	topContainer.backgroundColor = [UIColor greenColor];
 	topContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:topContainer];

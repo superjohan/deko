@@ -10,6 +10,4 @@
 
 @interface DekoIAPPreviewView : UIView
 
-- (instancetype)initWithUserInterfaceIdiom:(UIUserInterfaceIdiom)userInterfaceIdiom;
-
 @end
