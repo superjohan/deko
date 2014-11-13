@@ -653,7 +653,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	
 	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
 	
-	if (deviceType == DekoDeviceTypeiPad || deviceType == DekoDeviceTypeiPhone6Plus)
+	if (deviceType == DekoDeviceTypeiPad)
 	{
 		CGFloat squareOffset = [self _squareOffset];
 		width += squareOffset;
@@ -663,20 +663,25 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	}
 	else
 	{
-		if (deviceType == DekoDeviceTypeiPhone5)
+		if (deviceType == DekoDeviceTypeiPhone6Plus)
+		{
+			width += DekoiPhone6PlusOffset;
+			height += DekoiPhone6PlusOffset;
+		}
+		else if (deviceType == DekoDeviceTypeiPhone6)
+		{
+			width += DekoiPhone6WidthOffset;
+			height += DekoiPhone6HeightOffset;
+		}
+		else if (deviceType == DekoDeviceTypeiPhone5)
 		{
 			width += DekoiPhoneWidthOffset;
 			height += DekoiPhoneHeightOffset;
 		}
-		else if (deviceType == DekoDeviceTypeiPhone)
+		else
 		{
 			width += DekoiPhone4WidthOffset;
 			height += DekoiPhone4HeightOffset;
-		}
-		else
-		{
-			width += DekoiPhone6WidthOffset;
-			height += DekoiPhone6HeightOffset;
 		}
 		
 		imageFrame = CGRectMake(0, 0, width, height);
