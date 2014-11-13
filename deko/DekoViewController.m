@@ -321,7 +321,8 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 			self.currentSceneID = self.previousSceneID;
 			self.currentSettings = self.previousSettings;
 			self.harmonyContainer = self.undoHarmonyContainer;
-
+			self.cachedImage = nil;
+			
 			for (UIView *view in self.swipeableContainer.subviews)
 			{
 				if (view != self.watermark)
@@ -887,6 +888,8 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 - (void)_proVersionPurchased:(NSNotification *)notification
 {
+	self.cachedImage = nil; // The user may have exported the same image previously.
+	
 	[self.menuView refreshShareMenuWithPurchaseStatus:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 }
 
