@@ -12,8 +12,6 @@ static const CGFloat DekoBackgroundColor = 0.93;
 static const CGFloat DekoThumbnailSize = 100.0;
 static const CGFloat DekoLaunchBackgroundColor = 0.1568627451;
 
-extern NSString * const DekoiOS7UpdateViewShown;
-
 typedef NS_ENUM(NSInteger, DekoDeviceType)
 {
 	DekoDeviceTypeiPad,

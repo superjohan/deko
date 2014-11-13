@@ -28,7 +28,6 @@
 #import "DekoTutorialHelper.h"
 #import "HarmonyCanvasSettings.h"
 #import "DekoLocalizationManager.h"
-#import "DekoParallaxUpdateViewController.h"
 #import "DekoFunctions.h"
 
 typedef NS_ENUM(NSInteger, DekoTutorialStep)
@@ -924,22 +923,6 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 		[self.logoView animateLogoWithDuration:DekoLogoAnimationDuration completion:^
 		{
 			[self _revealCanvas];
-
-			BOOL runOnIOS7 = [[NSUserDefaults standardUserDefaults] boolForKey:DekoiOS7UpdateViewShown];
-			if (!runOnIOS7)
-			{
-				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DekoiOS7UpdateViewShown];
-				[[NSUserDefaults standardUserDefaults] synchronize];
-				
-				DekoParallaxUpdateViewController *updateViewController = [[DekoParallaxUpdateViewController alloc] init];
-				updateViewController.localizationManager = self.localizationManager;
-				updateViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-				updateViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-				[self presentViewController:updateViewController animated:YES completion:^
-				 {
-					 AELOG_DEBUG(@"Update view controller shown");
-				 }];
-			}
 		}];
 		
 		self.appLaunched = YES;

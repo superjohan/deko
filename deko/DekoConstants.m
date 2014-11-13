@@ -7,5 +7,3 @@
 //
 
 #import "DekoConstants.h"
-
-NSString * const DekoiOS7UpdateViewShown = @"kDekoIOS7UpdateViewShown";
