@@ -12,6 +12,7 @@
 #import "DekoCircleMenuView.h"
 #import "DekoLocalizationManager.h"
 #import "DekoFunctions.h"
+#import "AECGHelpers.h"
 
 NSString * const DekoButtonGalleryNotSaved = @"button-galle-";
 NSString * const DekoButtonGallerySaved = @"button-gallf-";
@@ -110,13 +111,16 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 		self.backgroundColor = [UIColor clearColor];
 
 		CGFloat length = MAX(frame.size.width, frame.size.height);
-		CGRect rect = CGRectMake(CGRectGetMidX(frame) - (containerWidth / 2.0), CGRectGetMidY(frame) - (length / 2.0), containerWidth, length);
+		CGRect rect = CGRectMake(CGRectGetMidX(frame) - (containerWidth / 2.0),
+								 CGRectGetMidY(frame) - (length / 2.0),
+								 containerWidth,
+								 length);
 		_baseContainer = [[UIView alloc] initWithFrame:rect];
 		_baseContainer.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 		_baseContainer.backgroundColor = [UIColor clearColor];
 		[self addSubview:_baseContainer];
 		
-		_shareContainer = [[UIView alloc] initWithFrame:rect];
+		_shareContainer = [[UIView alloc] initWithFrame:AECGRectPlaceY(rect, rect.origin.y)];
 		_shareContainer.autoresizingMask = _baseContainer.autoresizingMask;
 		_shareContainer.backgroundColor = [UIColor clearColor];
     }
@@ -159,7 +163,9 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	[self.baseContainer addSubview:baseCircles];
 	self.baseMenuCircles = baseCircles;
 	
-	DekoCircleMenuView *shareCircles = [[DekoCircleMenuView alloc] initWithFrame:self.shareContainer.bounds];
+	CGFloat landscapeOffset = (DekoGetCurrentDeviceType() == DekoDeviceTypeiPhone6Plus && !proPurchased) ? -20.0 : 0;
+
+	DekoCircleMenuView *shareCircles = [[DekoCircleMenuView alloc] initWithFrame:AECGRectPlaceY(self.shareContainer.bounds, self.shareContainer.bounds.origin.y + landscapeOffset)];
 	shareCircles.backgroundColor = baseCircles.backgroundColor;
 	shareCircles.autoresizingMask = baseCircles.autoresizingMask;
 	shareCircles.circleSize = circleSize;
@@ -269,7 +275,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	DekoMenuButton *backButton = [DekoMenuButton buttonWithType:UIButtonTypeCustom];
 	UIImage *backButtonImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonShareBack, self.deviceType]];
 	[backButton setImage:backButtonImage forState:UIControlStateNormal];
-	backButton.frame = plusButton.frame;
+	backButton.frame = AECGRectPlaceY(plusButton.frame, plusButton.frame.origin.y + landscapeOffset);
 	backButton.autoresizingMask = plusButton.autoresizingMask;
 	backButton.imageView.contentMode = galleryButton.imageView.contentMode;
 	backButton.tag = 1;
@@ -284,7 +290,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	twitterButton.titleLabel.numberOfLines = 0;
 	twitterButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
 	twitterButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-	twitterButton.frame = galleryButton.frame;
+	twitterButton.frame = AECGRectPlaceY(galleryButton.frame, galleryButton.frame.origin.y + landscapeOffset);
 	twitterButton.autoresizingMask = shareCircles.autoresizingMask;
 	twitterButton.tag = 2;
 	twitterButton.delegate = self;
@@ -299,7 +305,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	facebookButton.titleLabel.numberOfLines = twitterButton.titleLabel.numberOfLines;
 	facebookButton.titleLabel.lineBreakMode = twitterButton.titleLabel.lineBreakMode;
 	facebookButton.titleLabel.textAlignment = twitterButton.titleLabel.textAlignment;
-	facebookButton.frame = shareButton.frame;
+	facebookButton.frame = AECGRectPlaceY(shareButton.frame, shareButton.frame.origin.y + landscapeOffset);
 	facebookButton.autoresizingMask = shareButton.autoresizingMask;
 	facebookButton.tag = 3;
 	facebookButton.delegate = self;
