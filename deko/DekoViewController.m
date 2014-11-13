@@ -661,6 +661,8 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 		height += squareOffset;
 		CGFloat length = MAX(width, height);
 		imageFrame = CGRectMake(0, 0, length, length);
+		width = length;
+		height = length;
 	}
 	else
 	{
