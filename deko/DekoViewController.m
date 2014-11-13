@@ -109,7 +109,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 {
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	CGFloat baseLength = MAX(width, height) + ([self _squareOffset] * 2.0);
+	CGFloat baseLength = MAX(width, height) + [self _squareOffset];
 	CGFloat containerLength = sqrt(pow(baseLength, 2.0) + pow(baseLength, 2.0));
 	CGRect frame = CGRectMake(ceil((self.view.bounds.size.width / 2.0) - (containerLength / 2.0)),
 							  ceil((self.view.bounds.size.height / 2.0) - (containerLength / 2.0)),
