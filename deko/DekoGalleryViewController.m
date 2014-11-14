@@ -15,13 +15,17 @@
 #import "DekoConstants.h"
 #import "DekoFlowLayout.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic) DekoFlowLayout *layout;
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSArray *scenes;
 @property (nonatomic) UILabel *emptyLabel;
+@property (nonatomic) UIButton *backButton;
 @end
+
+static const CGFloat DekoCollectionViewSpacing = 1.0;
 
 @implementation DekoGalleryViewController
 
@@ -60,36 +64,28 @@
 	return [self _itemViewInCell:cell];
 }
 
+- (CGFloat)_paddingForCollectionView
+{
+	CGFloat spacing = 1.0;
+	CGFloat width = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
+	CGFloat amountOfItemsPerLine = floor(width / 100.0);
+	CGFloat padding = (((NSInteger)width % (NSInteger)DekoThumbnailSize) / 2.0) - (((amountOfItemsPerLine - 1) * spacing) / 2.0);
+	
+	return padding;
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
-	
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-	{
-		UIImageView *watermark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mark-black-iphone"]];
-		watermark.frame = CGRectMake(CGRectGetWidth(self.view.bounds) - watermark.image.size.width,
-									 CGRectGetHeight(self.view.bounds) - watermark.image.size.height,
-									 watermark.image.size.width,
-									 watermark.image.size.height);
-		watermark.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-		[self.view addSubview:watermark];
-	}
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	
 	self.layout = [[DekoFlowLayout alloc] init];
-	self.layout.itemSize = CGSizeMake(kDekoThumbnailSize, kDekoThumbnailSize);
-	CGFloat padding = 9.0;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-	{
-		padding = 18.0;
-	}
-	
-	self.layout.minimumInteritemSpacing = 1.0;
-	self.layout.minimumLineSpacing = 1.0;
-	self.layout.sectionInset = UIEdgeInsetsMake(padding, padding, padding, padding);
+	self.layout.itemSize = CGSizeMake(DekoThumbnailSize, DekoThumbnailSize);
+	self.layout.minimumInteritemSpacing = DekoCollectionViewSpacing;
+	self.layout.minimumLineSpacing = DekoCollectionViewSpacing;
 	
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
 	self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -119,12 +115,11 @@
 	[self.view addSubview:self.emptyLabel];
 	
 	UIImage *backButtonImage = [UIImage imageNamed:@"credits-backarrow"];
-	UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	backButton.frame = CGRectMake(1.0 + padding, 1.0 + padding, 44.0, 44.0);
-	[backButton setImage:backButtonImage forState:UIControlStateNormal];
-	[backButton addTarget:self action:@selector(_dismissWithItemAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:backButton];
-
+	self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[self.backButton setImage:backButtonImage forState:UIControlStateNormal];
+	[self.backButton addTarget:self action:@selector(_dismissWithItemAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:self.backButton];
+	
 	[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
 }
 
@@ -137,6 +132,20 @@
 	[self.collectionView reloadData];
 	
 	self.view.layer.cornerRadius = 0;
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+
+	CGFloat padding = [self _paddingForCollectionView];
+	self.layout.sectionInset = UIEdgeInsetsMake(padding, padding, padding, padding);
+	self.backButton.frame = CGRectMake(1.0 + padding, 1.0 + padding, 44.0, 44.0);
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 #pragma mark - UICollectionViewDataSource

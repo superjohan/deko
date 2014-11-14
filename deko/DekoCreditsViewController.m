@@ -12,6 +12,7 @@
 #import "DekoConstants.h"
 #import "AECGHelpers.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoCreditsViewController ()
 @property (nonatomic) UIImageView *layer1;
@@ -67,7 +68,7 @@
 {
     [super viewDidLoad];
 	
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 
 	UIImage *backButtonImage = [UIImage imageNamed:@"credits-backarrow"];
 	UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -133,6 +134,11 @@
 	[super viewDidAppear:animated];
 	
 	[self _animateLayers];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 @end

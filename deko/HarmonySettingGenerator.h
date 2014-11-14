@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static const NSInteger kMaximumSettingSteps = 6;
+static const NSInteger DekoMaximumSettingSteps = 6;
 
 @class HarmonyCanvasSettings;
 @class HarmonyColorGenerator;

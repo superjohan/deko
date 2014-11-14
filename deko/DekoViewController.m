@@ -28,7 +28,7 @@
 #import "DekoTutorialHelper.h"
 #import "HarmonyCanvasSettings.h"
 #import "DekoLocalizationManager.h"
-#import "DekoParallaxUpdateViewController.h"
+#import "DekoFunctions.h"
 
 typedef NS_ENUM(NSInteger, DekoTutorialStep)
 {
@@ -69,39 +69,52 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 
 @implementation DekoViewController
 
-const NSTimeInterval kLogoAnimationDuration = 2.0;
-const CGFloat kIOS7iPadOffset = 238.0;
-const CGFloat kIOS7iPhoneWidthOffset = 52.0;
-const CGFloat kIOS7iPhoneHeightOffset = 128.0;
-const CGFloat kIOS7iPhone4WidthOffset = 50.0;
-const CGFloat kIOS7iPhone4HeightOffset = 118.0;
+const NSTimeInterval DekoLogoAnimationDuration = 2.0;
+
+const CGFloat DekoiPadOffset = 238.0;
+const CGFloat DekoiPhone6PlusOffset = ((2662.0 - 2208.0) / 3.0); // whee
+const CGFloat DekoiPhone6WidthOffset = 51.0;
+const CGFloat DekoiPhone6HeightOffset = 137.0;
+const CGFloat DekoiPhoneWidthOffset = 52.0;
+const CGFloat DekoiPhoneHeightOffset = 128.0;
+const CGFloat DekoiPhone4WidthOffset = 50.0;
+const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 #pragma mark - Private
 
+- (CGFloat)_squareOffset
+{
+	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
+	
+	switch (deviceType)
+	{
+		case DekoDeviceTypeiPad:
+			return DekoiPadOffset;
+		case DekoDeviceTypeiPhone6Plus:
+			return DekoiPhone6PlusOffset;
+		case DekoDeviceTypeiPhone6:
+			return DekoiPhone6HeightOffset;
+		case DekoDeviceTypeiPhone5:
+			return DekoiPhoneHeightOffset;
+		case DekoDeviceTypeiPhone:
+			return DekoiPhone4HeightOffset;
+		default:
+			AELOG_ERROR(@"Unknown device type: %ld", (long)deviceType);
+			return 0;
+			break;
+	}
+}
+
 - (CGRect)_rectForHarmonyContainer
 {
-	CGFloat width = self.view.frame.size.width;
-	CGFloat height = self.view.frame.size.height;
-	CGFloat offset = 10.0;
-
-	// iOS 7 requires a slightly larger canvas.
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-		{
-			offset += (kIOS7iPhoneHeightOffset * 2.0);
-		}
-		else
-		{
-			offset += (kIOS7iPadOffset * 2.0);
-		}
-	}
-	
-	CGFloat length = offset + MIN(width, height) * 2.0;
-	CGRect frame = CGRectMake((self.view.bounds.size.width / 2.0) - (length / 2.0),
-							  (self.view.bounds.size.height / 2.0) - (length / 2.0),
-							  length,
-							  length);
+	CGFloat width = self.view.bounds.size.width;
+	CGFloat height = self.view.bounds.size.height;
+	CGFloat baseLength = MAX(width, height) + [self _squareOffset];
+	CGFloat containerLength = sqrt(pow(baseLength, 2.0) + pow(baseLength, 2.0));
+	CGRect frame = CGRectMake(ceil((self.view.bounds.size.width / 2.0) - (containerLength / 2.0)),
+							  ceil((self.view.bounds.size.height / 2.0) - (containerLength / 2.0)),
+							  ceil(containerLength),
+							  ceil(containerLength));
 
 	return frame;
 }
@@ -109,7 +122,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 - (void)_toggleDebugInfo:(UITapGestureRecognizer *)gestureRecognizer
 {
 	self.debugInfoLabel.hidden = !self.debugInfoLabel.hidden;
-	if ( ! self.debugInfoLabel.hidden)
+	if (!self.debugInfoLabel.hidden)
 	{
 		[self _updateDebugLabel];
 	}
@@ -121,28 +134,28 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	
 	self.debugInfoLabel.text = [NSString stringWithFormat:
 								@"\n\
-								Mixing type: %d\n \
-								Position type: %d\n \
-								Transform type: %d\n \
-								Size type: %d\n \
-								Rotation type: %d\n \
-								Shape type: %d\n \
-								Color type: %d\n \
-								Brightness type: %d\n \
-								Saturation type %d\n \
+								Mixing type: %ld\n \
+								Position type: %ld\n \
+								Transform type: %ld\n \
+								Size type: %ld\n \
+								Rotation type: %ld\n \
+								Shape type: %ld\n \
+								Color type: %ld\n \
+								Brightness type: %ld\n \
+								Saturation type %ld\n \
 								Hue: %f\n \
 								Base size: %f\n \
 								Base distance: %f\n \
 								Angle: %f\n",
-								self.currentSettings.mixingType,
-								self.currentSettings.positionType,
-								self.currentSettings.transformType,
-								self.currentSettings.sizeType,
-								self.currentSettings.rotationType,
-								self.currentSettings.shapeType,
-								self.currentSettings.colorType,
-								self.currentSettings.brightnessType,
-								self.currentSettings.saturationType,
+								(long)self.currentSettings.mixingType,
+								(long)self.currentSettings.positionType,
+								(long)self.currentSettings.transformType,
+								(long)self.currentSettings.sizeType,
+								(long)self.currentSettings.rotationType,
+								(long)self.currentSettings.shapeType,
+								(long)self.currentSettings.colorType,
+								(long)self.currentSettings.brightnessType,
+								(long)self.currentSettings.saturationType,
 								self.currentSettings.hue,
 								self.currentSettings.baseSize,
 								self.currentSettings.baseDistance,
@@ -161,7 +174,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		settings = [self.settingGenerator generateNewSettings];
 	}
 	
-	[self _generateNewCanvasWithFadeInDuration:kLogoAnimationDuration / 2.0 fadeOutDuration:0 settings:settings fadeOutLogo:YES];
+	[self _generateNewCanvasWithFadeInDuration:DekoLogoAnimationDuration / 2.0 fadeOutDuration:0 settings:settings fadeOutLogo:YES];
 	
 	UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapRecognized:)];
 	[self.view addGestureRecognizer:tapRecognizer];
@@ -184,7 +197,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	{
 		self.menuView.alpha = 1.0;
 		
-		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+		if (DekoGetCurrentDeviceType() != DekoDeviceTypeiPad)
 		{
 			self.watermark.alpha = 0;
 		}
@@ -274,12 +287,12 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
         
 		if (velocity.x < -minimumVelocity)
 		{
-			refreshStep = kMaximumSettingSteps;
+			refreshStep = DekoMaximumSettingSteps;
 			
-			[self _updateWhiteCanvasLabelsWithStep:refreshStep pieces:kMaximumSettingSteps swipe:YES];
+			[self _updateWhiteCanvasLabelsWithStep:refreshStep pieces:DekoMaximumSettingSteps swipe:YES];
 		}
 	}
-	else if (translation.x > undoMinimum && ! undoDisabled && velocity.x > -minimumVelocity && undoInProgress)
+	else if (translation.x > undoMinimum && !undoDisabled && velocity.x > -minimumVelocity && undoInProgress)
 	{
 		animationDestination.x = self.view.bounds.size.width;
 		previous = YES;
@@ -308,7 +321,8 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 			self.currentSceneID = self.previousSceneID;
 			self.currentSettings = self.previousSettings;
 			self.harmonyContainer = self.undoHarmonyContainer;
-
+			self.cachedImage = nil;
+			
 			for (UIView *view in self.swipeableContainer.subviews)
 			{
 				if (view != self.watermark)
@@ -334,7 +348,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		{
 			self.previousSettings = self.currentSettings;
 			
-			if (self.tutorialHelper.shouldShowTutorial && ! self.firstGeneration && refreshStep == kMaximumSettingSteps)
+			if (self.tutorialHelper.shouldShowTutorial && !self.firstGeneration && refreshStep == DekoMaximumSettingSteps)
 			{
 				settings = [self.tutorialHelper defaultSettings2];
 				self.firstGeneration = YES;
@@ -390,7 +404,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	}
 	else if (refreshStep < (NSInteger)pieces - 1)
 	{
-		self.whiteCanvasLabel.text = [NSString stringWithFormat:@"%d", refreshStep];
+		self.whiteCanvasLabel.text = [NSString stringWithFormat:@"%ld", (long)refreshStep];
 		self.whiteCanvasTutorialLabel.text = NSLocalizedString(@"The further you pull, the more the pattern will change.", @"Scene refresh tutorial text, some changes to settings");
 	}
 	else
@@ -413,7 +427,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGPoint translation = [panRecognizer translationInView:self.swipeableContainer];
 	CGPoint finalTranslation = CGPointMake(translation.x, 0);
 	BOOL undoDisabled = (self.previousSettings == nil);
-	NSInteger refreshStep = kMaximumSettingSteps;
+	NSInteger refreshStep = DekoMaximumSettingSteps;
 	
 	if (panRecognizer.state == UIGestureRecognizerStateBegan)
 	{
@@ -443,7 +457,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		self.shadow.frame = [self _shadowRect];
 		self.shadow.alpha = 1.0 - (self.whiteCanvas.frame.origin.x / self.view.bounds.size.width);
 		
-		CGFloat pieces = (CGFloat)(kMaximumSettingSteps + 1);
+		CGFloat pieces = (CGFloat)(DekoMaximumSettingSteps + 1);
 		CGFloat pieceWidth = (self.view.bounds.size.width - (self.view.bounds.size.width / 2.5)) / pieces;
 				
 		for (NSInteger i = 0; i < ((NSInteger)pieces); i++)
@@ -507,27 +521,17 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	self.harmonyView.backgroundColor = [UIColor blackColor];
 	self.harmonyView.colorGenerator = self.colorGenerator;
 	self.harmonyView.alpha = 0;
-	
-	NSString *overlayName = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? @"overlay-ipad" : @"overlay-iphone";
-	UIImageView *overlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:overlayName]];
-	overlay.frame = self.harmonyView.bounds;
-	overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	overlay.alpha = 0.8;
-	[self.harmonyView addSubview:overlay];
-	
+		
 	[self.swipeableContainer bringSubviewToFront:self.watermark];
 
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @20.0;
-		horizontalEffect.maximumRelativeValue = @-20.0;
-		[self.harmonyView addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @30.0;
-		verticalEffect.maximumRelativeValue = @-30.0;
-		[self.harmonyView addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	horizontalEffect.minimumRelativeValue = @20.0;
+	horizontalEffect.maximumRelativeValue = @-20.0;
+	[self.harmonyView addMotionEffect:horizontalEffect];
+	UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	verticalEffect.minimumRelativeValue = @30.0;
+	verticalEffect.maximumRelativeValue = @-30.0;
+	[self.harmonyView addMotionEffect:verticalEffect];
 }
 
 - (void)_generateNewCanvasWithFadeInDuration:(NSTimeInterval)fadeInDuration fadeOutDuration:(NSTimeInterval)fadeOutDuration settings:(HarmonyCanvasSettings *)settings fadeOutLogo:(BOOL)fadeOutLogo
@@ -560,7 +564,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		UIView *animatedView = self.harmonyView;
 		CGFloat alpha = 1;
 		
-		if ( ! self.whiteCanvas.hidden)
+		if (!self.whiteCanvas.hidden)
 		{
 			animatedView = self.whiteCanvas;
 			self.harmonyView.alpha = 1;
@@ -580,7 +584,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 		{
 			if (self.logoView != nil && fadeOutLogo)
 			{
-				[UIView animateWithDuration:kLogoAnimationDuration / 5.0 delay:kLogoAnimationDuration / 2.0 options:0 animations:^
+				[UIView animateWithDuration:DekoLogoAnimationDuration / 5.0 delay:DekoLogoAnimationDuration / 2.0 options:0 animations:^
 				{
 					self.logoView.alpha = 0;
 					self.watermark.alpha = 1.0;
@@ -621,7 +625,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	label.numberOfLines = 0;
 	label.textAlignment = NSTextAlignmentCenter;
 	label.lineBreakMode = NSLineBreakByWordWrapping;
-	label.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	label.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	label.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
 	label.shadowOffset = CGSizeMake(0, 1);
 	label.font = [self.localizationManager localizedFontWithSize:17.0];
@@ -638,7 +642,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 - (UIImage *)_imageOfCurrentCanvas:(BOOL)thumbnail
 {
-	if (self.cachedImage != nil && ! thumbnail)
+	if (self.cachedImage != nil && !thumbnail)
 	{
 		return self.cachedImage;
 	}
@@ -647,53 +651,50 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	CGPoint offset = CGPointZero;
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	BOOL parallax = (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
 	
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
+	
+	if (deviceType == DekoDeviceTypeiPad)
 	{
-		CGFloat parallaxOffset = 0;
-		
-		if (parallax)
-		{
-			width += kIOS7iPadOffset;
-			height += kIOS7iPadOffset;
-			parallaxOffset = kIOS7iPadOffset / 2.0;
-		}
-		
+		CGFloat squareOffset = [self _squareOffset];
+		width += squareOffset;
+		height += squareOffset;
 		CGFloat length = MAX(width, height);
-		CGPoint origin = CGPointMake(CGRectGetMidX(self.harmonyContainer.bounds) - (length / 2.0),
-									 CGRectGetMidY(self.harmonyContainer.bounds) - (length / 2.0));
-		imageFrame = CGRectMake(origin.x, origin.y, length, length);
-		offset.x = MIN(width, height) - MAX(width, height) - parallaxOffset;
-		offset.y = offset.x;
-	}
-	else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-	{
-		if (parallax)
-		{
-			if (self.view.bounds.size.height > 480.0)
-			{
-				width += kIOS7iPhoneWidthOffset;
-				height += kIOS7iPhoneHeightOffset;
-			}
-			else
-			{
-				width += kIOS7iPhone4WidthOffset;
-				height += kIOS7iPhone4HeightOffset;
-			}
-		}
-		
-		imageFrame = CGRectMake(0, 0, width, height);
-		offset.x = (width - self.harmonyContainer.bounds.size.width) / 2.0;
-		offset.y = (height - self.harmonyContainer.bounds.size.height) / 2.0;
+		imageFrame = CGRectMake(0, 0, length, length);
+		width = length;
+		height = length;
 	}
 	else
 	{
-		AELOG_ERROR(@"Unknown device type.");
+		if (deviceType == DekoDeviceTypeiPhone6Plus)
+		{
+			width += DekoiPhone6PlusOffset;
+			height += DekoiPhone6PlusOffset;
+		}
+		else if (deviceType == DekoDeviceTypeiPhone6)
+		{
+			width += DekoiPhone6WidthOffset;
+			height += DekoiPhone6HeightOffset;
+		}
+		else if (deviceType == DekoDeviceTypeiPhone5)
+		{
+			width += DekoiPhoneWidthOffset;
+			height += DekoiPhoneHeightOffset;
+		}
+		else
+		{
+			width += DekoiPhone4WidthOffset;
+			height += DekoiPhone4HeightOffset;
+		}
+		
+		imageFrame = CGRectMake(0, 0, width, height);
 	}
 
+	offset.x = (width - self.harmonyContainer.bounds.size.width) / 2.0;
+	offset.y = (height - self.harmonyContainer.bounds.size.height) / 2.0;
+
 	CGFloat scale = [[UIScreen mainScreen] scale];
-	if ( ! self.purchaseManager.proPurchased && ! thumbnail)
+	if (!self.purchaseManager.proPurchased && !thumbnail)
 	{
 		scale = scale / 2.0;
 	}
@@ -702,7 +703,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	{
 		CGFloat length = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
 		imageFrame.size = CGSizeMake(length, length);
-		scale = (kDekoThumbnailSize / length) * scale;
+		scale = (DekoThumbnailSize / length) * scale;
 	}
 	
 	UIGraphicsBeginImageContextWithOptions(imageFrame.size, YES, scale);
@@ -721,7 +722,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	
-	if ( ! thumbnail)
+	if (!thumbnail)
 	{
 		self.cachedImage = image;
 	}
@@ -773,17 +774,14 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	[self.menuView setupWithDelegate:self purchased:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 	[self.view addSubview:self.menuView];
 	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @-10.0;
-		horizontalEffect.maximumRelativeValue = @10.0;
-		[self.menuView addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @-10.0;
-		verticalEffect.maximumRelativeValue = @10.0;
-		[self.menuView addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *menuHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	menuHorizontalEffect.minimumRelativeValue = @-10.0;
+	menuHorizontalEffect.maximumRelativeValue = @10.0;
+	[self.menuView addMotionEffect:menuHorizontalEffect];
+	UIInterpolatingMotionEffect *menuVerticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	menuVerticalEffect.minimumRelativeValue = @-10.0;
+	menuVerticalEffect.maximumRelativeValue = @10.0;
+	[self.menuView addMotionEffect:menuVerticalEffect];
 
 	self.logoView = [[DekoLogoView alloc] initWithFrame:self.view.bounds];
 	self.logoView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -791,7 +789,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	[self.view addSubview:self.logoView];
 	
 	NSString *markName = @"mark-white-iphone";
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
 		markName = @"mark-white-ipad";
 	}
@@ -806,23 +804,20 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	[self.watermark addTarget:self action:@selector(_dekoButtonTouched) forControlEvents:UIControlEventTouchUpInside];
 	[self.swipeableContainer addSubview:self.watermark];
 	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-	{
-		UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-		horizontalEffect.minimumRelativeValue = @-3.0;
-		horizontalEffect.maximumRelativeValue = @3.0;
-		[self.watermark addMotionEffect:horizontalEffect];
-		UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-		verticalEffect.minimumRelativeValue = @-3.0;
-		verticalEffect.maximumRelativeValue = @3.0;
-		[self.watermark addMotionEffect:verticalEffect];
-	}
+	UIInterpolatingMotionEffect *watermarkHorizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+	watermarkHorizontalEffect.minimumRelativeValue = @-3.0;
+	watermarkHorizontalEffect.maximumRelativeValue = @3.0;
+	[self.watermark addMotionEffect:watermarkHorizontalEffect];
+	UIInterpolatingMotionEffect *watermarkVerticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+	watermarkVerticalEffect.minimumRelativeValue = @-3.0;
+	watermarkVerticalEffect.maximumRelativeValue = @3.0;
+	[self.watermark addMotionEffect:watermarkVerticalEffect];
 
 	self.whiteCanvas = [[UIView alloc] initWithFrame:self.view.bounds];
 	self.whiteCanvas.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.whiteCanvas.frame = AECGRectPlaceX(self.whiteCanvas.frame, self.view.bounds.size.width);
 	self.whiteCanvas.hidden = YES;
-	self.whiteCanvas.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.whiteCanvas.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	[self.view addSubview:self.whiteCanvas];
 	
 	CGFloat size = 60;
@@ -866,7 +861,7 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 	
 	self.previousTutorialLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	self.previousTutorialLabel.backgroundColor = [UIColor clearColor];
-	self.previousTutorialLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.previousTutorialLabel.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	self.previousTutorialLabel.font = self.whiteCanvasLabel.font;
 	self.previousTutorialLabel.autoresizingMask = self.whiteCanvasLabel.autoresizingMask;
 	self.previousTutorialLabel.text = NSLocalizedString(@"Previous", @"Undo tutorial text");
@@ -895,6 +890,8 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 
 - (void)_proVersionPurchased:(NSNotification *)notification
 {
+	self.cachedImage = nil; // The user may have exported the same image previously.
+	
 	[self.menuView refreshShareMenuWithPurchaseStatus:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 }
 
@@ -926,37 +923,25 @@ const CGFloat kIOS7iPhone4HeightOffset = 118.0;
 {
 	[super viewDidAppear:animated];
 
-	if ( ! self.appLaunched)
+	if (!self.appLaunched)
 	{
-		[UIView animateWithDuration:kLogoAnimationDuration animations:^
+		[UIView animateWithDuration:DekoLogoAnimationDuration animations:^
 		{
-			self.view.backgroundColor = [UIColor colorWithWhite:kDekoLaunchBackgroundColor alpha:1.0];
+			self.view.backgroundColor = [UIColor colorWithWhite:DekoLaunchBackgroundColor alpha:1.0];
 		}];
 		
-		[self.logoView animateLogoWithDuration:kLogoAnimationDuration completion:^
+		[self.logoView animateLogoWithDuration:DekoLogoAnimationDuration completion:^
 		{
 			[self _revealCanvas];
-
-			BOOL runOnIOS7 = [[NSUserDefaults standardUserDefaults] boolForKey:kDekoIOS7UpdateViewShown];
-			if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1 && !runOnIOS7)
-			{
-				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDekoIOS7UpdateViewShown];
-				[[NSUserDefaults standardUserDefaults] synchronize];
-				
-				DekoParallaxUpdateViewController *updateViewController = [[DekoParallaxUpdateViewController alloc] init];
-				updateViewController.localizationManager = self.localizationManager;
-				updateViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-				updateViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-				[self presentViewController:updateViewController animated:YES completion:^
-				 {
-					 AELOG_DEBUG(@"Update view controller shown");
-				 }];
-			}
 		}];
 		
 		self.appLaunched = YES;
 	}
-	
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 - (void)dealloc

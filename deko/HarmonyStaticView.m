@@ -11,15 +11,16 @@
 #import "HarmonyShape.h"
 #import "HarmonyColorGenerator.h"
 #import "HarmonyCanvasSettings.h"
+#import "DekoFunctions.h"
 
 @interface HarmonyStaticView ()
 @property (nonatomic) HarmonyCanvasSettings *settings;
 @end
 
-const NSInteger kMaximumAttempts = 15;
-const NSInteger kMaximumFreeAmount = 5000;
-const NSTimeInterval kMaximumPhoneTime = 7.0;
-const NSTimeInterval kMaximumPadTime = 10.0;
+const NSInteger DekoMaximumAttempts = 15;
+const NSInteger DekoMaximumFreeAmount = 5000;
+const NSTimeInterval DekoMaximumPhoneTime = 7.0;
+const NSTimeInterval DekoMaximumPadTime = 10.0;
 
 @implementation HarmonyStaticView
 
@@ -61,7 +62,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 	}
 	else if (sizeType == HarmonySizeTypeVariable)
 	{
-		return (CGFloat)((arc4random() % (NSInteger)self.settings.baseSize) + kMinimumShapeSize);
+		return (CGFloat)((arc4random() % (NSInteger)self.settings.baseSize) + DekoMinimumShapeSize);
 	}
 	
 	return -1;
@@ -104,13 +105,13 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 		}
 		else
 		{
-			for (NSInteger attempts = 0; attempts < kMaximumAttempts; attempts++)
+			for (NSInteger attempts = 0; attempts < DekoMaximumAttempts; attempts++)
 			{
 				p3.x = p1.x + [self _valueForTransformType:transformType];
 				if (modulo == 1)
 					p3.y = p2.y + [self _valueForTransformType:transformType];
 				
-				if ( ! [leftShape.bezierPath containsPoint:p3])
+				if (![leftShape.bezierPath containsPoint:p3])
 					break;
 			}
 		}
@@ -149,12 +150,12 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 			}
 			else
 			{
-				for (NSInteger attempts = 0; attempts < kMaximumAttempts; attempts++)
+				for (NSInteger attempts = 0; attempts < DekoMaximumAttempts; attempts++)
 				{
 					p3.x = p1.x + [self _valueForTransformType:transformType];
 					p3.y = p2.y + [self _valueForTransformType:transformType];
 					
-					if ( ! ([leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
+					if (!([leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
 						break;
 				}
 			}
@@ -285,12 +286,12 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 			[path addLineToPoint:p4];
 			[path closePath];
 			
-			for (NSInteger attempts = 0; attempts < kMaximumAttempts; attempts++)
+			for (NSInteger attempts = 0; attempts < DekoMaximumAttempts; attempts++)
 			{
 				p3.x = p4.x + [self _valueForTransformType:transformType];
 				p3.y = p2.y + [self _valueForTransformType:transformType];
 				
-				if ( ! ([path containsPoint:p3] || [leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
+				if (!([path containsPoint:p3] || [leftShape.bezierPath containsPoint:p3] || [topShape.bezierPath containsPoint:p3] || [topRightShape.bezierPath containsPoint:p3]))
 					break;
 			}
 		}
@@ -467,7 +468,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 {
 	NSMutableArray *shapes = [NSMutableArray array];
 	NSTimeInterval startTime = [NSDate timeIntervalSinceReferenceDate];
-	NSTimeInterval maximumTime = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? kMaximumPadTime : kMaximumPhoneTime;
+	NSTimeInterval maximumTime = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? DekoMaximumPadTime : DekoMaximumPhoneTime;
 	
 	for (NSInteger i = 0; i < amount; i++)
 	{
@@ -489,7 +490,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 - (void)_createStripeLayoutWithSizeType:(HarmonySizeType)sizeType
 {
 	NSMutableArray *shapes = [[NSMutableArray alloc] init];
-	NSInteger amount = floor(CGRectGetHeight(self.bounds) / kMinimumShapeSize);
+	NSInteger amount = floor(CGRectGetHeight(self.bounds) / DekoMinimumShapeSize);
 	HarmonyShape *previousShape = nil;
 	
 	for (NSInteger i = 0; i < amount; i++)
@@ -587,8 +588,8 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 	else if (positionType == HarmonyPositionTypeFree)
 	{
 		NSInteger amount = horizontalAmount * verticalAmount;
-		if (amount > kMaximumFreeAmount)
-			amount = kMaximumFreeAmount;
+		if (amount > DekoMaximumFreeAmount)
+			amount = DekoMaximumFreeAmount;
 		
 		[self _createFreeLayoutWithShapeType:shapeType transformType:transformType sizeType:sizeType rotationType:rotationType amount:amount];
 	}
@@ -602,7 +603,7 @@ const NSTimeInterval kMaximumPadTime = 10.0;
 	}
 	else
 	{
-		NSLog(@"Unknown position type: %d", positionType);
+		NSLog(@"Unknown position type: %ld", (long)positionType);
 	}
 }
 

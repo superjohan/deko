@@ -8,9 +8,9 @@
 
 #import "DekoLocalizationManager.h"
 
-NSString * const kDekoFont = @"GillSans-Light";
-NSString * const kDekoKoreaJapanFont = @"AppleSDGothicNeo-UltraLight";
-NSString * const kDekoChinaFont = @"FZLTXHK--GBK1-0";
+NSString * const DekoFont = @"GillSans-Light";
+NSString * const DekoKoreaJapanFont = @"AppleSDGothicNeo-UltraLight";
+NSString * const DekoChinaFont = @"FZLTXHK--GBK1-0";
 
 typedef NS_ENUM(NSInteger, DekoLanguageType)
 {
@@ -59,19 +59,19 @@ typedef NS_ENUM(NSInteger, DekoLanguageType)
 {
 	if (self.currentLanguage == DekoLanguageTypeNormal)
 	{
-		return [UIFont fontWithName:kDekoFont size:size];
+		return [UIFont fontWithName:DekoFont size:size];
 	}
 	else if (self.currentLanguage == DekoLanguageTypeChina)
 	{
-		return [UIFont fontWithName:kDekoChinaFont size:floor(size * .85)];
+		return [UIFont fontWithName:DekoChinaFont size:floor(size * .85)];
 	}
 	else if (self.currentLanguage == DekoLanguageTypeJapan)
 	{
-		return [UIFont fontWithName:kDekoKoreaJapanFont size:floor(size * .90)];
+		return [UIFont fontWithName:DekoKoreaJapanFont size:floor(size * .90)];
 	}
 	else if (self.currentLanguage == DekoLanguageTypeKorea)
 	{
-		return [UIFont fontWithName:kDekoKoreaJapanFont size:size];
+		return [UIFont fontWithName:DekoKoreaJapanFont size:size];
 	}
 	else
 	{

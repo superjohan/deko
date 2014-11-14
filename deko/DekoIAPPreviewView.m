@@ -41,9 +41,9 @@
 
 #pragma mark - Public
 
-- (instancetype)initWithUserInterfaceIdiom:(UIUserInterfaceIdiom)userInterfaceIdiom
+- (instancetype)initWithFrame:(CGRect)frame
 {
-	if ((self = [super initWithFrame:CGRectZero]))
+	if ((self = [super initWithFrame:frame]))
 	{
 		_low = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iappreview-low"]];
 		_low.contentMode = UIViewContentModeTopLeft;
@@ -56,7 +56,7 @@
 		[self addSubview:_high];
 		
 		_border = [[UIView alloc] initWithFrame:CGRectZero];
-		_border.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+		_border.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 		[self addSubview:_border];
 		
 		_panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_panRecognized:)];
