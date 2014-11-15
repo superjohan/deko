@@ -108,7 +108,7 @@
 	[container addSubview:twitterButton];
 	
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-	NSString *versionString = infoDictionary[@"CFBundleVersion"];
+	NSString *versionString = infoDictionary[@"CFBundleShortVersionString"];
 	UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	versionLabel.font = [self.localizationManager localizedFontWithSize:14.0];
 	versionLabel.textColor = [UIColor darkGrayColor];
