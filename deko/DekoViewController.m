@@ -383,6 +383,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 		}
 		
 		[self _updateDebugLabel];
+		[self _positionWhiteCanvasLabels];
 	}];
 }
 
@@ -829,7 +830,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	self.whiteCanvasLabel.backgroundColor = [UIColor clearColor];
 	self.whiteCanvasLabel.textColor = [UIColor darkGrayColor];
 	self.whiteCanvasLabel.font = [self.localizationManager localizedFontWithSize:21.0];
-	self.whiteCanvasLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleTopMargin;
+	self.whiteCanvasLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	self.whiteCanvasLabel.text = NSLocalizedString(@"New", @"Scene refresh, full refresh");
 	[self.whiteCanvasLabel sizeToFit];
 	[self.whiteCanvas addSubview:self.whiteCanvasLabel];
@@ -846,6 +847,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	self.whiteCanvasSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	self.whiteCanvasSpinner.color = [UIColor blackColor];
 	self.whiteCanvasSpinner.hidden = YES;
+	self.whiteCanvasSpinner.autoresizingMask = self.whiteCanvasLabel.autoresizingMask;
 	[self.whiteCanvas addSubview:self.whiteCanvasSpinner];
 	
 	UIImage *shadowImage = [UIImage imageNamed:@"shadow"];
@@ -941,6 +943,16 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 - (BOOL)shouldAutorotate
 {
+	// FIXME: This is a terrible place to do this check.
+	
+	CGFloat whiteCanvasX = self.whiteCanvas.frame.origin.x;
+	CGFloat width = CGRectGetWidth(self.view.bounds);
+
+	if (whiteCanvasX > 0 && whiteCanvasX < width)
+	{
+		[self _panEndedWithVelocity:CGPointZero undoDisabled:NO translation:CGPointZero refreshStep:0];
+	}
+	
 	return DekoShouldAutorotate();
 }
 
