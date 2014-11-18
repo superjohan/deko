@@ -49,3 +49,10 @@ BOOL DekoShouldAutorotate()
 	
 	return (DekoGetCurrentDeviceType() == DekoDeviceTypeiPhone6Plus);
 }
+
+BOOL DekoFloatsAreEqual(float float1, float float2)
+{
+	float epsilon = 0.00001;
+	
+	return (float1 < (float2 + epsilon) && float1 > (float2 - epsilon));
+}
