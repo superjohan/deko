@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 Aero Deko. All rights reserved.
 //
 
-#include "HarmonyShapeFunctions.h"
+#import "HarmonyShapeFunctions.h"
+#import "DekoFunctions.h"
 
 UIBezierPath * triangle(CGPoint p1, CGPoint p2, CGPoint p3, CGFloat angle, UIColor *color)
 {
@@ -16,7 +17,7 @@ UIBezierPath * triangle(CGPoint p1, CGPoint p2, CGPoint p3, CGFloat angle, UICol
 	[bezierPath addLineToPoint:p3];
 	[bezierPath closePath];
 
-	if (angle > 0.00000001 || angle < 0.00000001)
+	if (!DekoFloatsAreEqual(angle, 0))
 	{
 		CGRect bounds = bezierPath.bounds;
 		[bezierPath applyTransform:CGAffineTransformMakeRotation(angle)];
@@ -41,7 +42,7 @@ UIBezierPath * quad(CGPoint p1, CGPoint p2, CGPoint p3, CGPoint p4, CGFloat angl
 	[bezierPath addLineToPoint:p4];
 	[bezierPath closePath];
 
-	if (angle > 0.00000001 || angle < 0.00000001)
+	if (!DekoFloatsAreEqual(angle, 0))
 	{
 		CGRect bounds = bezierPath.bounds;
 		[bezierPath applyTransform:CGAffineTransformMakeRotation(angle)];
