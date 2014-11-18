@@ -61,6 +61,7 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 @property (nonatomic) NSString *previousSceneID;
 @property (nonatomic) UIActivityIndicatorView *whiteCanvasSpinner;
 @property (nonatomic) DekoLocalizationManager *localizationManager;
+@property (nonatomic) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) BOOL appLaunched;
 @property (nonatomic, assign) BOOL firstGeneration;
 @property (nonatomic, assign) BOOL showMenuLabels;
@@ -183,8 +184,8 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	debugRecognizer.numberOfTouchesRequired = 2;
 	[self.view addGestureRecognizer:debugRecognizer];
 	
-	UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_panRecognized:)];
-	[self.swipeableContainer addGestureRecognizer:panRecognizer];
+	self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_panRecognized:)];
+	[self.swipeableContainer addGestureRecognizer:self.panRecognizer];
 }
 
 - (void)_showMenu
@@ -897,6 +898,17 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	[self.menuView refreshShareMenuWithPurchaseStatus:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 }
 
+- (void)_handleRotation
+{
+	if (self.panRecognizer.state == UIGestureRecognizerStateBegan || self.panRecognizer.state == UIGestureRecognizerStateChanged)
+	{
+		self.panRecognizer.enabled = NO;
+		self.panRecognizer.enabled = YES;
+	}
+	
+	[self _positionWhiteCanvasLabels];
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
@@ -943,17 +955,23 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 - (BOOL)shouldAutorotate
 {
-	// FIXME: This is a terrible place to do this check.
-	
-	CGFloat whiteCanvasX = self.whiteCanvas.frame.origin.x;
-	CGFloat width = CGRectGetWidth(self.view.bounds);
-
-	if (whiteCanvasX > 0 && whiteCanvasX < width)
-	{
-		[self _panEndedWithVelocity:CGPointZero undoDisabled:NO translation:CGPointZero refreshStep:0];
-	}
-	
 	return DekoShouldAutorotate();
+}
+
+-(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	
+	[self _handleRotation];
+}
+
+-(void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+	
+	[coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+		[self _handleRotation];
+	} completion:nil];
 }
 
 - (void)dealloc
