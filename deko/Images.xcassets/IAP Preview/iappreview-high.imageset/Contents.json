@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "iappreview-high.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "iappreview-high@2x.png"
+      "filename" : "IAP-hires-2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "IAP-hires-3x.png"
     }
   ],
   "info" : {

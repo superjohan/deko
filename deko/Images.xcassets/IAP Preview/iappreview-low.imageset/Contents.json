@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "iappreview-low.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "iappreview-low@2x.png"
+      "filename" : "IAP-lores-2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "IAP-lores-3x.png"
     }
   ],
   "info" : {
