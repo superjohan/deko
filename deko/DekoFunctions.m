@@ -42,12 +42,7 @@ DekoDeviceType DekoGetCurrentDeviceType()
 
 BOOL DekoShouldAutorotate()
 {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-	{
-		return YES;
-	}
-	
-	return (DekoGetCurrentDeviceType() == DekoDeviceTypeiPhone6Plus);
+	return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 }
 
 BOOL DekoFloatsAreEqual(float float1, float float2)
