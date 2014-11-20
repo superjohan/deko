@@ -107,7 +107,13 @@
 - (void)_configureViewFrames
 {
 	CGFloat topOffset = (CGRectGetHeight(self.view.bounds) < 500.0) ? 20.0 : 0;
-	self.topContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetMidY(self.view.bounds) - topOffset);
+	CGFloat height = CGRectGetMidY(self.view.bounds) - topOffset;
+	if (height > self.topContainer.previewHeight)
+	{
+		height = self.topContainer.previewHeight;
+	}
+	
+	self.topContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), height);
 	
 	CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 	CGFloat textWidth = floor(self.view.bounds.size.width * 0.7);

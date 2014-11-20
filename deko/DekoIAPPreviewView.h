@@ -10,4 +10,6 @@
 
 @interface DekoIAPPreviewView : UIView
 
+@property (nonatomic, readonly) CGFloat previewHeight;
+
 @end

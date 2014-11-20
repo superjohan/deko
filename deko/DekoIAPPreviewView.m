@@ -78,4 +78,11 @@
 								CGRectGetHeight(self.bounds));
 }
 
+#pragma mark - Properties
+
+- (CGFloat)previewHeight
+{
+	return self.low.image.size.height;
+}
+
 @end
