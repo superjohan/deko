@@ -508,6 +508,13 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 		CGPoint velocity = [panRecognizer velocityInView:self.swipeableContainer];
 		
+		if (panRecognizer.state == UIGestureRecognizerStateCancelled)
+		{
+			velocity = CGPointZero;
+			translation = CGPointZero;
+			refreshStep = 0;
+		}
+
 		[self _panEndedWithVelocity:velocity undoDisabled:undoDisabled translation:translation refreshStep:refreshStep];
 	}
 }
