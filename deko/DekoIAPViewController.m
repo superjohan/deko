@@ -83,11 +83,7 @@
 		size.width = minimumSize;
 	}
 
-	NSTimeInterval duration = UINavigationControllerHideShowBarDuration;
-	if (!animated)
-		duration = 0;
-	
-	[UIView animateWithDuration:duration animations:^
+	void (^animationBlock)() = ^
 	{
 		CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 		self.purchaseButton.frame = CGRectMake(self.titleLabel.frame.origin.x - 5.0,
@@ -98,7 +94,16 @@
 											  self.purchaseButton.frame.origin.y,
 											  minimumSize,
 											  minimumSize);
-	}];
+	};
+	
+	if (animated)
+	{
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:animationBlock];
+	}
+	else
+	{
+		animationBlock();
+	}
 	
 	self.purchaseButton.layer.cornerRadius = CGRectGetMidY(self.purchaseButton.bounds);
 	self.restoreButton.layer.cornerRadius = CGRectGetMidY(self.restoreButton.bounds);
@@ -257,10 +262,15 @@
 	
 	self.view.layer.cornerRadius = 0;
 	
-	[self _configureViewFrames];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_priceUpdated:) name:DekoIAPManagerProPriceUpdatedNotification object:self.purchaseManager];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_proPurchased:) name:DekoIAPManagerProVersionPurchasedNotification object:self.purchaseManager];
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	[self _configureViewFrames];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
