@@ -262,10 +262,15 @@
 	
 	self.view.layer.cornerRadius = 0;
 	
-	[self _configureViewFrames];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_priceUpdated:) name:DekoIAPManagerProPriceUpdatedNotification object:self.purchaseManager];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_proPurchased:) name:DekoIAPManagerProVersionPurchasedNotification object:self.purchaseManager];
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	[self _configureViewFrames];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
