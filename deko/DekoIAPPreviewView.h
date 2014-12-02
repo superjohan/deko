@@ -10,6 +10,6 @@
 
 @interface DekoIAPPreviewView : UIView
 
-- (instancetype)initWithUserInterfaceIdiom:(UIUserInterfaceIdiom)userInterfaceIdiom;
+@property (nonatomic, readonly) CGFloat previewHeight;
 
 @end

@@ -13,6 +13,7 @@
 #import "DekoIAPManager.h"
 #import "DekoIAPPreviewView.h"
 #import "DekoLocalizationManager.h"
+#import "DekoFunctions.h"
 
 @interface DekoIAPViewController ()
 @property (nonatomic) UIButton *backButton;
@@ -69,7 +70,7 @@
 
 - (void)_configurePurchaseButtonSizeAnimated:(BOOL)animated
 {
-	CGSize size = [self.purchaseButton.titleLabel.text sizeWithFont:self.purchaseButton.titleLabel.font];
+	CGSize size = [self.purchaseButton.titleLabel.text sizeWithAttributes:@{ NSFontAttributeName: self.purchaseButton.titleLabel.font }];
 	CGFloat minimumSize = 60.0;
 	CGFloat padding = 20.0;
 	
@@ -82,13 +83,9 @@
 		size.width = minimumSize;
 	}
 
-	NSTimeInterval duration = UINavigationControllerHideShowBarDuration;
-	if ( ! animated)
-		duration = 0;
-	
-	[UIView animateWithDuration:duration animations:^
+	void (^animationBlock)() = ^
 	{
-		CGFloat offset = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? 0 : 10.0;
+		CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 		self.purchaseButton.frame = CGRectMake(self.titleLabel.frame.origin.x - 5.0,
 											   self.iapCopyLabel.frame.origin.y + self.iapCopyLabel.bounds.size.height + 15.0 + offset,
 											   size.width,
@@ -97,7 +94,16 @@
 											  self.purchaseButton.frame.origin.y,
 											  minimumSize,
 											  minimumSize);
-	}];
+	};
+	
+	if (animated)
+	{
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:animationBlock];
+	}
+	else
+	{
+		animationBlock();
+	}
 	
 	self.purchaseButton.layer.cornerRadius = CGRectGetMidY(self.purchaseButton.bounds);
 	self.restoreButton.layer.cornerRadius = CGRectGetMidY(self.restoreButton.bounds);
@@ -106,9 +112,15 @@
 - (void)_configureViewFrames
 {
 	CGFloat topOffset = (CGRectGetHeight(self.view.bounds) < 500.0) ? 20.0 : 0;
-	self.topContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetMidY(self.view.bounds) - topOffset);
+	CGFloat height = CGRectGetMidY(self.view.bounds) - topOffset;
+	if (height > self.topContainer.previewHeight)
+	{
+		height = self.topContainer.previewHeight;
+	}
 	
-	CGFloat offset = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? 0 : 10.0;
+	self.topContainer.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), height);
+	
+	CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 	CGFloat textWidth = floor(self.view.bounds.size.width * 0.7);
 	CGRect titleRect = CGRectMake(floor(CGRectGetMidX(self.view.bounds) - (textWidth / 2.0)),
 								  floor(CGRectGetHeight(self.topContainer.bounds) + 20.0 + offset),
@@ -165,9 +177,9 @@
 {
     [super viewDidLoad];
 	
-	self.view.backgroundColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
+	self.view.backgroundColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
 	
-	DekoIAPPreviewView *topContainer = [[DekoIAPPreviewView alloc] initWithUserInterfaceIdiom:[[UIDevice currentDevice] userInterfaceIdiom]];
+	DekoIAPPreviewView *topContainer = [[DekoIAPPreviewView alloc] initWithFrame:CGRectZero];
 	topContainer.backgroundColor = [UIColor greenColor];
 	topContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:topContainer];
@@ -183,13 +195,13 @@
 	UILabel *iapCopyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	iapCopyLabel.backgroundColor = [UIColor clearColor];
 	NSString *iapCopyString = nil;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
-		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference.", @"IAP view copy, iPhone");
+		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference.", @"IAP view copy, iPad");
 	}
 	else
 	{
-		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity. Use the pixel-perfect patterns as wallpapers or tweak them further in other apps.\n\nSlide the bar on the image to see the difference.", @"IAP view copy, iPad");
+		iapCopyString = NSLocalizedString(@"Unlock high quality export to get your creations in full fidelity.\nUse the pixel-perfect patterns as wallpapers or tweak them further in other apps. Slide the bar on the image to see the difference.", @"IAP view copy, iPhone");
 	}
 	
 	iapCopyLabel.text = iapCopyString;
@@ -201,8 +213,8 @@
 	UIButton *purchaseButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	purchaseButton.backgroundColor = [UIColor redColor];
 	purchaseButton.titleLabel.font = [self.localizationManager localizedFontWithSize:15.0];
-	purchaseButton.titleLabel.textColor = [UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0];
-	[purchaseButton setTitleColor:[UIColor colorWithWhite:kDekoBackgroundColor alpha:1.0] forState:UIControlStateNormal];
+	purchaseButton.titleLabel.textColor = [UIColor colorWithWhite:DekoBackgroundColor alpha:1.0];
+	[purchaseButton setTitleColor:[UIColor colorWithWhite:DekoBackgroundColor alpha:1.0] forState:UIControlStateNormal];
 	[purchaseButton addTarget:self action:@selector(_purchaseProVersion) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:purchaseButton];
 	self.purchaseButton = purchaseButton;
@@ -250,10 +262,15 @@
 	
 	self.view.layer.cornerRadius = 0;
 	
-	[self _configureViewFrames];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_priceUpdated:) name:DekoIAPManagerProPriceUpdatedNotification object:self.purchaseManager];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_proPurchased:) name:DekoIAPManagerProVersionPurchasedNotification object:self.purchaseManager];
+}
+
+- (void)viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	[self _configureViewFrames];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -262,6 +279,11 @@
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:DekoIAPManagerProPriceUpdatedNotification object:self.purchaseManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:DekoIAPManagerProVersionPurchasedNotification object:self.purchaseManager];
+}
+
+- (BOOL)shouldAutorotate
+{
+	return DekoShouldAutorotate();
 }
 
 @end

@@ -21,15 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-	{
-	    self.viewController = [[DekoViewController alloc] initWithNibName:@"DekoViewController_iPhone" bundle:nil];
-	}
-	else
-	{
-	    self.viewController = [[DekoViewController alloc] initWithNibName:@"DekoViewController_iPad" bundle:nil];
-	}
 	
 	HarmonyColorGenerator *colorGenerator = [[HarmonyColorGenerator alloc] init];
 	DekoShareHelper *shareHelper = [[DekoShareHelper alloc] init];
@@ -46,6 +37,7 @@
 	DekoIAPViewController *iapViewController = [[DekoIAPViewController alloc] initWithNibName:nil bundle:nil];
 	iapViewController.purchaseManager = purchaseManager;
 	
+	self.viewController = [[DekoViewController alloc] init];
 	self.viewController.purchaseManager = purchaseManager;
 	self.viewController.settingGenerator = settingGenerator;
 	self.viewController.shareHelper = shareHelper;

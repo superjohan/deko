@@ -7,6 +7,7 @@
 //
 
 #import "DekoLogoView.h"
+#import "DekoFunctions.h"
 
 typedef void(^CompletionBlock)(void);
 
@@ -59,17 +60,15 @@ typedef void(^CompletionBlock)(void);
 - (void)setup
 {	
 	NSString *device = nil;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad)
 	{
 		device = @"ipad";
 	}
-	else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	else
 	{
 		device = @"iphone";
 	}
-	
-	AEAssert(device != nil);
-	
+		
 	self.logoPieces = [NSMutableArray array];
 	
 	UIView *logoContainer = [[UIView alloc] initWithFrame:CGRectZero];
@@ -77,7 +76,7 @@ typedef void(^CompletionBlock)(void);
 	
 	for (NSInteger i = 1; i < 12; i++)
 	{
-		NSString *filename = [NSString stringWithFormat:@"logo%d-%@", i, device];
+		NSString *filename = [NSString stringWithFormat:@"logo%ld-%@", (long)i, device];
 		UIImage *logoPiece = [UIImage imageNamed:filename];
 		containerSize = logoPiece.size;
 		UIImageView *logoPieceView = [[UIImageView alloc] initWithImage:logoPiece];

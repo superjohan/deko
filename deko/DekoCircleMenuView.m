@@ -8,7 +8,7 @@
 
 #import "DekoCircleMenuView.h"
 
-const NSInteger kCirclesPerRow = 3;
+const NSInteger DekoCirclesPerRow = 3;
 
 @implementation DekoCircleMenuView
 
@@ -34,19 +34,19 @@ const NSInteger kCirclesPerRow = 3;
 
 - (void)_drawCirclesInRect:(CGRect)rect selected:(BOOL)selected
 {
-	NSInteger rows = (NSInteger)ceil((CGFloat)self.items / (CGFloat)kCirclesPerRow);
+	NSInteger rows = (NSInteger)ceil((CGFloat)self.items / (CGFloat)DekoCirclesPerRow);
 	
 	for (NSInteger i = 0; i < rows; i++)
 	{
-		NSInteger itemsPerRow = self.items - (i * kCirclesPerRow);
-		if (itemsPerRow > kCirclesPerRow)
+		NSInteger itemsPerRow = self.items - (i * DekoCirclesPerRow);
+		if (itemsPerRow > DekoCirclesPerRow)
 		{
-			itemsPerRow = kCirclesPerRow;
+			itemsPerRow = DekoCirclesPerRow;
 		}
 		
 		for (NSInteger j = 0; j < itemsPerRow; j++)
 		{
-			NSInteger current = 1 + (i * kCirclesPerRow) + j;
+			NSInteger current = 1 + (i * DekoCirclesPerRow) + j;
 
 			// This is stupid but I don't really feel like fixing this right now.
 			// So, FIXME if there's ever need for a two-item row.
@@ -56,7 +56,7 @@ const NSInteger kCirclesPerRow = 3;
 				column = 1;
 			}
 			
-			if ( ! selected)
+			if (!selected)
 			{
 				if (current != self.selected)
 				{

@@ -85,8 +85,8 @@ typedef NS_ENUM(NSInteger, HarmonyColorSaturationType)
 	HarmonyColorSaturationTypeMax,
 };
 
-static const CGFloat kMinimumShapeSize = 25.0;
-static const NSInteger kMaximumDistance = 20;
+static const CGFloat DekoMinimumShapeSize = 25.0;
+static const NSInteger DekoMaximumDistance = 20;
 
 @interface HarmonyCanvasSettings : NSObject <NSCopying>
 @property (nonatomic, assign) HarmonyMixingType mixingType;

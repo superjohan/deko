@@ -52,7 +52,7 @@
 {
 	AELOG_DEBUG(@"");
 	
-	if ( ! [MFMailComposeViewController canSendMail])
+	if (![MFMailComposeViewController canSendMail])
 	{
 		NSError *error = [[NSError alloc] initWithDomain:@"DekoDomain" code:-1 userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(@"Email has not been configured on this device.", @"Email not configured error description") }];
 		[self.delegate shareHelper:self savedImageWithError:error];
