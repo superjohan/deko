@@ -15,22 +15,18 @@ DekoDeviceType DekoGetCurrentDeviceType()
 		return DekoDeviceTypeiPad;
 	}
 	
-	CGRect screenBounds = [[UIScreen mainScreen] nativeBounds];
-	CGFloat width = MIN(screenBounds.size.width, screenBounds.size.height);
+	CGRect screenBounds = [[UIScreen mainScreen] bounds];
 	CGFloat height = MAX(screenBounds.size.width, screenBounds.size.height);
 	
-	if (width > 639.0 && width < 743.0)
+	if (height < 481.0)
 	{
-		if (height < 1135.0)
-		{
-			return DekoDeviceTypeiPhone;
-		}
-		else
-		{
-			return DekoDeviceTypeiPhone5;
-		}
+		return DekoDeviceTypeiPhone;
 	}
-	else if (width > 743.0 && width < 1079.0)
+	else if (height < 569.0)
+	{
+		return DekoDeviceTypeiPhone5;
+	}
+	else if (height < 668.0)
 	{
 		return DekoDeviceTypeiPhone6;
 	}
