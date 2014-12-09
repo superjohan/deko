@@ -13,10 +13,11 @@
 
 @interface DekoSceneManager : NSObject
 
+@property (nonatomic, readonly, copy) NSArray *allScenes;
+
 - (NSString *)sceneIDBySavingSceneWithCanvasSettings:(HarmonyCanvasSettings *)settings thumbnail:(UIImage *)image;
 - (void)deleteSceneWithID:(NSString *)sceneID;
 - (DekoScene *)sceneWithID:(NSString *)sceneID;
-- (NSArray *)allScenes;
 - (void)loadThumbnailForSceneID:(NSString *)sceneID completion:(void (^)(UIImage *thumbnail))completion;
 
 @end

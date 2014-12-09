@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DekoShareType)
 @property (nonatomic, weak) NSObject<DekoMenuViewDelegate> *delegate;
 @property (nonatomic) DekoLocalizationManager *localizationManager;
 
-- (id)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth;
+- (instancetype)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth NS_DESIGNATED_INITIALIZER;
 - (void)setupWithDelegate:(id)delegate purchased:(BOOL)purchased tutorial:(BOOL)tutorial;
 - (void)updateMenuWithSaveStatus:(BOOL)saved tutorial:(BOOL)tutorial animated:(BOOL)animated;
 - (void)refreshShareMenuWithPurchaseStatus:(BOOL)purchased tutorial:(BOOL)tutorial;

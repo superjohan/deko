@@ -82,7 +82,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 
 #pragma mark - NSObject
 
-- (id)init
+- (instancetype)init
 {
 	if ((self = [super init]))
 	{
@@ -102,15 +102,15 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 	NSData *thumbnailData = UIImagePNGRepresentation(image);
 	NSString *sceneID = [[NSProcessInfo processInfo] globallyUniqueString];
 	NSDictionary *settingDictionary = @{
-	DekoSettingMixingTypeKey : [NSNumber numberWithInteger:settings.mixingType],
-	DekoSettingPositionTypeKey : [NSNumber numberWithInteger:settings.positionType],
-	DekoSettingTransformTypeKey : [NSNumber numberWithInteger:settings.transformType],
-	DekoSettingSizeTypeKey : [NSNumber numberWithInteger:settings.sizeType],
-	DekoSettingRotationTypeKey : [NSNumber numberWithInteger:settings.rotationType],
-	DekoSettingShapeTypeKey : [NSNumber numberWithInteger:settings.shapeType],
-	DekoSettingColorTypeKey : [NSNumber numberWithInteger:settings.colorType],
-	DekoSettingColorBrightnessTypeKey : [NSNumber numberWithInteger:settings.brightnessType],
-	DekoSettingColorSaturationTypeKey : [NSNumber numberWithInteger:settings.saturationType],
+	DekoSettingMixingTypeKey : @(settings.mixingType),
+	DekoSettingPositionTypeKey : @(settings.positionType),
+	DekoSettingTransformTypeKey : @(settings.transformType),
+	DekoSettingSizeTypeKey : @(settings.sizeType),
+	DekoSettingRotationTypeKey : @(settings.rotationType),
+	DekoSettingShapeTypeKey : @(settings.shapeType),
+	DekoSettingColorTypeKey : @(settings.colorType),
+	DekoSettingColorBrightnessTypeKey : @(settings.brightnessType),
+	DekoSettingColorSaturationTypeKey : @(settings.saturationType),
 	DekoSettingHueKey : [NSNumber numberWithDouble:settings.hue],
 	DekoSettingBaseSizeKey : [NSNumber numberWithDouble:settings.baseSize],
 	DekoSettingBaseDistanceKey : [NSNumber numberWithDouble:settings.baseDistance],

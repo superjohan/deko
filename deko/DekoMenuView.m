@@ -104,7 +104,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 
 #pragma mark - UIView
 
-- (id)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth
+- (instancetype)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth
 {
     if ((self = [super initWithFrame:frame]))
 	{

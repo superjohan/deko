@@ -1035,7 +1035,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 {
 	[self.menuView updateShareButtonsWithBusyStateForShareType:shareType];
 	
-	[self performSelector:@selector(_shareImageWithShareType:) withObject:[NSNumber numberWithInteger:shareType] afterDelay:0];
+	[self performSelector:@selector(_shareImageWithShareType:) withObject:@(shareType) afterDelay:0];
 }
 
 #pragma mark - DekoShareHelperDelegate
