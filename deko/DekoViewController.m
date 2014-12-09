@@ -70,47 +70,13 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 
 @implementation DekoViewController
 
-const NSTimeInterval DekoLogoAnimationDuration = 2.0;
-
-const CGFloat DekoiPadOffset = 238.0;
-const CGFloat DekoiPhone6PlusOffset = ((2662.0 - 2208.0) / 3.0); // whee
-const CGFloat DekoiPhone6WidthOffset = 51.0;
-const CGFloat DekoiPhone6HeightOffset = 137.0;
-const CGFloat DekoiPhoneWidthOffset = 52.0;
-const CGFloat DekoiPhoneHeightOffset = 128.0;
-const CGFloat DekoiPhone4WidthOffset = 50.0;
-const CGFloat DekoiPhone4HeightOffset = 118.0;
-
 #pragma mark - Private
-
-- (CGFloat)_squareOffset
-{
-	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
-	
-	switch (deviceType)
-	{
-		case DekoDeviceTypeiPad:
-			return DekoiPadOffset;
-		case DekoDeviceTypeiPhone6Plus:
-			return DekoiPhone6PlusOffset;
-		case DekoDeviceTypeiPhone6:
-			return DekoiPhone6HeightOffset;
-		case DekoDeviceTypeiPhone5:
-			return DekoiPhoneHeightOffset;
-		case DekoDeviceTypeiPhone:
-			return DekoiPhone4HeightOffset;
-		default:
-			AELOG_ERROR(@"Unknown device type: %ld", (long)deviceType);
-			return 0;
-			break;
-	}
-}
 
 - (CGRect)_rectForHarmonyContainer
 {
 	CGFloat width = self.view.bounds.size.width;
 	CGFloat height = self.view.bounds.size.height;
-	CGFloat baseLength = MAX(width, height) + [self _squareOffset];
+	CGFloat baseLength = MAX(width, height) + DekoGetSquareOffset();
 	CGFloat containerLength = sqrt(pow(baseLength, 2.0) + pow(baseLength, 2.0));
 	CGRect frame = CGRectMake(ceil((self.view.bounds.size.width / 2.0) - (containerLength / 2.0)),
 							  ceil((self.view.bounds.size.height / 2.0) - (containerLength / 2.0)),
@@ -648,7 +614,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	
 	if (deviceType == DekoDeviceTypeiPad)
 	{
-		CGFloat squareOffset = [self _squareOffset];
+		CGFloat squareOffset = DekoGetSquareOffset();
 		width += squareOffset;
 		height += squareOffset;
 		CGFloat length = MAX(width, height);

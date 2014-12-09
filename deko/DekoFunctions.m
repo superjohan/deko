@@ -47,3 +47,25 @@ BOOL DekoFloatsAreEqual(float float1, float float2)
 	
 	return (float1 < (float2 + epsilon) && float1 > (float2 - epsilon));
 }
+
+CGFloat DekoGetSquareOffset()
+{
+	DekoDeviceType deviceType = DekoGetCurrentDeviceType();
+	
+	switch (deviceType)
+	{
+		case DekoDeviceTypeiPad:
+			return DekoiPadOffset;
+		case DekoDeviceTypeiPhone6Plus:
+			return DekoiPhone6PlusOffset;
+		case DekoDeviceTypeiPhone6:
+			return DekoiPhone6HeightOffset;
+		case DekoDeviceTypeiPhone5:
+			return DekoiPhoneHeightOffset;
+		case DekoDeviceTypeiPhone:
+			return DekoiPhone4HeightOffset;
+		default:
+			AELOG_ERROR(@"Unknown device type: %ld", (long)deviceType);
+			return DekoDeviceTypeInvalid;
+	}
+}
