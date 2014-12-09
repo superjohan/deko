@@ -846,13 +846,6 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 #endif
 }
 
-- (void)_proVersionPurchased:(NSNotification *)notification
-{
-	self.cachedImage = nil; // The user may have exported the same image previously.
-	
-	[self.menuView refreshShareMenuWithPurchaseStatus:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
-}
-
 - (void)_handleRotation
 {
 	if (self.panRecognizer.state == UIGestureRecognizerStateBegan || self.panRecognizer.state == UIGestureRecognizerStateChanged)
@@ -862,6 +855,15 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 	}
 	
 	[self _positionWhiteCanvasLabels];
+}
+
+#pragma mark - Notifications
+
+- (void)_proVersionPurchased:(NSNotification *)notification
+{
+	self.cachedImage = nil; // The user may have exported the same image previously.
+	
+	[self.menuView refreshShareMenuWithPurchaseStatus:self.purchaseManager.proPurchased tutorial:self.showMenuLabels];
 }
 
 #pragma mark - UIViewController
