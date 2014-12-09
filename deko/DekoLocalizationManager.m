@@ -29,11 +29,11 @@ typedef NS_ENUM(NSInteger, DekoLanguageType)
 
 #pragma mark - Public
 
-- (id)init
+- (instancetype)init
 {
 	if ((self = [super init]))
 	{
-		NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+		NSString *language = [NSLocale preferredLanguages][0];
 		if ([language isEqualToString:@"zh-Hans"])
 		{
 			_currentLanguage = DekoLanguageTypeChina;

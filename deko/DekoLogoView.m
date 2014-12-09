@@ -25,12 +25,9 @@ typedef void(^CompletionBlock)(void);
 {
 	AEAssert([view isKindOfClass:[UIImageView class]]);
 	
-	[UIView animateWithDuration:self.duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^
-	{
+	[UIView animateWithDuration:self.duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
 		view.alpha = 1;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		[self.logoPieces removeObject:view];
 		
 		if ([self.logoPieces count] == 0)
@@ -45,7 +42,7 @@ typedef void(^CompletionBlock)(void);
 
 #pragma mark - UIView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame]))
 	{
@@ -122,8 +119,7 @@ typedef void(^CompletionBlock)(void);
 		UIView *view = self.logoPieces[i];
 		NSTimeInterval delay = i * interval;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-		{
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
 			[self _animateView:view];
 		});
 	}

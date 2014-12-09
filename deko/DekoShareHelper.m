@@ -71,8 +71,7 @@
 - (void)_saveImageToPhotos:(UIImage *)image
 {
 	ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-	[library saveImageData:[self _imageDataFromImage:image] toAlbum:NSLocalizedString(@"Deko", @"Photo album title, do not localize") withCompletionBlock:^(NSError *error)
-	{
+	[library saveImageData:[self _imageDataFromImage:image] toAlbum:NSLocalizedString(@"Deko", @"Photo album title, do not localize") withCompletionBlock:^(NSError *error) {
 		[self.delegate shareHelper:self savedImageWithError:error];
 	}];
 }

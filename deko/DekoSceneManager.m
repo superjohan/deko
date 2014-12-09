@@ -82,7 +82,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 
 #pragma mark - NSObject
 
-- (id)init
+- (instancetype)init
 {
 	if ((self = [super init]))
 	{
@@ -102,25 +102,25 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 	NSData *thumbnailData = UIImagePNGRepresentation(image);
 	NSString *sceneID = [[NSProcessInfo processInfo] globallyUniqueString];
 	NSDictionary *settingDictionary = @{
-	DekoSettingMixingTypeKey : [NSNumber numberWithInteger:settings.mixingType],
-	DekoSettingPositionTypeKey : [NSNumber numberWithInteger:settings.positionType],
-	DekoSettingTransformTypeKey : [NSNumber numberWithInteger:settings.transformType],
-	DekoSettingSizeTypeKey : [NSNumber numberWithInteger:settings.sizeType],
-	DekoSettingRotationTypeKey : [NSNumber numberWithInteger:settings.rotationType],
-	DekoSettingShapeTypeKey : [NSNumber numberWithInteger:settings.shapeType],
-	DekoSettingColorTypeKey : [NSNumber numberWithInteger:settings.colorType],
-	DekoSettingColorBrightnessTypeKey : [NSNumber numberWithInteger:settings.brightnessType],
-	DekoSettingColorSaturationTypeKey : [NSNumber numberWithInteger:settings.saturationType],
-	DekoSettingHueKey : [NSNumber numberWithDouble:settings.hue],
-	DekoSettingBaseSizeKey : [NSNumber numberWithDouble:settings.baseSize],
-	DekoSettingBaseDistanceKey : [NSNumber numberWithDouble:settings.baseDistance],
-	DekoSettingAngleKey : [NSNumber numberWithDouble:settings.angle],
-	DekoSettingBackground1HueKey : [NSNumber numberWithDouble:settings.background1Hue],
-	DekoSettingBackground1SaturationKey : [NSNumber numberWithDouble:settings.background1Saturation],
-	DekoSettingBackground1BrightnessKey : [NSNumber numberWithDouble:settings.background1Brightness],
-	DekoSettingBackground2HueKey : [NSNumber numberWithDouble:settings.background2Hue],
-	DekoSettingBackground2SaturationKey : [NSNumber numberWithDouble:settings.background2Saturation],
-	DekoSettingBackground2BrightnessKey : [NSNumber numberWithDouble:settings.background2Brightness],
+	DekoSettingMixingTypeKey : @(settings.mixingType),
+	DekoSettingPositionTypeKey : @(settings.positionType),
+	DekoSettingTransformTypeKey : @(settings.transformType),
+	DekoSettingSizeTypeKey : @(settings.sizeType),
+	DekoSettingRotationTypeKey : @(settings.rotationType),
+	DekoSettingShapeTypeKey : @(settings.shapeType),
+	DekoSettingColorTypeKey : @(settings.colorType),
+	DekoSettingColorBrightnessTypeKey : @(settings.brightnessType),
+	DekoSettingColorSaturationTypeKey : @(settings.saturationType),
+	DekoSettingHueKey : @(settings.hue),
+	DekoSettingBaseSizeKey : @(settings.baseSize),
+	DekoSettingBaseDistanceKey : @(settings.baseDistance),
+	DekoSettingAngleKey : @(settings.angle),
+	DekoSettingBackground1HueKey : @(settings.background1Hue),
+	DekoSettingBackground1SaturationKey : @(settings.background1Saturation),
+	DekoSettingBackground1BrightnessKey : @(settings.background1Brightness),
+	DekoSettingBackground2HueKey : @(settings.background2Hue),
+	DekoSettingBackground2SaturationKey : @(settings.background2Saturation),
+	DekoSettingBackground2BrightnessKey : @(settings.background2Brightness),
 	};
 	
 	NSDictionary *sceneDictionary = @{
@@ -265,8 +265,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 {
 	AEAssert(sceneID != nil);
 	
-	dispatch_async(self.fileQueue, ^
-	{
+	dispatch_async(self.fileQueue, ^{
 		NSString *path = [self _pathForThumbnailWithSceneID:sceneID];
 		NSError *error = nil;
 		NSData *imageData = [NSData dataWithContentsOfFile:path options:0 error:&error];
@@ -275,8 +274,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		{
 			UIImage *image = [UIImage imageWithData:imageData scale:[[UIScreen mainScreen] scale]];
 			
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
+			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(image);
 			});
 		}
@@ -284,8 +282,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		{
 			AELOG_ERROR(@"Unable to read file at '%@' with error: %@", path, [error localizedDescription]);
 			
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
+			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil);
 			});
 		}

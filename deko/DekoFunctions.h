@@ -13,3 +13,4 @@
 DekoDeviceType DekoGetCurrentDeviceType();
 BOOL DekoShouldAutorotate();
 BOOL DekoFloatsAreEqual(float float1, float float2);
+CGFloat DekoGetSquareOffset();
