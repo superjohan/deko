@@ -194,8 +194,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	
 	self.menuView.hidden = NO;
 	
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		self.menuView.alpha = 1.0;
 		
 		if (DekoGetCurrentDeviceType() != DekoDeviceTypeiPad)
@@ -207,13 +206,10 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 - (void)_hideMenu
 {
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		self.menuView.alpha = 0;
 		self.watermark.alpha = 1.0;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		self.menuView.hidden = YES;
 	}];
 }
@@ -299,8 +295,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 		previous = YES;
 	}
     
-    [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+    [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		animatedView.frame = AECGRectPlace(animatedView.frame, animationDestination.x, animationDestination.y);
 		
 		if (animatedView != self.whiteCanvas)
@@ -312,9 +307,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 		self.shadow.alpha = 0;
 		self.undoShadow.frame = [self _undoShadowRect];
 		self.previousTutorialLabel.frame = [self _previousTutorialLabelRect];
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		HarmonyCanvasSettings *settings = nil;
          
 		if (previous)
@@ -336,8 +329,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 			
 			self.watermark.alpha = 0;
 			[self.swipeableContainer bringSubviewToFront:self.watermark];
-			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-			{
+			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 				self.watermark.alpha = 1;
 			}];
 			
@@ -549,12 +541,9 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	
 	self.cachedImage = nil;
 	
-	[UIView animateWithDuration:fadeOutDuration animations:^
-	{
+	[UIView animateWithDuration:fadeOutDuration animations:^{
 		self.harmonyView.alpha = 0;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		self.currentSettings = settings;
 		
 		[self.harmonyContainer addSubview:self.harmonyView];
@@ -580,26 +569,20 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 			alpha = 0;
 		}
 		
-		[UIView animateWithDuration:fadeInDuration animations:^
-		{
+		[UIView animateWithDuration:fadeInDuration animations:^{
 			animatedView.alpha = alpha;
 			
 			if (self.logoView == nil)
 			{
 				self.watermark.alpha = 1.0;
 			}
-		}
-		completion:^(BOOL finished1)
-		{
+		} completion:^(BOOL finished1) {
 			if (self.logoView != nil && fadeOutLogo)
 			{
-				[UIView animateWithDuration:DekoLogoAnimationDuration / 5.0 delay:DekoLogoAnimationDuration / 2.0 options:0 animations:^
-				{
+				[UIView animateWithDuration:DekoLogoAnimationDuration / 5.0 delay:DekoLogoAnimationDuration / 2.0 options:0 animations:^{
 					self.logoView.alpha = 0;
 					self.watermark.alpha = 1.0;
-				}
-				completion:^(BOOL finished2)
-				{
+				} completion:^(BOOL finished2) {
 					[self.logoView removeFromSuperview];
 					self.logoView = nil;
 					
@@ -755,8 +738,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 	creditsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
 	creditsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	creditsViewController.localizationManager = self.localizationManager;
-	[self presentViewController:creditsViewController animated:YES completion:^
-	{
+	[self presentViewController:creditsViewController animated:YES completion:^{
 		AELOG_DEBUG(@"Credits presented.");
 	}];
 }
@@ -946,13 +928,11 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 	if (!self.appLaunched)
 	{
-		[UIView animateWithDuration:DekoLogoAnimationDuration animations:^
-		{
+		[UIView animateWithDuration:DekoLogoAnimationDuration animations:^{
 			self.view.backgroundColor = [UIColor colorWithWhite:DekoLaunchBackgroundColor alpha:1.0];
 		}];
 		
-		[self.logoView animateLogoWithDuration:DekoLogoAnimationDuration completion:^
-		{
+		[self.logoView animateLogoWithDuration:DekoLogoAnimationDuration completion:^{
 			[self _revealCanvas];
 		}];
 		
@@ -1010,8 +990,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 {
 	self.galleryViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	self.galleryViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self presentViewController:self.galleryViewController animated:YES completion:^
-	{
+	[self presentViewController:self.galleryViewController animated:YES completion:^{
 		AELOG_DEBUG(@"Gallery shown.");
 	}];
 }
@@ -1025,8 +1004,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 {
 	self.iapViewController.modalPresentationStyle = UIModalPresentationFormSheet;
 	self.iapViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[self presentViewController:self.iapViewController animated:YES completion:^
-	{
+	[self presentViewController:self.iapViewController animated:YES completion:^{
 		AELOG_DEBUG(@"IAP view controller presented.");
 	}];
 }
@@ -1044,8 +1022,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 {
 	AEAssert(viewController != nil);
 	
-	[self presentViewController:viewController animated:YES completion:^
-	{
+	[self presentViewController:viewController animated:YES completion:^{
 		AELOG_DEBUG(@"");
 	}];
 }
@@ -1068,8 +1045,7 @@ const CGFloat DekoiPhone4HeightOffset = 118.0;
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	[self dismissViewControllerAnimated:YES completion:^
-	{
+	[self dismissViewControllerAnimated:YES completion:^{
 		AELOG_DEBUG(@"");
 	}];
 }

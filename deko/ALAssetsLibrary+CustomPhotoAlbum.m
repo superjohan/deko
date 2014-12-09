@@ -11,8 +11,7 @@
 
 - (void)saveImageData:(NSData *)imageData toAlbum:(NSString *)albumName withCompletionBlock:(SaveImageCompletion)completionBlock
 {
-	[self writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error)
-	{
+	[self writeImageDataToSavedPhotosAlbum:imageData metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
 		if (error != nil)
 		{
 			completionBlock(error);
@@ -27,18 +26,15 @@
 {
 	__block BOOL albumWasFound = NO;
 
-	[self enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop)
-	{
-		if ([albumName compare:[group valueForProperty:ALAssetsGroupPropertyName]]==NSOrderedSame)
+	[self enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+		if ([albumName compare:[group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame)
 		{
 			albumWasFound = YES;
 			
-			[self assetForURL:assetURL resultBlock:^(ALAsset *asset)
-			{
+			[self assetForURL:assetURL resultBlock:^(ALAsset *asset) {
 				[group addAsset: asset];
 				completionBlock(nil);
-			}
-			failureBlock:completionBlock];
+			} failureBlock:completionBlock];
 			
 			return;
 		}
@@ -47,21 +43,16 @@
 		{
 			__weak ALAssetsLibrary *weakSelf = self;
 			
-			[self addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group)
-			{
-				[weakSelf assetForURL:assetURL resultBlock:^(ALAsset *asset)
-				{
+			[self addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group)	{
+				[weakSelf assetForURL:assetURL resultBlock:^(ALAsset *asset) {
 					[group addAsset:asset];
 					completionBlock(nil);
-				}
-				failureBlock:completionBlock];
-			}
-			failureBlock:completionBlock];
+				} failureBlock:completionBlock];
+			} failureBlock:completionBlock];
 			
 			return;
 		}
-	}
-	failureBlock:completionBlock];
+	} failureBlock:completionBlock];
 }
 
 @end

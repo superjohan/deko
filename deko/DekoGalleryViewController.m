@@ -173,8 +173,7 @@ static const CGFloat DekoCollectionViewSpacing = 1.0;
 	}
 
 	DekoScene *scene = self.scenes[indexPath.item];
-	[self.sceneManager loadThumbnailForSceneID:scene.id completion:^(UIImage *thumbnail)
-	{
+	[self.sceneManager loadThumbnailForSceneID:scene.id completion:^(UIImage *thumbnail) {
 		itemView.thumbnail = thumbnail;
 	}];
 	[cell.contentView addSubview:itemView];

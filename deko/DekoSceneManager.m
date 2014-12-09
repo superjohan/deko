@@ -265,8 +265,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 {
 	AEAssert(sceneID != nil);
 	
-	dispatch_async(self.fileQueue, ^
-	{
+	dispatch_async(self.fileQueue, ^{
 		NSString *path = [self _pathForThumbnailWithSceneID:sceneID];
 		NSError *error = nil;
 		NSData *imageData = [NSData dataWithContentsOfFile:path options:0 error:&error];
@@ -275,8 +274,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		{
 			UIImage *image = [UIImage imageWithData:imageData scale:[[UIScreen mainScreen] scale]];
 			
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
+			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(image);
 			});
 		}
@@ -284,8 +282,7 @@ NSString * const DekoSceneManagerIndexKey = @"kDekoSceneManagerIndexKey";
 		{
 			AELOG_ERROR(@"Unable to read file at '%@' with error: %@", path, [error localizedDescription]);
 			
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
+			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil);
 			});
 		}
