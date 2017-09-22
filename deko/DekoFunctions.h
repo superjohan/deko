@@ -10,7 +10,7 @@
 
 #import "DekoConstants.h"
 
-DekoDeviceType DekoGetCurrentDeviceType();
-BOOL DekoShouldAutorotate();
-BOOL DekoFloatsAreEqual(float float1, float float2);
-CGFloat DekoGetSquareOffset();
+extern DekoDeviceType DekoGetCurrentDeviceType(void);
+extern BOOL DekoShouldAutorotate(void);
+extern BOOL DekoFloatsAreEqual(float float1, float float2);
+extern CGFloat DekoGetSquareOffset(void);

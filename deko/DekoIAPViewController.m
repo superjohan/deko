@@ -81,7 +81,7 @@
 		size.width = minimumSize;
 	}
 
-	void (^animationBlock)() = ^{
+    void (^animationBlock)(void) = ^{
 		CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 		self.purchaseButton.frame = CGRectMake(self.titleLabel.frame.origin.x - 5.0,
 											   self.iapCopyLabel.frame.origin.y + self.iapCopyLabel.bounds.size.height + 15.0 + offset,
