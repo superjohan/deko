@@ -110,8 +110,8 @@
 	versionLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
 	[versionLabel sizeToFit];
 	versionLabel.frame = AECGRectPlace(versionLabel.frame,
-									   CGRectGetMaxX(self.view.bounds) - CGRectGetWidth(versionLabel.bounds) - 10.0,
-									   CGRectGetMaxY(self.view.bounds) - CGRectGetHeight(versionLabel.bounds) - 10.0);
+									   CGRectGetMaxX(self.view.bounds) - CGRectGetWidth(versionLabel.bounds) - 20.0,
+									   CGRectGetMaxY(self.view.bounds) - CGRectGetHeight(versionLabel.bounds) - 20.0);
 	[self.view addSubview:versionLabel];
 }
 
