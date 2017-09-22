@@ -43,6 +43,7 @@
 		9070355E166E252E001FE82B /* DekoSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9070355D166E252E001FE82B /* DekoSceneManager.m */; };
 		90703561166E26D0001FE82B /* DekoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 90703560166E26CF001FE82B /* DekoScene.m */; };
 		907C3B851675069500149188 /* DekoTutorialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 907C3B841675069500149188 /* DekoTutorialHelper.m */; };
+		907C3C001F74F73E00D49B6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 907C3BFF1F74F73E00D49B6D /* LaunchScreen.storyboard */; };
 		907E727A16675DC70070829F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907E727916675DC70070829F /* SystemConfiguration.framework */; };
 		907E728016675E210070829F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907E727F16675E210070829F /* libsqlite3.dylib */; };
 		907E728216675E2F0070829F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907E728116675E2F0070829F /* AudioToolbox.framework */; };
@@ -125,6 +126,7 @@
 		90703560166E26CF001FE82B /* DekoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoScene.m; sourceTree = "<group>"; };
 		907C3B831675069500149188 /* DekoTutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoTutorialHelper.h; sourceTree = "<group>"; };
 		907C3B841675069500149188 /* DekoTutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoTutorialHelper.m; sourceTree = "<group>"; };
+		907C3BFF1F74F73E00D49B6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		907E727916675DC70070829F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		907E727F16675E210070829F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		907E728116675E2F0070829F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -255,6 +257,7 @@
 				9053F9F916AEA86A00B3192B /* Localizable.strings */,
 				905F09A11663567E0001AD10 /* deko-Info.plist */,
 				905F09A21663567E0001AD10 /* InfoPlist.strings */,
+				907C3BFF1F74F73E00D49B6D /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				905F09A41663567E0001AD10 /* InfoPlist.strings in Resources */,
 				90002E7619ED136F00F559DD /* Images.xcassets in Resources */,
 				9053F9F716AEA86A00B3192B /* Localizable.strings in Resources */,
+				907C3C001F74F73E00D49B6D /* LaunchScreen.storyboard in Resources */,
 				90BDCA1B16C4F9F200B7B964 /* Lantinghei_1.ttf in Resources */,
 				90BDCA2116C4FC1700B7B964 /* AppleSDGothicNeo-UltraLight.otf in Resources */,
 			);
@@ -593,7 +597,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -619,7 +622,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
