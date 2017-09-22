@@ -28,6 +28,10 @@
 	<string>8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need permission to save images to your device.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need permission to save images to your device.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AppleSDGothicNeo-UltraLight.otf</string>
@@ -55,10 +59,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need permission to save images to your device.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need permission to save images to your device.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
