@@ -128,20 +128,6 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    [self doesNotRecognizeSelector:_cmd];
-    
-    return [self initWithFrame:frame];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    [self doesNotRecognizeSelector:_cmd];
-    
-    return [self initWithCoder:aDecoder];
-}
-
 - (void)_populateMenuWithProStatus:(BOOL)proPurchased tutorial:(BOOL)tutorial
 {
 	CGFloat circleSize = 0;
