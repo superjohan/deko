@@ -104,7 +104,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 
 #pragma mark - UIView
 
-- (id)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth
+- (instancetype)initWithFrame:(CGRect)frame containerWidth:(CGFloat)containerWidth
 {
     if ((self = [super initWithFrame:frame]))
 	{
@@ -435,8 +435,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	self.tutorialSaveLabel.hidden = !tutorial;
 	self.tutorialShareLabel.hidden = !tutorial;
 	
-	void (^animationBlock)(void) = ^
-	{
+	void (^animationBlock)(void) = ^{
 		if (saved)
 		{
 			self.plusButton.transform = CGAffineTransformRotate(CGAffineTransformIdentity, M_PI_4);
@@ -447,8 +446,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 		}
 	};
 
-	void (^animationCompletionBlock)(BOOL) = ^(BOOL finished)
-	{
+	void (^animationCompletionBlock)(BOOL) = ^(BOOL finished) {
 		if (saved)
 		{
 			[self.galleryButton setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@%@", DekoButtonGallerySaved, self.deviceType]] forState:UIControlStateNormal];
@@ -485,8 +483,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	{
 		self.baseContainer.frame = self.shareContainer.frame;
 		
-		[UIView transitionFromView:self.shareContainer toView:self.baseContainer duration:UINavigationControllerHideShowBarDuration * 2.0 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished)
-		{
+		[UIView transitionFromView:self.shareContainer toView:self.baseContainer duration:UINavigationControllerHideShowBarDuration * 2.0 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
 			self.shareMenuVisible = NO;
 		}];
 	}
@@ -494,8 +491,7 @@ const NSTimeInterval DekoAnimationDuration = 0.2;
 	{
 		self.shareContainer.frame = self.baseContainer.frame;
 		
-		[UIView transitionFromView:self.baseContainer toView:self.shareContainer duration:UINavigationControllerHideShowBarDuration * 2.0 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished)
-		{
+		[UIView transitionFromView:self.baseContainer toView:self.shareContainer duration:UINavigationControllerHideShowBarDuration * 2.0 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
 			self.shareMenuVisible = YES;
 		}];
 	}

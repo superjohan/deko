@@ -25,28 +25,21 @@
 
 - (void)_dismiss
 {
-	[self dismissViewControllerAnimated:YES completion:^
-	{
+	[self dismissViewControllerAnimated:YES completion:^{
 		AELOG_DEBUG(@"Credits dismissed");
 	}];
 }
 
 - (void)_animateLayers
 {
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:5.0 options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:5.0 options:0 animations:^{
 		self.layer1.alpha = 0;
 		self.layer2.alpha = 1;
-	}
-	completion:^(BOOL finished1)
-	{
-		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:5.0 options:0 animations:^
-		{
+	} completion:^(BOOL finished1) {
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:5.0 options:0 animations:^{
 			self.layer1.alpha = 1;
 			self.layer2.alpha = 0;
-		}
-		completion:^(BOOL finished2)
-		{
+		} completion:^(BOOL finished2) {
 			[self _animateLayers];
 		}];
 	}];
@@ -117,8 +110,8 @@
 	versionLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
 	[versionLabel sizeToFit];
 	versionLabel.frame = AECGRectPlace(versionLabel.frame,
-									   CGRectGetMaxX(self.view.bounds) - CGRectGetWidth(versionLabel.bounds) - 10.0,
-									   CGRectGetMaxY(self.view.bounds) - CGRectGetHeight(versionLabel.bounds) - 10.0);
+									   CGRectGetMaxX(self.view.bounds) - CGRectGetWidth(versionLabel.bounds) - 20.0,
+									   CGRectGetMaxY(self.view.bounds) - CGRectGetHeight(versionLabel.bounds) - 20.0);
 	[self.view addSubview:versionLabel];
 }
 

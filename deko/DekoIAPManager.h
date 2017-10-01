@@ -14,10 +14,10 @@ extern NSString * const DekoIAPManagerProVersionPurchasedNotification;
 @interface DekoIAPManager : NSObject
 
 @property (nonatomic, assign, readonly) BOOL proPurchased;
+@property (nonatomic, readonly, copy) NSString *priceForProVersion;
 
 - (void)startManager;
 - (void)purchaseProVersion:(void (^)(NSError *error))completionBlock;
-- (NSString *)priceForProVersion;
 - (void)restorePurchases;
 
 @end

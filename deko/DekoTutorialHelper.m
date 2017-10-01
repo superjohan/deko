@@ -35,27 +35,18 @@ const CGFloat DekoArrowLength = 200.0;
 								  self.tutorialLeftArrow.image.size.height);
 	self.tutorialLeftArrow.frame = arrowRect;
 
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration options:0 animations:^{
 		self.tutorialLeftArrow.alpha = 1.0;
-	}
-	completion:^(BOOL finished)
-	{
-		[UIView animateWithDuration:1.0 animations:^
-		{
+	} completion:^(BOOL finished) {
+		[UIView animateWithDuration:1.0 animations:^{
 			self.tutorialLeftArrow.frame = CGRectMake(arrowRect.origin.x - DekoArrowLength,
 													  self.tutorialLeftArrow.frame.origin.y,
 													  self.tutorialLeftArrow.image.size.width + DekoArrowLength,
 													  self.tutorialLeftArrow.bounds.size.height);
-		}
-		completion:^(BOOL finished1)
-		{
-			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-			{
+		} completion:^(BOOL finished1) {
+			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 				self.tutorialLeftArrow.alpha = 0;
-			}
-			completion:^(BOOL finished2)
-			{
+			} completion:^(BOOL finished2) {
 				[self _performLeftArrowAnimation];
 			}];
 		}];
@@ -70,27 +61,18 @@ const CGFloat DekoArrowLength = 200.0;
 								  self.tutorialRightArrow.image.size.height);
 	self.tutorialRightArrow.frame = arrowRect;
 	
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration options:0 animations:^{
 		 self.tutorialRightArrow.alpha = 1.0;
-	}
-	completion:^(BOOL finished)
-	{
-		[UIView animateWithDuration:1.0 animations:^
-		{
+	} completion:^(BOOL finished) {
+		[UIView animateWithDuration:1.0 animations:^{
 			self.tutorialRightArrow.frame = CGRectMake(self.tutorialRightArrow.frame.origin.x,
 													   self.tutorialRightArrow.frame.origin.y,
 													   self.tutorialRightArrow.image.size.width + DekoArrowLength,
 													   self.tutorialRightArrow.bounds.size.height);
-		}
-		completion:^(BOOL finished1)
-		{
-			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-			{
+		} completion:^(BOOL finished1) {
+			[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 				self.tutorialRightArrow.alpha = 0;
-			}
-			completion:^(BOOL finished2)
-			{
+			} completion:^(BOOL finished2) {
 				[self _performRightArrowAnimation];
 			}];
 		}];
@@ -99,44 +81,28 @@ const CGFloat DekoArrowLength = 200.0;
 
 - (void)_performTapCircleAnimation
 {
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:0 options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:0 options:0 animations:^{
 		self.tutorialCircle1.alpha = 1.0;
-	}
-	completion:^(BOOL finished)
-	{
-		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^
-		{
+	} completion:^(BOOL finished) {
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^{
 			self.tutorialCircle1.alpha = 0;
-		}
-		completion:nil];
+		} completion:nil];
 	}];
 
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration * 2.0 options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration * 2.0 options:0 animations:^{
 		 self.tutorialCircle2.alpha = 1.0;
-	}
-	completion:^(BOOL finished)
-	{
-		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^
-		{
+	} completion:^(BOOL finished) {
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^{
 			self.tutorialCircle2.alpha = 0;
-		}
-		completion:nil];
+		} completion:nil];
 	}];
 
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration * 4.0 options:0 animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration delay:UINavigationControllerHideShowBarDuration * 4.0 options:0 animations:^{
 		self.tutorialCircle3.alpha = 1.0;
-	}
-	completion:^(BOOL finished1)
-	{
-		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^
-		{
+	} completion:^(BOOL finished1) {
+		[UIView animateWithDuration:UINavigationControllerHideShowBarDuration * 4.0 delay:0 options:0 animations:^{
 			self.tutorialCircle3.alpha = 0;
-		}
-		completion:^(BOOL finished2)
-		{
+		} completion:^(BOOL finished2) {
 			[self _performTapCircleAnimation];
 		}];
 	}];
@@ -171,12 +137,9 @@ const CGFloat DekoArrowLength = 200.0;
 		return;
 	}
 	
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		self.tutorialLeftArrow.alpha = 0;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		[self.tutorialLeftArrow removeFromSuperview];
 		self.tutorialLeftArrow = nil;
 		self.view = nil;
@@ -210,12 +173,9 @@ const CGFloat DekoArrowLength = 200.0;
 		return;
 	}
 	
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		self.tutorialRightArrow.alpha = 0;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		[self.tutorialRightArrow removeFromSuperview];
 		self.tutorialRightArrow = nil;
 		self.view = nil;
@@ -265,12 +225,9 @@ const CGFloat DekoArrowLength = 200.0;
 		return;
 	}
 
-	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^
-	{
+	[UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
 		self.tutorialCircleView.alpha = 0;
-	}
-	completion:^(BOOL finished)
-	{
+	} completion:^(BOOL finished) {
 		[self.tutorialCircleView removeFromSuperview];
 		self.tutorialCircleView = nil;
 		self.view = nil;

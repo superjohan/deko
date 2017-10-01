@@ -66,10 +66,9 @@ static const CGFloat DekoCollectionViewSpacing = 1.0;
 
 - (CGFloat)_paddingForCollectionView
 {
-	CGFloat spacing = 1.0;
 	CGFloat width = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
 	CGFloat amountOfItemsPerLine = floor(width / 100.0);
-	CGFloat padding = (((NSInteger)width % (NSInteger)DekoThumbnailSize) / 2.0) - (((amountOfItemsPerLine - 1) * spacing) / 2.0);
+	CGFloat padding = (((NSInteger)width % (NSInteger)DekoThumbnailSize) / 2.0) - (((amountOfItemsPerLine - 1) * DekoCollectionViewSpacing) / 2.0);
 	
 	return padding;
 }
@@ -173,8 +172,7 @@ static const CGFloat DekoCollectionViewSpacing = 1.0;
 	}
 
 	DekoScene *scene = self.scenes[indexPath.item];
-	[self.sceneManager loadThumbnailForSceneID:scene.id completion:^(UIImage *thumbnail)
-	{
+	[self.sceneManager loadThumbnailForSceneID:scene.id completion:^(UIImage *thumbnail) {
 		itemView.thumbnail = thumbnail;
 	}];
 	[cell.contentView addSubview:itemView];

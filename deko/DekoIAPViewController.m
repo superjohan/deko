@@ -31,8 +31,7 @@
 
 - (void)_dismiss
 {
-	[self dismissViewControllerAnimated:YES completion:^
-	{
+	[self dismissViewControllerAnimated:YES completion:^{
 		AELOG_DEBUG(@"IAP view dismissed.");
 	}];
 }
@@ -43,8 +42,7 @@
 
 	self.busyView.hidden = NO;
 	
-	[self.purchaseManager purchaseProVersion:^(NSError *error)
-	{
+	[self.purchaseManager purchaseProVersion:^(NSError *error) {
         self.busyView.hidden = YES;
         
 		// I know this is wrong but the headers explicitly say that the error is only set if the transaction has failed...
@@ -83,8 +81,7 @@
 		size.width = minimumSize;
 	}
 
-	void (^animationBlock)() = ^
-	{
+    void (^animationBlock)(void) = ^{
 		CGFloat offset = DekoGetCurrentDeviceType() == DekoDeviceTypeiPad ? 10.0 : 0;
 		self.purchaseButton.frame = CGRectMake(self.titleLabel.frame.origin.x - 5.0,
 											   self.iapCopyLabel.frame.origin.y + self.iapCopyLabel.bounds.size.height + 15.0 + offset,
