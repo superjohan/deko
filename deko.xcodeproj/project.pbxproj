@@ -39,6 +39,7 @@
 		905F0A491663A1E20001AD10 /* DekoMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 905F0A481663A1E10001AD10 /* DekoMenuView.m */; };
 		90617FDD166F5F7B003F6684 /* DekoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90617FDC166F5F7B003F6684 /* DekoGalleryViewController.m */; };
 		90617FE5166F6941003F6684 /* DekoGalleryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90617FE4166F6941003F6684 /* DekoGalleryItemView.m */; };
+		90655DA91FBF3F1E0000A960 /* DekoHapticFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90655DA81FBF3F1E0000A960 /* DekoHapticFeedbackController.m */; };
 		9070355A166E12CC001FE82B /* DekoShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 90703559166E12CC001FE82B /* DekoShareHelper.m */; };
 		9070355E166E252E001FE82B /* DekoSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9070355D166E252E001FE82B /* DekoSceneManager.m */; };
 		90703561166E26D0001FE82B /* DekoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 90703560166E26CF001FE82B /* DekoScene.m */; };
@@ -118,6 +119,8 @@
 		90617FDC166F5F7B003F6684 /* DekoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoGalleryViewController.m; sourceTree = "<group>"; };
 		90617FE3166F6941003F6684 /* DekoGalleryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoGalleryItemView.h; sourceTree = "<group>"; };
 		90617FE4166F6941003F6684 /* DekoGalleryItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoGalleryItemView.m; sourceTree = "<group>"; };
+		90655DA71FBF3F1E0000A960 /* DekoHapticFeedbackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DekoHapticFeedbackController.h; sourceTree = "<group>"; };
+		90655DA81FBF3F1E0000A960 /* DekoHapticFeedbackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DekoHapticFeedbackController.m; sourceTree = "<group>"; };
 		90703558166E12CC001FE82B /* DekoShareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoShareHelper.h; sourceTree = "<group>"; };
 		90703559166E12CC001FE82B /* DekoShareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoShareHelper.m; sourceTree = "<group>"; };
 		9070355C166E252E001FE82B /* DekoSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoSceneManager.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				90FD7966168C632700F0D528 /* DekoFlowLayout.m */,
 				9012218416C5906800935630 /* DekoLocalizationManager.h */,
 				9012218516C5906800935630 /* DekoLocalizationManager.m */,
+				90655DA71FBF3F1E0000A960 /* DekoHapticFeedbackController.h */,
+				90655DA81FBF3F1E0000A960 /* DekoHapticFeedbackController.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				905F0A39166393D30001AD10 /* HarmonyColorGenerator.m in Sources */,
 				905F0A3A166393D30001AD10 /* HarmonyShape.m in Sources */,
 				905F0A3B166393D30001AD10 /* HarmonyShapeFunctions.m in Sources */,
+				90655DA91FBF3F1E0000A960 /* DekoHapticFeedbackController.m in Sources */,
 				905F0A3C166393D30001AD10 /* HarmonyStaticView.m in Sources */,
 				905F0A491663A1E20001AD10 /* DekoMenuView.m in Sources */,
 				907E728B166760B60070829F /* DekoIAPManager.m in Sources */,
