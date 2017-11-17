@@ -29,6 +29,7 @@
 #import "HarmonyCanvasSettings.h"
 #import "DekoLocalizationManager.h"
 #import "DekoFunctions.h"
+#import "DekoHapticFeedbackController.h"
 
 typedef NS_ENUM(NSInteger, DekoTutorialStep)
 {
@@ -66,6 +67,8 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 @property (nonatomic, assign) BOOL firstGeneration;
 @property (nonatomic, assign) BOOL showMenuLabels;
 @property (nonatomic, assign) DekoTutorialStep tutorialStep;
+@property (nonatomic) DekoHapticFeedbackController *hapticFeedbackController;
+@property (nonatomic) NSInteger previousStep;
 @end
 
 @implementation DekoViewController
@@ -329,7 +332,11 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 		
 		if (settings != nil)
 		{
-			[self _generateNewCanvasWithFadeInDuration:UINavigationControllerHideShowBarDuration fadeOutDuration:UINavigationControllerHideShowBarDuration settings:settings fadeOutLogo:NO];
+            self.previousStep = -1;
+            
+            [self.hapticFeedbackController selectionConfirmed];
+            
+            [self _generateNewCanvasWithFadeInDuration:UINavigationControllerHideShowBarDuration fadeOutDuration:UINavigationControllerHideShowBarDuration settings:settings fadeOutLogo:NO];
 		}
 		
 		self.undoShadow.frame = [self _undoShadowRect];
@@ -380,6 +387,16 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 			self.whiteCanvasTutorialLabel.text = NSLocalizedString(@"A completely new pattern will be made from scratch.", @"Scene refresh tutorial text, full refresh, no swipe");
 		}
 	}
+    
+    if (refreshStep != self.previousStep)
+    {
+        if (! swipe)
+        {
+            [self.hapticFeedbackController selectionChanged];
+        }
+        
+        self.previousStep = refreshStep;
+    }
 }
 
 - (void)_panRecognized:(UIPanGestureRecognizer *)panRecognizer
@@ -872,6 +889,8 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 {
     [super viewDidLoad];
 	
+    self.previousStep = -1;
+    
 	self.tutorialHelper = [[DekoTutorialHelper alloc] init];
 	
 	self.localizationManager = [[DekoLocalizationManager alloc] init];
@@ -883,6 +902,8 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 	self.galleryViewController.delegate = self;
 	self.iapViewController.delegate = self;
 
+    self.hapticFeedbackController = [[DekoHapticFeedbackController alloc] init];
+    
 	self.showMenuLabels = self.tutorialHelper.shouldShowTutorial;
 	
 	[self _configureViews];
