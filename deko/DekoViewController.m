@@ -277,6 +277,8 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 		self.undoShadow.frame = [self _undoShadowRect];
 		self.previousTutorialLabel.frame = [self _previousTutorialLabelRect];
 	} completion:^(BOOL finished) {
+        self.previousStep = -1;
+
 		HarmonyCanvasSettings *settings = nil;
          
 		if (previous)
@@ -332,8 +334,6 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 		
 		if (settings != nil)
 		{
-            self.previousStep = -1;
-            
             [self.hapticFeedbackController selectionConfirmed];
             
             [self _generateNewCanvasWithFadeInDuration:UINavigationControllerHideShowBarDuration fadeOutDuration:UINavigationControllerHideShowBarDuration settings:settings fadeOutLogo:NO];
