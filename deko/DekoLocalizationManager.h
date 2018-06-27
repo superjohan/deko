@@ -10,7 +10,7 @@
 
 @interface DekoLocalizationManager : NSObject
 
-@property (nonatomic) BOOL useSinaWeibo;
+@property (nonatomic, readonly) BOOL useSinaWeibo;
 
 - (UIFont *)localizedFontWithSize:(CGFloat)size;
 
