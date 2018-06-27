@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DekoLanguageType)
 {
 	if ((self = [super init]))
 	{
-		NSString *language = [NSLocale preferredLanguages][0];
+		NSString *language = [[NSBundle mainBundle] preferredLocalizations][0];
 		if ([language isEqualToString:@"zh-Hans"])
 		{
 			_currentLanguage = DekoLanguageTypeChina;
