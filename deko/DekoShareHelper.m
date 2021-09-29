@@ -22,6 +22,13 @@
 
 #pragma mark - Private
 
+- (void)_shareImage:(UIImage *)image
+{
+	NSArray *contents = [NSArray arrayWithObject:image];
+	UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:contents applicationActivities:nil];
+	[self.delegate shareHelper:self wantsToShowViewController:activityViewController];
+}
+
 - (void)_shareImageToTwitter:(UIImage *)image
 {
 	if (self.localizationManager.useSinaWeibo)
