@@ -11,7 +11,6 @@
 		900F710216661B6A00220E02 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F710116661B6A00220E02 /* Social.framework */; };
 		900F710516662EF900220E02 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F710416662EF900220E02 /* MessageUI.framework */; };
 		900F71071666345400220E02 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F71061666345400220E02 /* AssetsLibrary.framework */; };
-		900F710D1666379600220E02 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900F710C1666379600220E02 /* MobileCoreServices.framework */; };
 		9012218616C5906800935630 /* DekoLocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012218516C5906800935630 /* DekoLocalizationManager.m */; };
 		9016B2A7168E12000021EF1F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9016B2A6168E12000021EF1F /* AdSupport.framework */; };
 		902EB34C16727DF00042F7AE /* DekoIAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902EB34B16727DF00042F7AE /* DekoIAPViewController.m */; };
@@ -39,6 +38,7 @@
 		905F0A491663A1E20001AD10 /* DekoMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 905F0A481663A1E10001AD10 /* DekoMenuView.m */; };
 		90617FDD166F5F7B003F6684 /* DekoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90617FDC166F5F7B003F6684 /* DekoGalleryViewController.m */; };
 		90617FE5166F6941003F6684 /* DekoGalleryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90617FE4166F6941003F6684 /* DekoGalleryItemView.m */; };
+		906300EC27049EF9003AE57A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906300EB27049EF9003AE57A /* CoreServices.framework */; };
 		90655DA91FBF3F1E0000A960 /* DekoHapticFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90655DA81FBF3F1E0000A960 /* DekoHapticFeedbackController.m */; };
 		9070355A166E12CC001FE82B /* DekoShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 90703559166E12CC001FE82B /* DekoShareHelper.m */; };
 		9070355E166E252E001FE82B /* DekoSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9070355D166E252E001FE82B /* DekoSceneManager.m */; };
@@ -119,6 +119,7 @@
 		90617FDC166F5F7B003F6684 /* DekoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoGalleryViewController.m; sourceTree = "<group>"; };
 		90617FE3166F6941003F6684 /* DekoGalleryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoGalleryItemView.h; sourceTree = "<group>"; };
 		90617FE4166F6941003F6684 /* DekoGalleryItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DekoGalleryItemView.m; sourceTree = "<group>"; };
+		906300EB27049EF9003AE57A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		90655DA71FBF3F1E0000A960 /* DekoHapticFeedbackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DekoHapticFeedbackController.h; sourceTree = "<group>"; };
 		90655DA81FBF3F1E0000A960 /* DekoHapticFeedbackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DekoHapticFeedbackController.m; sourceTree = "<group>"; };
 		90703558166E12CC001FE82B /* DekoShareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DekoShareHelper.h; sourceTree = "<group>"; };
@@ -173,10 +174,10 @@
 				907E728216675E2F0070829F /* AudioToolbox.framework in Frameworks */,
 				907E728016675E210070829F /* libsqlite3.dylib in Frameworks */,
 				907E727A16675DC70070829F /* SystemConfiguration.framework in Frameworks */,
-				900F710D1666379600220E02 /* MobileCoreServices.framework in Frameworks */,
 				900F71071666345400220E02 /* AssetsLibrary.framework in Frameworks */,
 				900F710516662EF900220E02 /* MessageUI.framework in Frameworks */,
 				900F710216661B6A00220E02 /* Social.framework in Frameworks */,
+				906300EC27049EF9003AE57A /* CoreServices.framework in Frameworks */,
 				90D4EB2D16651A1F00311AEA /* libz.dylib in Frameworks */,
 				905F099A1663567E0001AD10 /* UIKit.framework in Frameworks */,
 				905F099C1663567E0001AD10 /* Foundation.framework in Frameworks */,
@@ -207,6 +208,7 @@
 		905F09981663567E0001AD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				906300EB27049EF9003AE57A /* CoreServices.framework */,
 				90E83EB916F09F68007C62B8 /* CoreLocation.framework */,
 				9030A7B516B01B3F001BAFA9 /* QuartzCore.framework */,
 				9016B2A6168E12000021EF1F /* AdSupport.framework */,
