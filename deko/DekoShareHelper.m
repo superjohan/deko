@@ -9,6 +9,7 @@
 #import "DekoShareHelper.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "DekoLocalizationManager.h"
+#import "DekoPurchaseActivity.h"
 
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
@@ -25,7 +26,9 @@
 - (void)_shareImage:(UIImage *)image
 {
 	NSArray *contents = [NSArray arrayWithObject:image];
-	UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:contents applicationActivities:nil];
+	NSArray *activities = [NSArray arrayWithObject:[[DekoPurchaseActivity alloc] init]];
+	
+	UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:contents applicationActivities:activities];
 	[self.delegate shareHelper:self wantsToShowViewController:activityViewController];
 }
 
@@ -108,6 +111,9 @@
 	AEAssert(self.delegate != nil);
 	
 	self.purchased = proPurchased;
+	
+	[self _shareImage:image];
+	return;
 	
 	if (shareType == DekoShareTwitter)
 	{

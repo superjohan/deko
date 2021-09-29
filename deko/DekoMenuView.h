@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, DekoShareType)
 	DekoShareEmail,
 	DekoSharePhotos,
 	DekoShareCopy,
+    DekoShareGeneric,
 };
 
 @protocol DekoMenuViewDelegate <NSObject>
