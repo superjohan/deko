@@ -196,6 +196,7 @@
 				905F09961663567E0001AD10 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		905F09961663567E0001AD10 /* Products */ = {
 			isa = PBXGroup;
