@@ -1011,6 +1011,13 @@ typedef NS_ENUM(NSInteger, DekoTutorialStep)
 {
 	AEAssert(viewController != nil);
 	
+	if (DekoGetCurrentDeviceType() == DekoDeviceTypeiPad && [viewController isKindOfClass:[UIActivityViewController class]])
+	{
+		UIActivityViewController *activityViewController = (UIActivityViewController *)viewController;
+		activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height, 0, 0);
+		activityViewController.popoverPresentationController.sourceView = self.menuView;
+	}
+
 	[self presentViewController:viewController animated:YES completion:^{
 		AELOG_DEBUG(@"");
 	}];
