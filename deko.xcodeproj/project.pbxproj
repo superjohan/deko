@@ -403,16 +403,16 @@
 			};
 			buildConfigurationList = 905F098F1663567E0001AD10 /* Build configuration list for PBXProject "deko" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				ja,
 				"zh-Hans",
 				ko,
 				it,
 				fi,
+				Base,
 			);
 			mainGroup = 905F098A1663567E0001AD10;
 			productRefGroup = 905F09961663567E0001AD10 /* Products */;
